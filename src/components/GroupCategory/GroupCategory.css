@@ -1,0 +1,13 @@
+.GroupCategory > header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin: 10px;
+  height: 50px;
+}
+
+.GroupCategory > header > h2 {
+  font-size: 22px;
+}
