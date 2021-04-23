@@ -37,10 +37,10 @@ function App() {
               <MessagePage handleLogout={handleLogout} user={user} />
             )}
           />
-          <Route
+          {/* <Route
             path="/messages"
             render={(props) => <MessagesPage {...props} />}
-          />
+          /> */}
           <Redirect to="/" />
         </Switch>
       ) : (
