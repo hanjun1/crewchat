@@ -1,7 +1,7 @@
 import React from "react";
 import "./MessageInput.css";
 
-const MessageInput = () => {
+function MessageInput(props) {
   return (
     <div className="MessageInput">
       <input type="text" placeholder="type your message.." />
@@ -10,6 +10,6 @@ const MessageInput = () => {
       </button>
     </div>
   );
-};
+}
 
 export default MessageInput;

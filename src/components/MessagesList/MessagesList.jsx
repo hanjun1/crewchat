@@ -2,7 +2,7 @@ import React from "react";
 import "./MessagesList.css";
 import MessageItem from "../MessageItem/MessageItem";
 
-const MessagesList = () => {
+function MessagesList(props) {
   return (
     <div className="MessagesList">
       <MessageItem myMessage={true} />
@@ -11,6 +11,6 @@ const MessagesList = () => {
       <MessageItem myMessage={false} />
     </div>
   );
-};
+}
 
 export default MessagesList;
