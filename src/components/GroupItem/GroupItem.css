@@ -1,0 +1,43 @@
+.GroupItem {
+  border-top: 1px solid #dadeff;
+  margin: 5px 20px 5px 20px;
+  padding-top: 10px;
+  height: 80px;
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "group-icon group-name time"
+    "group-icon text-preview text-preview"
+    "participants participants participants";
+}
+.group-icon {
+  grid-area: group-icon;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.group-name {
+  grid-area: group-name;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: auto;
+}
+.text-preview {
+  grid-area: text-preview;
+  color: grey;
+  white-space: nowrap;
+  overflow-x: hidden;
+  font-size: 14px;
+}
+.time {
+  grid-area: time;
+  font-size: 14px;
+  text-align: right;
+}
+.participants {
+  grid-area: participants;
+}
