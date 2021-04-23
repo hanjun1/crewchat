@@ -8,11 +8,11 @@ const socket = socketIOClient(ENDPOINT);
 function MessagePage(props) {
   const [allMessages, setAllMessages] = useState([]);
 
-  socket.on("message", (message) => {
-    setAllMessages([...allMessages, message]);
-  });
-
   useEffect(() => {
+    socket.on("message", (message) => {
+      setAllMessages((allMessages) => [...allMessages, message]);
+    });
+
     return () => socket.disconnect();
   }, []);
 
