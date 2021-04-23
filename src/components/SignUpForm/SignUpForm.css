@@ -47,3 +47,8 @@
   margin: 0 auto;
   display: block;
 }
+
+.SignUpForm .login-link {
+  margin: 0px;
+  color: #8e91af;
+}

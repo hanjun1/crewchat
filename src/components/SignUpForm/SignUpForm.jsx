@@ -90,6 +90,7 @@ function SignUpForm(props) {
       </form>
 
       <p>&nbsp;{error}</p>
+      <p className="login-link">Already have an account? Log In</p>
     </div>
   );
 }

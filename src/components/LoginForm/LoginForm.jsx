@@ -38,7 +38,6 @@ function LoginForm(props) {
   return (
     <div className="LoginForm">
       <h1>Log In</h1>
-
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label>Email</label>
         <input
@@ -62,8 +61,8 @@ function LoginForm(props) {
         <br />
         <button className="login-btn">Log In</button>
       </form>
-
       <p>&nbsp;{error}</p>
+      <p className="signup-link">don't have an account? Sign Up</p>
     </div>
   );
 }
