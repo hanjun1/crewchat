@@ -1,7 +1,12 @@
 import React from "react";
+import "./MessageItem.css";
 
-const MessageItem = () => {
-  return <div></div>;
+const MessageItem = ({ myMessage }) => {
+  return (
+    <div
+      className={`MessageItem ${myMessage ? "my-message" : "not-my-message"}`}
+    ></div>
+  );
 };
 
 export default MessageItem;

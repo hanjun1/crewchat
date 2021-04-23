@@ -5,10 +5,10 @@ import MessageItem from "../MessageItem/MessageItem";
 const MessagesList = () => {
   return (
     <div className="MessagesList">
-      <MessageItem />
-      <MessageItem />
-      <MessageItem />
-      <MessageItem />
+      <MessageItem myMessage={true} />
+      <MessageItem myMessage={false} />
+      <MessageItem myMessage={true} />
+      <MessageItem myMessage={false} />
     </div>
   );
 };
