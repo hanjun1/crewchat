@@ -1,0 +1,17 @@
+.MessageItem {
+  /* change height and with to fit content later */
+  height: 60px;
+  width: 200px;
+  margin: 0px 10px 10px 10px;
+  border-radius: 15px;
+}
+
+.MessageItem.my-message {
+  align-self: flex-end;
+  background-color: white;
+}
+
+.MessageItem.not-my-message {
+  align-self: flex-start;
+  background-color: #a0a2ba;
+}

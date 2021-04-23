@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import AuthPage from "../AuthPage/AuthPage";
+import MessagesPage from "../MessagesPage/MessagesPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -29,12 +30,17 @@ function App() {
         <Switch>
           <Route
             path="/"
+            exact
             render={() => (
               <>
                 <div>YOU LOGGED IN WOOT!</div>
                 <button onClick={() => handleLogout()}>Logout</button>
               </>
             )}
+          />
+          <Route
+            path="/messages"
+            render={(props) => <MessagesPage {...props} />}
           />
           <Redirect to="/" />
         </Switch>
