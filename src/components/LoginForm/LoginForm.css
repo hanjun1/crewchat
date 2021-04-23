@@ -8,6 +8,7 @@
   justify-content: space-evenly;
   height: 60vh;
   max-width: 500px;
+  min-height: 400px;
 }
 
 .LoginForm h1 {
@@ -47,6 +48,6 @@
 }
 
 .LoginForm .signup-link {
-  margin: 0px;
+  margin: 10px;
   color: #8e91af;
 }
