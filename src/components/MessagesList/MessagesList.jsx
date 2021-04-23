@@ -1,9 +1,10 @@
 import React from "react";
+import "./MessagesList.css";
 import MessageItem from "../MessageItem/MessageItem";
 
 const MessagesList = () => {
   return (
-    <div>
+    <div className="MessagesList">
       <MessageItem />
       <MessageItem />
       <MessageItem />
