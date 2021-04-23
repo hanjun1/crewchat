@@ -1,0 +1,26 @@
+.ChatRoomDetails .all {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 1px solid black; */
+}
+
+.ChatRoomDetails button {
+  background-color: #6083ff;
+  border: none;
+  color: white;
+  border-radius: 1rem;
+  width: 200px;
+  height: 40px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.ChatRoomDetails .button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}

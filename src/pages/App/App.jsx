@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import AuthPage from "../AuthPage/AuthPage";
 import MessagePage from "../MessagePageTest/MessagePage";
 import MessagesPage from "../MessagesPage/MessagesPage";
+import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -37,10 +38,14 @@ function App() {
               <MessagePage handleLogout={handleLogout} user={user} />
             )}
           />
-          {/* <Route
+          <Route
             path="/messages"
             render={(props) => <MessagesPage {...props} />}
-          /> */}
+          />
+          <Route
+            path="/chatdetails"
+            render={(props) => <ChatRoomDetails {...props} />}
+          />
           <Redirect to="/" />
         </Switch>
       ) : (

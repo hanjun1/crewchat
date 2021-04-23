@@ -1,0 +1,29 @@
+.DetailsOption {
+  display: flex;
+  margin: 1rem;
+  justify-content: space-between;
+  transition: all 0.2s ease-in-out;
+}
+
+.DetailsOption:hover {
+  transform: scale(1.05);
+}
+
+.DetailsOption p {
+  font-weight: bold;
+}
+
+.DetailsOption .details-container {
+  display: flex;
+}
+
+.DetailsOption .icon-container {
+  margin-right: 1rem;
+}
+
+.DetailsOption .more-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
