@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./SignUpForm.css";
 
 function SignUpForm(props) {
   const [userInfo, setUserInfo] = useState({
@@ -40,54 +41,54 @@ function SignUpForm(props) {
   const disable = userInfo.password !== userInfo.confirm;
 
   return (
-    <div>
-      <div className="form-container">
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Name</label>
-          <input
-            type="text"
-            name="name"
-            value={userInfo.name}
-            onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}
-            required
-          />
-          <br />
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            value={userInfo.email}
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, email: e.target.value })
-            }
-            required
-          />
-          <br />
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={userInfo.password}
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, password: e.target.value })
-            }
-            required
-          />
-          <br />
-          <label>Confirm</label>
-          <input
-            type="password"
-            name="confirm"
-            value={userInfo.confirm}
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, confirm: e.target.value })
-            }
-            required
-          />
-          <br />
-          <button disabled={disable}>Sign Up</button>
-        </form>
-      </div>
+    <div className="SignUpForm">
+      <h1>Create an Account</h1>
+      <form autoComplete="off" onSubmit={handleSubmit}>
+        <label>Name</label>
+        <input
+          type="text"
+          name="name"
+          value={userInfo.name}
+          onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}
+          required
+        />
+        <br />
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          value={userInfo.email}
+          onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
+          required
+        />
+        <br />
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          value={userInfo.password}
+          onChange={(e) =>
+            setUserInfo({ ...userInfo, password: e.target.value })
+          }
+          required
+        />
+        <br />
+        <label>Confirm</label>
+        <input
+          type="password"
+          name="confirm"
+          value={userInfo.confirm}
+          onChange={(e) =>
+            setUserInfo({ ...userInfo, confirm: e.target.value })
+          }
+          required
+        />
+        <br />
+        <button className="signup-btn" disabled={disable}>
+          Sign Up
+        </button>
+      </form>
+
       <p>&nbsp;{error}</p>
     </div>
   );
