@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./LoginForm.css";
 
 function LoginForm(props) {
   const [userInfo, setUserInfo] = useState({
@@ -35,35 +36,33 @@ function LoginForm(props) {
   };
 
   return (
-    <div>
-      <div className="form-container">
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input
-            type="text"
-            name="email"
-            value={userInfo.email}
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, email: e.target.value })
-            }
-            required
-          />
-          <br />
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={userInfo.password}
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, password: e.target.value })
-            }
-            required
-          />
-          <br />
-          <button>Log In</button>
-        </form>
-      </div>
+    <div className="LoginForm">
+      <h1>Log In</h1>
+      <form autoComplete="off" onSubmit={handleSubmit}>
+        <label>Email</label>
+        <input
+          type="text"
+          name="email"
+          value={userInfo.email}
+          onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
+          required
+        />
+        <br />
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          value={userInfo.password}
+          onChange={(e) =>
+            setUserInfo({ ...userInfo, password: e.target.value })
+          }
+          required
+        />
+        <br />
+        <button className="login-btn">Log In</button>
+      </form>
       <p>&nbsp;{error}</p>
+      <p className="signup-link">don't have an account? Sign Up</p>
     </div>
   );
 }
