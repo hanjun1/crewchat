@@ -3,6 +3,7 @@ import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import AuthPage from "../AuthPage/AuthPage";
 import MessagePage from "../MessagePageTest/MessagePage";
+import MessagesPage from "../MessagesPage/MessagesPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,9 +32,14 @@ function App() {
         <Switch>
           <Route
             path="/"
+            exact
             render={() => (
               <MessagePage handleLogout={handleLogout} user={user} />
             )}
+          />
+          <Route
+            path="/messages"
+            render={(props) => <MessagesPage {...props} />}
           />
           <Redirect to="/" />
         </Switch>
