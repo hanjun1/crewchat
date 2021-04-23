@@ -32,8 +32,8 @@ function SignUpForm(props) {
       const userDoc = JSON.parse(atob(token.split(".")[1])).user;
       props.setUser(userDoc);
     } catch (err) {
-      console.log("LoginForm error", err);
-      setError("Login Failed - Try Again");
+      console.log("SignUp Form error", err);
+      setError("SignUp Failed - Try Again");
     }
   };
 

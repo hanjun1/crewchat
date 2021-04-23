@@ -4,6 +4,8 @@ const favicon = require("serve-favicon");
 const logger = require("morgan");
 const app = express();
 const userRouter = require("./routes/api/users");
+const http = require("http");
+const socketIo = require("socket.io");
 
 require("dotenv").config();
 require("./config/database");
@@ -20,6 +22,23 @@ app.get("/*", function (req, res) {
 });
 
 const port = process.env.PORT || 3001;
-app.listen(port, function () {
-  console.log(`Express app running on port ${port}`);
+// app.listen(port, function () {
+//   console.log(`Express app running on port ${port}`);
+// });
+
+const server = http.createServer(app);
+const io = socketIo(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
 });
+
+io.on("connection", function (socket) {
+  console.log("Client connected to socket.io!");
+  socket.on("chatMessage", (msg) => {
+    io.emit("message", msg);
+  });
+});
+
+server.listen(port, () => console.log(`Listening on port ${port}`));
