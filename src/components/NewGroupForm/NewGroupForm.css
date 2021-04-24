@@ -75,6 +75,7 @@
 
 .NewGroupForm .copy-link span {
   margin: 5px;
+  cursor: pointer;
 }
 
 .NewGroupForm input {

@@ -73,6 +73,7 @@ const groupSchema = new Schema(
   {
     name: String,
     category: String,
+    link: String,
     members: [
       {
         type: Schema.Types.ObjectId,

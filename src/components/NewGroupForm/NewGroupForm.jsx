@@ -12,10 +12,33 @@ function NewGroupForm() {
     return Math.random().toString(36).substr(2, 10);
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      let jwt = localStorage.getItem("token");
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + jwt,
+        },
+        body: JSON.stringify({
+          name: inputs.name,
+          category: inputs.category,
+          link: inputs.link,
+        }),
+      };
+      const fetchResponse = await fetch("/api/groups/create", options);
+      if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="NewGroupForm">
       <h1>New Group</h1>
-      <form autoComplete="off">
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <input
           className="group-name"
           type="text"
