@@ -6,6 +6,8 @@ import MessagePage from "../MessagePageTest/MessagePage";
 import MessagesPage from "../MessagesPage/MessagesPage";
 import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
 import GroupsPage from "../GroupsPage/GroupsPage";
+import NewGroupForm from "../../components/NewGroupForm/NewGroupForm";
+import NewGroupSuccessModal from "../../components/NewGroupSuccessModal/NewGroupSuccessModal";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -47,7 +49,15 @@ function App() {
             path="/chatdetails"
             render={(props) => <ChatRoomDetails {...props} />}
           />
-          <Route path="/groups" render={(props) => <GroupsPage {...props} />} />
+          <Route
+            path="/groups/create"
+            render={(props) => <NewGroupForm {...props} />}
+          />
+          <Route
+            path="/groups"
+            exact
+            render={(props) => <GroupsPage {...props} />}
+          />
           <Redirect to="/" />
         </Switch>
       ) : (

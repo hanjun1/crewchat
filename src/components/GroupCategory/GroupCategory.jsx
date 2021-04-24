@@ -10,7 +10,7 @@ function GroupCategory({ name }) {
         <h2>{name}</h2>
         <span
           onClick={() => setShowItems(!showItems)}
-          class="material-icons md-48"
+          className="material-icons md-48"
         >
           {showItems ? "expand_more" : "expand_less"}
         </span>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./GroupsHeader.css";
 
 function GroupsHeader() {
@@ -6,14 +7,14 @@ function GroupsHeader() {
     <div className="GroupsHeader">
       <div className="title">
         <h2>Groups</h2>
-        <button className="new-group-btn">
-          <span class="material-icons md-light">add</span>
-        </button>
+        <Link to="/groups/create" className="new-group-btn">
+          <span className="material-icons md-light">add</span>
+        </Link>
       </div>
       <div className="searchbar">
         <input type="text" placeholder="search.." />
         <button>
-          <span class="material-icons">search</span>
+          <span className="material-icons">search</span>
         </button>
       </div>
     </div>

@@ -6,7 +6,7 @@ function MessageInput(props) {
     <div className="MessageInput">
       <input type="text" placeholder="type your message.." />
       <button>
-        <span class="material-icons md-light">send</span>
+        <span className="material-icons md-light">send</span>
       </button>
     </div>
   );
