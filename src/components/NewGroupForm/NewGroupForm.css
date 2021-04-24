@@ -36,6 +36,7 @@
   border-bottom: 1px solid #a0a2ba;
   border-radius: 0px;
   width: 80%;
+  text-align: center;
 }
 
 .NewGroupForm form .name-label {
