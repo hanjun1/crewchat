@@ -3,6 +3,7 @@
   margin: 1rem;
   justify-content: space-between;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .DetailsOption:hover {
