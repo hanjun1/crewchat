@@ -6,6 +6,7 @@ import MessagePage from "../MessagePageTest/MessagePage";
 import MessagesPage from "../MessagesPage/MessagesPage";
 import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
 import GroupsPage from "../GroupsPage/GroupsPage";
+import NewGroupForm from "../../components/NewGroupForm/NewGroupForm";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -48,6 +49,10 @@ function App() {
             render={(props) => <ChatRoomDetails {...props} />}
           />
           <Route path="/groups" render={(props) => <GroupsPage {...props} />} />
+          <Route
+            path="/newgroup"
+            render={(props) => <NewGroupForm {...props} />}
+          />
           <Redirect to="/" />
         </Switch>
       ) : (

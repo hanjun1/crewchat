@@ -1,4 +1,5 @@
 .RoomHeader {
+  font-family: "Ubuntu";
   display: flex;
   flex-direction: column;
   align-items: center;
