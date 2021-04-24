@@ -1,5 +1,6 @@
 import React from "react";
 import "./ShowDetailsTemplate.css";
+import ParticipantsDetail from "../ParticipantsDetail/ParticipantsDetail";
 
 function ShowDetailsTemplate(props) {
   return (
@@ -25,6 +26,7 @@ function ShowDetailsTemplate(props) {
         </svg>
       </div>
       <h1>{props.name}</h1>
+      {props.name === "Participants" ? <ParticipantsDetail /> : <p>Test</p>}
     </div>
   );
 }
