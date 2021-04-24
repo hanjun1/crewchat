@@ -12,7 +12,6 @@ function MessagePage(props) {
     socket.on("message", (message) => {
       setAllMessages((allMessages) => [...allMessages, message]);
     });
-
     return () => socket.disconnect();
   }, []);
 

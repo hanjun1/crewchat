@@ -5,6 +5,7 @@ import AuthPage from "../AuthPage/AuthPage";
 import MessagePage from "../MessagePageTest/MessagePage";
 import MessagesPage from "../MessagesPage/MessagesPage";
 import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
+import GroupsPage from "../GroupsPage/GroupsPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -46,6 +47,7 @@ function App() {
             path="/chatdetails"
             render={(props) => <ChatRoomDetails {...props} />}
           />
+          <Route path="/groups" render={(props) => <GroupsPage {...props} />} />
           <Redirect to="/" />
         </Switch>
       ) : (
