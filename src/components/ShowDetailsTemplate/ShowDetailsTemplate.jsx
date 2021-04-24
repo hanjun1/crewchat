@@ -2,6 +2,8 @@ import React from "react";
 import "./ShowDetailsTemplate.css";
 import ParticipantsDetail from "../ParticipantsDetail/ParticipantsDetail";
 import PhotosDetail from "../PhotosDetail/PhotosDetail";
+import DocumentsDetail from "../DocumentsDetail/DocumentsDetail";
+import EventsDetail from "../EventsDetail/EventsDetail";
 
 function ShowDetailsTemplate(props) {
   return (
@@ -31,6 +33,10 @@ function ShowDetailsTemplate(props) {
         <ParticipantsDetail />
       ) : props.name === "Photos" ? (
         <PhotosDetail />
+      ) : props.name === "Documents" ? (
+        <DocumentsDetail />
+      ) : props.name === "Events" ? (
+        <EventsDetail />
       ) : (
         <h1>Test</h1>
       )}
