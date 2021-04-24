@@ -1,10 +1,14 @@
 import React from "react";
 import "./EventsDetail.css";
+import EventDetail from "../EventDetail/EventDetail";
 
 function EventsDetail(props) {
   return (
-    <div>
-      <h1>hello</h1>
+    <div className="EventsDetail">
+      <EventDetail name="Family BBQ WOOT!!" />
+      <EventDetail name="Family BBQ" />
+      <EventDetail name="Family BBQ" />
+      <EventDetail name="Family BBQ" />
     </div>
   );
 }
