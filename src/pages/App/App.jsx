@@ -49,14 +49,14 @@ function App() {
             path="/chatdetails"
             render={(props) => <ChatRoomDetails {...props} />}
           />
-          <Route path="/groups" render={(props) => <GroupsPage {...props} />} />
           <Route
-            path="/newgroup"
+            path="/groups/create"
             render={(props) => <NewGroupForm {...props} />}
           />
           <Route
-            path="/newgroupmodal"
-            render={(props) => <NewGroupSuccessModal {...props} />}
+            path="/groups"
+            exact
+            render={(props) => <GroupsPage {...props} />}
           />
           <Redirect to="/" />
         </Switch>

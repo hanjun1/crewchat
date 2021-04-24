@@ -25,6 +25,10 @@
   height: 40px;
   cursor: pointer;
   margin: 10px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .GroupsHeader .searchbar {

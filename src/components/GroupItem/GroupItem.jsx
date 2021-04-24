@@ -21,9 +21,9 @@ function GroupItem() {
         Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.
       </div>
       <div className="participants">
-        <span class="material-icons">account_circle</span>
-        <span class="material-icons">account_circle</span>
-        <span class="material-icons">account_circle</span>
+        <span className="material-icons">account_circle</span>
+        <span className="material-icons">account_circle</span>
+        <span className="material-icons">account_circle</span>
       </div>
     </div>
   );
