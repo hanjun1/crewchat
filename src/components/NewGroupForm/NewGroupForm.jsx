@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./NewGroupForm.css";
+import NewGroupSuccessModal from "../NewGroupSuccessModal/NewGroupSuccessModal";
 
 function NewGroupForm() {
   const [inputs, setInputs] = useState({
@@ -7,6 +8,7 @@ function NewGroupForm() {
     category: "Other",
     link: randomLink(),
   });
+  const [showModal, setShowModal] = useState(false);
 
   function randomLink() {
     return Math.random().toString(36).substr(2, 10);
@@ -29,6 +31,9 @@ function NewGroupForm() {
         }),
       };
       const fetchResponse = await fetch("/api/groups/create", options);
+      if (fetchResponse.ok) {
+        setShowModal(true);
+      }
       if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
     } catch (error) {
       console.log(error);
@@ -43,6 +48,7 @@ function NewGroupForm() {
           className="group-name"
           type="text"
           name="name"
+          maxLength="25"
           value={inputs.name}
           onChange={(e) => setInputs({ ...inputs, name: e.target.value })}
           required
@@ -68,6 +74,9 @@ function NewGroupForm() {
         </div>
         <button className="create-btn">Create Group</button>
       </form>
+      {showModal ? (
+        <NewGroupSuccessModal link={inputs.link} name={inputs.name} />
+      ) : null}
     </div>
   );
 }
