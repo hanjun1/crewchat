@@ -55,7 +55,7 @@ function DetailsOptionIcon(props) {
           xmlns="http://www.w3.org/2000/svg"
         >
           <rect width="55" height="52" rx="15" fill="#DADEFF" />
-          <g clip-path="url(#clip0)">
+          <g clipPath="url(#clip0)">
             <path
               d="M36 19H32.8L31 17H25L23.2 19H20C18.9 19 18 19.9 18 21V33C18 34.1 18.9 35 20 35H36C37.1 35 38 34.1 38 33V21C38 19.9 37.1 19 36 19ZM36 33H28V32C25.2 32 23 29.8 23 27C23 24.2 25.2 22 28 22V21H36V33ZM33 27C33 24.2 30.8 22 28 22V23.8C29.8 23.8 31.2 25.2 31.2 27C31.2 28.8 29.8 30.2 28 30.2V32C30.8 32 33 29.8 33 27ZM24.8 27C24.8 28.8 26.2 30.2 28 30.2V23.8C26.2 23.8 24.8 25.2 24.8 27Z"
               fill="black"
