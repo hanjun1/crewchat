@@ -1,5 +1,6 @@
 import React from "react";
 import "./DetailsOption.css";
+import DetailsOptionIcon from "../DetailsOptionIcon/DetailsOptionIcon";
 
 function DetailsOption(props) {
   return (
@@ -10,15 +11,7 @@ function DetailsOption(props) {
     >
       <div className="details-container">
         <div className="icon-container">
-          <svg
-            width="55"
-            height="52"
-            viewBox="0 0 55 52"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect width="55" height="52" rx="15" fill="#DADEFF" />
-          </svg>
+          <DetailsOptionIcon name={props.name} />
         </div>
         <p>{props.name}</p>
       </div>

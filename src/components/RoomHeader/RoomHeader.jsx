@@ -24,8 +24,8 @@ function RoomHeader(props) {
         >
           <rect width="24" height="24" rx="12" fill="#6083FF" />
           <path
-            d="M15.5 12.5H12.5V15.5H11.5V12.5H8.5V11.5H11.5V8.5H12.5V11.5H15.5V12.5Z"
-            fill="#FAFAFA"
+            d="M14 6.5H8C7.45 6.5 7 6.95 7 7.5V14.5H8V7.5H14V6.5ZM13.5 8.5L16.5 11.5V16.5C16.5 17.05 16.05 17.5 15.5 17.5H9.995C9.445 17.5 9 17.05 9 16.5L9.005 9.5C9.005 8.95 9.45 8.5 10 8.5H13.5ZM13 12H15.75L13 9.25V12Z"
+            fill="black"
           />
         </svg>
         Copy Link Invite
