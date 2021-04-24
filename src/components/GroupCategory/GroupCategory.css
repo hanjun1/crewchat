@@ -6,6 +6,7 @@
   cursor: pointer;
   margin: 10px;
   height: 50px;
+  font-family: "Ubuntu";
 }
 
 .GroupCategory > header > h2 {
