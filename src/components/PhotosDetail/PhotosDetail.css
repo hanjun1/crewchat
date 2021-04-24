@@ -1,0 +1,11 @@
+.PhotosDetail {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.PhotosDetail img {
+  width: 100%;
+  height: calc(100vw / 3);
+  object-fit: cover;
+}

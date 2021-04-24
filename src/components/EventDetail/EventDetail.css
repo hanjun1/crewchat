@@ -1,0 +1,80 @@
+.EventDetail {
+  width: 250px;
+  background: #ebeff8;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem auto;
+}
+
+.EventDetail .event-container {
+  display: flex;
+}
+
+.EventDetail .icon {
+  width: 15%;
+}
+
+.EventDetail .event-detail-container {
+  width: 85%;
+}
+
+.EventDetail .event-detail-container p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.EventDetail .event-title {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.EventDetail .event-date {
+  font-size: 0.8rem;
+}
+
+.EventDetail .event-location {
+  font-size: 0.8rem;
+  color: #a0a2ba;
+}
+
+.EventDetail .person {
+  display: flex;
+  font-size: 0.8rem;
+  color: #a0a2ba;
+  margin-bottom: 0.1rem;
+}
+
+.EventDetail .name {
+  display: flex;
+  align-items: center;
+}
+
+.EventDetail .person svg {
+  margin-right: 0.5rem;
+}
+
+.EventDetail .person p {
+  margin: 0;
+}
+
+.EventDetail .show-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.EventDetail .people-going {
+  display: flex;
+  font-size: 0.8rem;
+  color: #a0a2ba;
+  margin: 0;
+}
+
+.EventDetail .people-going svg {
+  margin-right: 0.2rem;
+}
+
+.EventDetail .people-going p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,30 @@
+.DocumentDetail .documents-container {
+  display: flex;
+  padding: 1rem;
+  margin: 0 1rem;
+  border-bottom: 1px solid #d4d4d4;
+}
+.DocumentDetail .documents-container svg {
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+}
+
+.DocumentDetail .document-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.DocumentDetail .document-details-container p {
+  margin: 0;
+}
+
+.DocumentDetail .file-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.DocumentDetail .file-size {
+  font-size: 0.7rem;
+}

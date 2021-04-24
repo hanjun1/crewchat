@@ -1,5 +1,10 @@
 import React from "react";
 import "./ShowDetailsTemplate.css";
+import ParticipantsDetail from "../ParticipantsDetail/ParticipantsDetail";
+import PhotosDetail from "../PhotosDetail/PhotosDetail";
+import DocumentsDetail from "../DocumentsDetail/DocumentsDetail";
+import EventsDetail from "../EventsDetail/EventsDetail";
+import PollsDetail from "../PollsDetail/PollsDetail";
 
 function ShowDetailsTemplate(props) {
   return (
@@ -25,6 +30,19 @@ function ShowDetailsTemplate(props) {
         </svg>
       </div>
       <h1>{props.name}</h1>
+      {props.name === "Participants" ? (
+        <ParticipantsDetail />
+      ) : props.name === "Photos" ? (
+        <PhotosDetail />
+      ) : props.name === "Documents" ? (
+        <DocumentsDetail />
+      ) : props.name === "Events" ? (
+        <EventsDetail />
+      ) : props.name === "Polls" ? (
+        <PollsDetail />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
