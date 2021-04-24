@@ -1,17 +1,77 @@
 .MessageItem {
-  /* change height and with to fit content later */
-  height: 60px;
-  width: 200px;
-  margin: 0px 10px 10px 10px;
-  border-radius: 15px;
+  max-width: 80%;
+  margin: 10px;
 }
 
+.MessageItem .content {
+  border-radius: 15px;
+  margin-top: auto;
+  overflow-wrap: break-word;
+  padding: 10px;
+}
+
+/********************* My Message ********************/
 .MessageItem.my-message {
   align-self: flex-end;
-  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
+.MessageItem.my-message .time {
+  width: 80px;
+  margin-top: auto;
+  margin-right: 6px;
+  color: #56597b;
+}
+
+.MessageItem.my-message .content {
+  background-color: white;
+  color: #56597b;
+  max-width: 70%;
+}
+
+.MessageItem.my-message .sender {
+  display: none;
+}
+
+.MessageItem.my-message .sender-icon {
+  display: none;
+}
+
+/****************** Other's Message ******************/
 .MessageItem.not-my-message {
   align-self: flex-start;
+  display: grid;
+  grid-template-columns: 30px 1fr 80px;
+  grid-template-rows: 20px 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". sender ."
+    "sender-icon content time";
+}
+
+.MessageItem.not-my-message .time {
+  grid-area: time;
+  margin: auto auto 0 4px;
+  color: #56597b;
+}
+
+.MessageItem.not-my-message .content {
   background-color: #a0a2ba;
+  grid-area: content;
+  color: white;
+}
+
+.MessageItem.not-my-message .sender-icon {
+  grid-area: sender-icon;
+  max-height: 24px;
+  max-width: 24px;
+  margin-top: auto;
+}
+.MessageItem.not-my-message .sender {
+  grid-area: sender;
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: bold;
 }
