@@ -1,0 +1,27 @@
+.PollDetailOption .option-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.PollDetailOption .option-name-container {
+  width: 50%;
+}
+
+.PollDetailOption .votes-container {
+  display: flex;
+}
+
+.PollDetailOption .current-vote {
+  height: 100%;
+  background-color: #6083ff;
+  border-radius: 10px;
+}
+
+.PollDetailOption .vote-bar {
+  display: flex;
+  width: 100%;
+  height: 10px;
+  background-color: #c2c0c0;
+  border-radius: 10px;
+  margin: 5px 0;
+}

@@ -1,0 +1,22 @@
+.PollDetail {
+  width: 250px;
+  background: #ebeff8;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem auto;
+}
+
+.PollDetail p {
+  margin: 0;
+}
+
+.PollDetail .poll-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.PollDetail .poll-date {
+  font-size: 0.8rem;
+  color: #7b7d94;
+  margin-bottom: 0.25rem;
+}

@@ -4,6 +4,7 @@ import ParticipantsDetail from "../ParticipantsDetail/ParticipantsDetail";
 import PhotosDetail from "../PhotosDetail/PhotosDetail";
 import DocumentsDetail from "../DocumentsDetail/DocumentsDetail";
 import EventsDetail from "../EventsDetail/EventsDetail";
+import PollsDetail from "../PollsDetail/PollsDetail";
 
 function ShowDetailsTemplate(props) {
   return (
@@ -37,8 +38,10 @@ function ShowDetailsTemplate(props) {
         <DocumentsDetail />
       ) : props.name === "Events" ? (
         <EventsDetail />
+      ) : props.name === "Polls" ? (
+        <PollsDetail />
       ) : (
-        <h1>Test</h1>
+        <></>
       )}
     </div>
   );
