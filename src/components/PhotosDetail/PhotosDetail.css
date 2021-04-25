@@ -6,6 +6,6 @@
 
 .PhotosDetail img {
   width: 100%;
-  height: calc(100vw / 3);
+  height: calc(300px / 3);
   object-fit: cover;
 }
