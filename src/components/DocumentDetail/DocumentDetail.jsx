@@ -2,6 +2,18 @@ import React from "react";
 import "./DocumentDetail.css";
 
 function DocumentDetail(props) {
+  const reduceNameLength = (name) => {
+    name = name.split(".");
+    let fileName =
+      name[0].substring(0, 7) +
+      "..." +
+      name[0].substring(name[0].length - 3, name[0].length);
+    return fileName + "." + name[1];
+  };
+
+  const name =
+    props.name.length > 20 ? reduceNameLength(props.name) : props.name;
+
   return (
     <div className="DocumentDetail">
       <div className="documents-container">
@@ -26,7 +38,7 @@ function DocumentDetail(props) {
           />
         </svg>
         <div className="document-details-container">
-          <p className="file-name">{props.name}</p>
+          <p className="file-name">{name}</p>
           <p className="file-size">{props.size}</p>
         </div>
       </div>
