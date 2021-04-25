@@ -40,7 +40,7 @@ function App() {
             )}
           />
           <Route
-            path="/messages"
+            path="/groups/id"
             render={(props) => <MessagesPage {...props} />}
           />
           <Route
