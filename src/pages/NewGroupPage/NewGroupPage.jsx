@@ -1,36 +1,34 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
-import "./MessagesPage.css";
+import "./NewGroupPage.css";
 import Groups from "../../components/Groups/Groups";
-import Messages from "../../components/Messages/Messages";
-import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
+import NewGroupForm from "../../components/NewGroupForm/NewGroupForm";
 
-function MessagesPage(props) {
+function NewGroupPage() {
   const isDesktop = useMediaQuery({ minWidth: 1224 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
-    <div className="MessagesPage">
+    <div className="NewGroupPage">
       {isDesktop && (
         <>
           <Groups />
-          <Messages />
-          <ChatRoomDetails />
+          <NewGroupForm />
         </>
       )}
       {isTablet && (
         <>
           <Groups />
-          <Messages />
+          <NewGroupForm />
         </>
       )}
       {isMobile && (
         <>
-          <Groups />
+          <NewGroupForm />
         </>
       )}
     </div>
   );
 }
 
-export default MessagesPage;
+export default NewGroupPage;

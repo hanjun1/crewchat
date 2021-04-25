@@ -1,0 +1,8 @@
+.NewGroupPage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.NewGroupPage > div {
+  margin: 10px;
+}
