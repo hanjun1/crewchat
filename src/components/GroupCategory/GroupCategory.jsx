@@ -15,14 +15,14 @@ function GroupCategory({ name }) {
           {showItems ? "expand_more" : "expand_less"}
         </span>
       </header>
-      <content>
+      <div className="content">
         {showItems ? (
           <>
             <GroupItem />
             <GroupItem />
           </>
         ) : null}
-      </content>
+      </div>
     </div>
   );
 }
