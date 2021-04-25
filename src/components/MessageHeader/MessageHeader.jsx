@@ -1,0 +1,35 @@
+import React from "react";
+import { useMediaQuery } from "react-responsive";
+import "./MessageHeader.css";
+
+function MessageHeader() {
+  const isDesktop = useMediaQuery({ minWidth: 1224 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  return (
+    <div className="MessageHeader">
+      {isDesktop && <h1>Group Name</h1>}
+      {isTablet && (
+        <>
+          <h1>Group Name</h1>
+          <span className="right-arrow material-icons md-36 md-light">
+            arrow_forward_ios
+          </span>
+        </>
+      )}
+      {isMobile && (
+        <>
+          <span className="left-arrow material-icons md-36 md-light">
+            arrow_back_ios
+          </span>
+          <h1>Group Name</h1>
+          <span className="right-arrow material-icons md-36 md-light">
+            arrow_forward_ios
+          </span>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default MessageHeader;

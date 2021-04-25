@@ -4,7 +4,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import AuthPage from "../AuthPage/AuthPage";
 import MessagePage from "../MessagePageTest/MessagePage";
 import MessagesPage from "../MessagesPage/MessagesPage";
-import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
 import GroupsPage from "../GroupsPage/GroupsPage";
 import NewGroupPage from "../NewGroupPage/NewGroupPage";
 
