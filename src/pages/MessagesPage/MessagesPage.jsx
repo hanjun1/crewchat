@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./MessagesPage.css";
 import Groups from "../../components/Groups/Groups";
@@ -9,6 +9,8 @@ function MessagesPage(props) {
   const isDesktop = useMediaQuery({ minWidth: 1224 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
+
+  const [showDetails, setShowDetails] = useState(false);
   return (
     <div className="MessagesPage">
       {isDesktop && (
@@ -21,7 +23,11 @@ function MessagesPage(props) {
       {isTablet && (
         <>
           <Groups />
-          <Messages />
+          {showDetails ? (
+            <ChatRoomDetails />
+          ) : (
+            <Messages setShowDetails={setShowDetails} />
+          )}
         </>
       )}
       {isMobile && (
