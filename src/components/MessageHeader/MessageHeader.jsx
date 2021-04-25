@@ -2,7 +2,7 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import "./MessageHeader.css";
 
-function MessageHeader() {
+function MessageHeader({ setShowDetails }) {
   const isDesktop = useMediaQuery({ minWidth: 1224 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -12,7 +12,10 @@ function MessageHeader() {
       {isTablet && (
         <>
           <h1>Group Name</h1>
-          <span className="right-arrow material-icons md-36 md-light">
+          <span
+            onClick={() => setShowDetails(true)}
+            className="right-arrow material-icons md-36 md-light"
+          >
             arrow_forward_ios
           </span>
         </>
@@ -23,7 +26,10 @@ function MessageHeader() {
             arrow_back_ios
           </span>
           <h1>Group Name</h1>
-          <span className="right-arrow material-icons md-36 md-light">
+          <span
+            onClick={() => setShowDetails(true)}
+            className="right-arrow material-icons md-36 md-light"
+          >
             arrow_forward_ios
           </span>
         </>

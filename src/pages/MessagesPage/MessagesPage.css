@@ -1,7 +1,7 @@
 .MessagesPage {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .MessagesPage > div {
   margin: 10px;
