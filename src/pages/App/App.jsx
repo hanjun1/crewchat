@@ -45,6 +45,7 @@ function App() {
           />
           <Route
             path="/groups/create"
+            exact
             render={(props) => <NewGroupPage {...props} />}
           />
           <Route
