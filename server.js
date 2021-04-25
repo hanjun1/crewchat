@@ -9,6 +9,9 @@ require("./config/database");
 const app = express();
 const http = require("http");
 const socketIo = require("socket.io");
+const multer = require("multer");
+const multerS3 = require("multer-s3");
+const aws = require("aws-sdk");
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -18,6 +21,7 @@ app.use(express.static(path.join(__dirname, "build")));
 app.use("/api/users", require("./routes/api/users"));
 app.use(require("./config/auth")); // Protect routes below this. These routes will have access to the "req.user" variable.
 app.use("/api/groups", require("./routes/api/groups"));
+app.use("/api/uploadImage", require("./routes/api/uploadImage"));
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));

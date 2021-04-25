@@ -7,6 +7,7 @@ import MessagesPage from "../MessagesPage/MessagesPage";
 import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
 import GroupsPage from "../GroupsPage/GroupsPage";
 import NewGroupPage from "../NewGroupPage/NewGroupPage";
+import ImageTestPage from "../ImageTestPage/ImageTestPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -52,6 +53,11 @@ function App() {
             path="/groups"
             exact
             render={(props) => <GroupsPage {...props} />}
+          />
+          <Route
+            path="/test"
+            exact
+            render={(props) => <ImageTestPage {...props} />}
           />
           <Redirect to="/" />
         </Switch>
