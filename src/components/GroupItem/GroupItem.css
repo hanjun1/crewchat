@@ -1,9 +1,10 @@
 .GroupItem {
   font-family: "Ubuntu";
   border-top: 1px solid #dadeff;
-  margin: 5px 20px 5px 20px;
+  padding: 10px 20px 5px 20px;
   padding-top: 10px;
   height: 80px;
+  cursor: pointer;
   display: grid;
   grid-template-columns: 0.5fr 1.5fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -12,6 +13,10 @@
     "group-icon group-name time"
     "group-icon text-preview text-preview"
     "participants participants participants";
+}
+
+.GroupItem:hover {
+  background-color: #e8eafc;
 }
 .group-icon {
   grid-area: group-icon;

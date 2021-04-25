@@ -11,6 +11,8 @@ function MessagesPage(props) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const [showDetails, setShowDetails] = useState(false);
+  const [showMessages, setShowMessages] = useState(false);
+
   return (
     <div className="MessagesPage">
       {isDesktop && (
@@ -35,7 +37,14 @@ function MessagesPage(props) {
       )}
       {isMobile && (
         <>
-          <Groups />
+          {showDetails ? (
+            <ChatRoomDetails
+              showChatDetails={showDetails}
+              setShowChatDetails={setShowDetails}
+            />
+          ) : (
+            <Messages setShowDetails={setShowDetails} />
+          )}
         </>
       )}
     </div>

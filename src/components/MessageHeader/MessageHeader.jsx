@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import "./MessageHeader.css";
 
@@ -22,9 +23,11 @@ function MessageHeader({ setShowDetails }) {
       )}
       {isMobile && (
         <>
-          <span className="left-arrow material-icons md-36 md-light">
-            arrow_back_ios
-          </span>
+          <Link to="/groups" className="left-arrow-link">
+            <span className="left-arrow material-icons md-36 md-light">
+              arrow_back_ios
+            </span>
+          </Link>
           <h1>Group Name</h1>
           <span
             onClick={() => setShowDetails(true)}

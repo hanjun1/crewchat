@@ -22,7 +22,7 @@
   cursor: pointer;
 }
 
-.MessageHeader .left-arrow {
+.MessageHeader .left-arrow-link {
   position: absolute;
   left: 20px;
   cursor: pointer;
