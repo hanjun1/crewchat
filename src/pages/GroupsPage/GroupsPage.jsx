@@ -2,8 +2,6 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import "./GroupsPage.css";
 import Groups from "../../components/Groups/Groups";
-import Messages from "../../components/Messages/Messages";
-import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
 import WelcomeScreen from "../../components/WelcomeScreen/WelcomeScreen";
 
 function GroupsPage() {
@@ -16,7 +14,6 @@ function GroupsPage() {
         <>
           <Groups />
           <WelcomeScreen />
-          <ChatRoomDetails />
         </>
       )}
       {isTablet && (
