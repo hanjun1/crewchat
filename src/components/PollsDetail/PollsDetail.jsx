@@ -12,18 +12,35 @@ function PollsDetail(props) {
           options: [
             {
               name: "Yes",
-              votes: 5,
+              votes: 3,
+              people: [
+                {
+                  name: "Ryan Kim",
+                },
+                {
+                  name: "Bobert Smith",
+                },
+                {
+                  name: "John Smith",
+                },
+              ],
             },
             {
               name: "No",
-              votes: 3,
+              votes: 1,
+              people: [
+                {
+                  name: "Cindy Xu",
+                },
+              ],
             },
             {
               name: "Maybe",
-              votes: 2,
+              votes: 0,
+              people: [],
             },
           ],
-          totalPeople: 10,
+          totalPeople: 4,
         }}
       />
     </div>
