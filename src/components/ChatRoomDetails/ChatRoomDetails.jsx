@@ -26,7 +26,11 @@ function ChatRoomDetails(props) {
       {showDetails.all ? (
         <div className="all">
           <div>
-            <RoomHeader name="The Fam" />
+            <RoomHeader
+              name="The Fam"
+              showChatDetails={props.showChatDetails}
+              setShowChatDetails={props.setShowChatDetails}
+            />
             <DetailsOption name="Participants" handleOnClick={handleOnClick} />
             <DetailsOption name="Events" handleOnClick={handleOnClick} />
             <DetailsOption name="Polls" handleOnClick={handleOnClick} />
