@@ -5,8 +5,8 @@
   border-bottom: 1px solid #d4d4d4;
 }
 .DocumentDetail .documents-container svg {
-  width: 40px;
-  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   margin-right: 1rem;
 }
 
@@ -22,7 +22,7 @@
 
 .DocumentDetail .file-name {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .DocumentDetail .file-size {
