@@ -1,5 +1,6 @@
 .EventDetail {
-  width: 250px;
+  max-width: 400px;
+  min-width: 250px;
   background: #ebeff8;
   border-radius: 1rem;
   padding: 1rem;
@@ -11,6 +12,8 @@
 }
 
 .EventDetail .icon {
+  display: flex;
+  justify-content: center;
   width: 15%;
 }
 

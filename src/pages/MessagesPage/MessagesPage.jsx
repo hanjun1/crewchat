@@ -24,7 +24,10 @@ function MessagesPage(props) {
         <>
           <Groups />
           {showDetails ? (
-            <ChatRoomDetails />
+            <ChatRoomDetails
+              showChatDetails={showDetails}
+              setShowChatDetails={setShowDetails}
+            />
           ) : (
             <Messages setShowDetails={setShowDetails} />
           )}

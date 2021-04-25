@@ -1,7 +1,9 @@
 .PhotosDetail {
+  max-height: 76vh;
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   grid-gap: 10px;
+  overflow-y: scroll;
 }
 
 .PhotosDetail img {

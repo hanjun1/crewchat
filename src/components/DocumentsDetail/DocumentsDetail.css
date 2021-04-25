@@ -2,4 +2,5 @@
   background: #ebeff8;
   min-height: 76%;
   border-radius: 1rem;
+  overflow-y: scroll;
 }
