@@ -11,14 +11,14 @@ function RoomHeader(props) {
         <div className="back-arrow-container">
           <svg
             onClick={() => props.setShowChatDetails(!props.showChatDetails)}
-            width="19"
-            height="30"
-            viewBox="0 0 19 30"
+            width="26"
+            height="26"
+            viewBox="0 0 26 26"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M18.525 26.475L7.075 15L18.525 3.525L15 0L0 15L15 30L18.525 26.475Z"
+              d="M12.6425 4.19252L10.725 2.27502L0 13L10.725 23.725L12.6425 21.8075L3.835 13L12.6425 4.19252Z"
               fill="black"
             />
           </svg>
@@ -28,14 +28,14 @@ function RoomHeader(props) {
         <div className="back-arrow-container">
           <svg
             onClick={() => props.setShowChatDetails(!props.showChatDetails)}
-            width="19"
-            height="30"
-            viewBox="0 0 19 30"
+            width="26"
+            height="26"
+            viewBox="0 0 26 26"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M18.525 26.475L7.075 15L18.525 3.525L15 0L0 15L15 30L18.525 26.475Z"
+              d="M12.6425 4.19252L10.725 2.27502L0 13L10.725 23.725L12.6425 21.8075L3.835 13L12.6425 4.19252Z"
               fill="black"
             />
           </svg>

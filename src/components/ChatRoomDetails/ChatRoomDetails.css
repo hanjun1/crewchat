@@ -1,10 +1,12 @@
+.ChatRoomDetails {
+  width: 100%;
+}
+
 .ChatRoomDetails .all {
-  min-width: 300px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* border: 1px solid black; */
 }
 
 .ChatRoomDetails button {
@@ -23,4 +25,10 @@
   display: flex;
   justify-content: center;
   margin: 2rem 0;
+}
+
+@media (min-width: 1224px) {
+  .ChatRoomDetails {
+    max-width: 300px;
+  }
 }
