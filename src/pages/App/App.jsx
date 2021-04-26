@@ -42,7 +42,7 @@ function App() {
           />
           <Route
             path="/groups/id"
-            render={(props) => <MessagesPage {...props} />}
+            render={(props) => <MessagesPage {...props} user={user} />}
           />
           <Route
             path="/groups/create"

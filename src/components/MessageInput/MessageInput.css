@@ -1,4 +1,4 @@
-.MessageInput {
+.MessageInput form {
   font-family: "Ubuntu";
   margin: auto;
   border: 2px solid white;
@@ -12,7 +12,7 @@
   align-items: center;
 }
 
-.MessageInput > input {
+.MessageInput form > input {
   height: 80%;
   width: 80%;
   border: none;
@@ -21,7 +21,7 @@
   font-size: 16px;
 }
 
-.MessageInput > button {
+.MessageInput form > button {
   margin: 2px 2px 2px 10px;
   background-color: #6083ff;
   border: none;
