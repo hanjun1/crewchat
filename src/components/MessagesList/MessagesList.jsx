@@ -1,11 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "./MessagesList.css";
 import MessageItem from "../MessageItem/MessageItem";
 
-function MessagesList({ messages, user }) {
+function MessagesList({
+  messages,
+  user,
+  socketMessages,
+  setSocketMessages,
+  fetchOneGroup,
+  groupId,
+}) {
   if (messages === undefined) {
     messages = [];
   }
+
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
   function formatTime(timestamp) {
     let date = new Date(timestamp);
@@ -20,6 +35,17 @@ function MessagesList({ messages, user }) {
     formatTime();
   }, []);
 
+  useEffect(() => {
+    setSocketMessages([]);
+    if (groupId !== undefined) {
+      fetchOneGroup(groupId);
+    }
+  }, [groupId]);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, socketMessages]);
+
   return (
     <div className="MessagesList">
       {messages.map((msg) => (
@@ -32,6 +58,16 @@ function MessagesList({ messages, user }) {
           senderIcon={<span className="material-icons">account_circle</span>}
         />
       ))}
+      {socketMessages.map((msg) => (
+        <MessageItem
+          content={msg.body}
+          myMessage={msg.ownedByCurrentUser}
+          time={formatTime(msg.time)}
+          sender={msg.senderName}
+          senderIcon={<span className="material-icons">account_circle</span>}
+        />
+      ))}
+      <div ref={messagesEndRef}></div>
     </div>
   );
 }
