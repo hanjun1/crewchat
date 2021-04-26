@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./GroupCategory.css";
 import GroupItem from "../GroupItem/GroupItem";
 
-function GroupCategory({ name, groupItems }) {
+function GroupCategory({ name, groupItems, setActiveGroup }) {
   const [showItems, setShowItems] = useState(true);
   return (
     <div className="GroupCategory">
@@ -20,8 +20,13 @@ function GroupCategory({ name, groupItems }) {
         {showItems ? (
           <>
             {groupItems.map((group) => (
-              <Link to={`/groups/${group._id}`} className="message-link">
-                <GroupItem info={group} />
+              <Link
+                to={`/groups/${group._id}`}
+                className="message-link"
+                key={group._id}
+                onClick={() => setActiveGroup(group)}
+              >
+                <GroupItem group={group} />
               </Link>
             ))}
           </>

@@ -22,8 +22,9 @@ async function create(req, res) {
 
 async function index(req, res) {
   try {
-    let groups = await Group.find({ members: req.user._id });
-    console.log(groups);
+    let groups = await Group.find({ members: req.user._id }).populate(
+      "members"
+    );
     res.status(200).json(groups);
   } catch (error) {
     res.status(400).json(error);
