@@ -20,7 +20,7 @@ function GroupCategory({ name, groupItems }) {
         {showItems ? (
           <>
             {groupItems.map((group) => (
-              <Link to="/groups/id" className="message-link">
+              <Link to={`/groups/${group._id}`} className="message-link">
                 <GroupItem info={group} />
               </Link>
             ))}
