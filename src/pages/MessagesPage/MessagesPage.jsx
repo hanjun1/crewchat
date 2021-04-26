@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import "./MessagesPage.css";
 import Groups from "../../components/Groups/Groups";
@@ -19,7 +18,6 @@ function MessagesPage(props) {
 
   useEffect(() => {
     fetchGroups();
-    matchGroupId();
     return () => {};
   }, []);
 
@@ -30,31 +28,30 @@ function MessagesPage(props) {
         headers: { Authorization: "Bearer " + jwt },
       });
       let groups = await fetchResponse.json();
+      let categories = groups.reduce((cats, group) => {
+        let cat = group.category;
+        return cats.includes(cat) ? cats : [...cats, cat];
+      }, []);
       setGroups(groups);
-
-      setGroupCategories(
-        groups.reduce((cats, group) => {
-          let cat = group.category;
-          return cats.includes(cat) ? cats : [...cats, cat];
-        }, [])
-      );
-      console.log(groups);
-      let groupId = props.match.params.id;
-      console.log(groupId);
-      let match = groups.find((group) => group._id === groupId);
-      console.log(match);
-      if (match === undefined) {
-        console.log("redirecting...");
-        props.history.push("/groups");
-      } else {
-        setActiveGroup(match);
-      }
+      setGroupCategories(categories);
+      // Match URL to group ID to set active group -> redirect to "/groups" if no match
+      matchGroupId(groups);
     } catch (error) {
       console.log(error);
     }
   }
 
-  function matchGroupId() {}
+  function matchGroupId(groups) {
+    // console.log(groups);
+    let groupId = props.match.params.id;
+    // console.log(groupId);
+    let match = groups.find((group) => group._id === groupId);
+    if (match === undefined) {
+      props.history.push("/groups");
+    } else {
+      setActiveGroup(match);
+    }
+  }
 
   return (
     <div className="MessagesPage">
