@@ -36,6 +36,7 @@ const useChat = (roomId, user) => {
       body: messageBody,
       senderId: socketRef.current.id,
       userId: user._id,
+      senderName: user.name,
       time: Date.now(),
     });
   };

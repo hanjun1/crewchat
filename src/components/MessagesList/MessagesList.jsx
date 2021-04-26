@@ -51,7 +51,7 @@ function MessagesList({
           content={msg.body}
           myMessage={msg.ownedByCurrentUser}
           time={formatTime(msg.time)}
-          sender={msg.senderId}
+          sender={msg.senderName}
           senderIcon={<span className="material-icons">account_circle</span>}
         />
       ))}
