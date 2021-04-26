@@ -3,7 +3,7 @@ import "./Messages.css";
 import MessageInput from "../../components/MessageInput/MessageInput";
 import MessagesList from "../../components/MessagesList/MessagesList";
 import MessageHeader from "../../components/MessageHeader/MessageHeader";
-import useChat from "../../pages/MessagePageTest/MessageTest";
+import useChat from "../../utils/useChat";
 
 function Messages({ setShowDetails, activeGroup, user, fetchOneGroup }) {
   const { messages, setMessages, sendMessage } = useChat(activeGroup._id, user);
