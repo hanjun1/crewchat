@@ -41,13 +41,13 @@ function App() {
             )}
           />
           <Route
-            path="/groups/id"
-            render={(props) => <MessagesPage {...props} user={user} />}
-          />
-          <Route
             path="/groups/create"
             exact
             render={(props) => <NewGroupPage {...props} />}
+          />
+          <Route
+            path="/groups/:id"
+            render={(props) => <MessagesPage {...props} user={user} />}
           />
           <Route
             path="/groups"
