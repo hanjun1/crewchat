@@ -21,11 +21,10 @@ function GroupCategory({ name, groupItems, setActiveGroup }) {
           <>
             {groupItems.map((group) => (
               <Link
-                to={`/groups/${group.link}`}
+                to={`/groups/${group._id}`}
                 className="message-link"
                 key={group._id}
                 onClick={() => setActiveGroup(group)}
-                // onClick={() => alert("success")}
               >
                 <GroupItem group={group} />
               </Link>
