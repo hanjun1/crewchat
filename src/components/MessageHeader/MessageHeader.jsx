@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import "./MessageHeader.css";
 
-function MessageHeader({ setShowDetails, groupName }) {
+function MessageHeader({ setShowDetails, groupName, setActiveGroup }) {
   const isDesktop = useMediaQuery({ minWidth: 1224 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -23,7 +23,11 @@ function MessageHeader({ setShowDetails, groupName }) {
       )}
       {isMobile && (
         <>
-          <Link to="/groups" className="left-arrow-link">
+          <Link
+            to="/groups"
+            className="left-arrow-link"
+            onClick={() => setActiveGroup(null)}
+          >
             <span className="left-arrow material-icons md-36 md-light">
               arrow_back_ios
             </span>
