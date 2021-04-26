@@ -7,8 +7,3 @@
   overflow-y: scroll;
   font-family: "Ubuntu";
 }
-
-.GroupsList .message-link {
-  text-decoration: none;
-  color: black;
-}

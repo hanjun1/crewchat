@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./GroupCategory.css";
 import GroupItem from "../GroupItem/GroupItem";
 
-function GroupCategory({ name }) {
+function GroupCategory({ name, groupItems }) {
   const [showItems, setShowItems] = useState(true);
   return (
     <div className="GroupCategory">
@@ -18,8 +19,11 @@ function GroupCategory({ name }) {
       <div className="content">
         {showItems ? (
           <>
-            <GroupItem />
-            <GroupItem />
+            {groupItems.map((group) => (
+              <Link to="/groups/id" className="message-link">
+                <GroupItem info={group} />
+              </Link>
+            ))}
           </>
         ) : null}
       </div>

@@ -12,3 +12,8 @@
 .GroupCategory > header > h2 {
   font-size: 22px;
 }
+
+.GroupCategory .message-link {
+  text-decoration: none;
+  color: black;
+}
