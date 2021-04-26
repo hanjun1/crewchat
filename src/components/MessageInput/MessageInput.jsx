@@ -10,6 +10,7 @@ function MessageInput(props) {
 
   const handleSubmitMessage = async (e) => {
     e.preventDefault();
+    let jwt = localStorage.getItem("token");
     let body = {
       sender: props.user._id,
       content: content,
@@ -17,7 +18,10 @@ function MessageInput(props) {
     setContent("");
     let options = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + jwt,
+      },
       body: JSON.stringify(body),
     };
     // CHANGE ADDRESS TO DYNAMIC ID

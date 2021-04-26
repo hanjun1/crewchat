@@ -12,7 +12,7 @@ function Messages({ setShowDetails, activeGroup, user }) {
         groupName={activeGroup.name}
       />
       <MessagesList messages={activeGroup.textMsgs} user={user} />
-      <MessageInput />
+      <MessageInput user={user} />
     </div>
   );
 }

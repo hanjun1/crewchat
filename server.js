@@ -9,9 +9,6 @@ require("./config/database");
 const app = express();
 const http = require("http");
 const socketIo = require("socket.io");
-const multer = require("multer");
-const multerS3 = require("multer-s3");
-const aws = require("aws-sdk");
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -38,11 +35,31 @@ const io = socketIo(server, {
   cors: {
     origin: "http://localhost:3000",
     methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
+const USER_JOIN_CHAT = "USER_JOIN_CHAT";
+const USER_LEAVE_CHAT = "USER_LEAVE_CHAT";
+const NEW_CHAT_MESSAGE = "NEW_CHAT_MESSAGE";
+
 io.on("connection", function (socket) {
   console.log("Client connected to socket.io!");
+
+  // const { roomId, user } = socket.handshake.query;
+  // socket.join(roomId);
+
+  // // const user = addUser(socket.id, roomId, name);
+  // io.in(roomId).emit(USER_JOIN_CHAT, user);
+
+  // socket.on(NEW_CHAT_MESSAGE, (message) => {
+  //   io.in(roomId).emit(NEW_CHAT_MESSAGE, message);
+  // })
+
+  // socket.on("disconnect", () => {
+  //   socket.leave(roomId);
+  // })
+
   socket.on("chatMessage", (msg) => {
     io.emit("message", msg);
   });
