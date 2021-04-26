@@ -4,6 +4,7 @@ import "./MessagesPage.css";
 import Groups from "../../components/Groups/Groups";
 import Messages from "../../components/Messages/Messages";
 import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
+import WelcomeScreen from "../../components/WelcomeScreen/WelcomeScreen";
 
 function MessagesPage(props) {
   //Media queries for conditional rendering based on screen size
@@ -14,7 +15,7 @@ function MessagesPage(props) {
   const [showDetails, setShowDetails] = useState(false);
   const [groups, setGroups] = useState(null);
   const [groupCategories, setGroupCategories] = useState([]);
-  const [activeGroup, setActiveGroup] = useState({});
+  const [activeGroup, setActiveGroup] = useState(null);
 
   useEffect(() => {
     fetchGroups();
@@ -60,6 +61,7 @@ function MessagesPage(props) {
     // console.log(groupId);
     let match = groups.find((group) => group._id === groupId);
     if (match === undefined) {
+      setActiveGroup(null);
       props.history.push("/groups");
     } else {
       setActiveGroup(match);
@@ -75,12 +77,18 @@ function MessagesPage(props) {
             groupCategories={groupCategories}
             setActiveGroup={setActiveGroup}
           />
-          <Messages
-            activeGroup={activeGroup}
-            user={props.user}
-            fetchOneGroup={fetchOneGroup}
-          />
-          <ChatRoomDetails activeGroup={activeGroup} />
+          {activeGroup ? (
+            <>
+              <Messages
+                activeGroup={activeGroup}
+                user={props.user}
+                fetchOneGroup={fetchOneGroup}
+              />
+              <ChatRoomDetails activeGroup={activeGroup} />
+            </>
+          ) : (
+            <WelcomeScreen />
+          )}
         </>
       )}
       {isTablet && (
@@ -90,36 +98,54 @@ function MessagesPage(props) {
             groupCategories={groupCategories}
             setActiveGroup={setActiveGroup}
           />
-          {showDetails ? (
-            <ChatRoomDetails
-              showChatDetails={showDetails}
-              setShowChatDetails={setShowDetails}
-              activeGroup={activeGroup}
-            />
+          {console.log(activeGroup)}
+          {activeGroup ? (
+            <>
+              {showDetails ? (
+                <ChatRoomDetails
+                  showChatDetails={showDetails}
+                  setShowChatDetails={setShowDetails}
+                  activeGroup={activeGroup}
+                />
+              ) : (
+                <Messages
+                  setShowDetails={setShowDetails}
+                  activeGroup={activeGroup}
+                  user={props.user}
+                  fetchOneGroup={fetchOneGroup}
+                />
+              )}
+            </>
           ) : (
-            <Messages
-              setShowDetails={setShowDetails}
-              activeGroup={activeGroup}
-              user={props.user}
-              fetchOneGroup={fetchOneGroup}
-            />
+            <WelcomeScreen />
           )}
         </>
       )}
       {isMobile && (
         <>
-          {showDetails ? (
-            <ChatRoomDetails
-              showChatDetails={showDetails}
-              setShowChatDetails={setShowDetails}
-              activeGroup={activeGroup}
-            />
+          {activeGroup ? (
+            <>
+              {showDetails ? (
+                <ChatRoomDetails
+                  showChatDetails={showDetails}
+                  setShowChatDetails={setShowDetails}
+                  activeGroup={activeGroup}
+                />
+              ) : (
+                <Messages
+                  setShowDetails={setShowDetails}
+                  activeGroup={activeGroup}
+                  setActiveGroup={setActiveGroup}
+                  user={props.user}
+                  fetchOneGroup={fetchOneGroup}
+                />
+              )}
+            </>
           ) : (
-            <Messages
-              setShowDetails={setShowDetails}
-              activeGroup={activeGroup}
-              user={props.user}
-              fetchOneGroup={fetchOneGroup}
+            <Groups
+              groups={groups}
+              groupCategories={groupCategories}
+              setActiveGroup={setActiveGroup}
             />
           )}
         </>

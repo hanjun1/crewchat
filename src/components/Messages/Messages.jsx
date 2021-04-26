@@ -5,7 +5,13 @@ import MessagesList from "../../components/MessagesList/MessagesList";
 import MessageHeader from "../../components/MessageHeader/MessageHeader";
 import useChat from "../../utils/useChat";
 
-function Messages({ setShowDetails, activeGroup, user, fetchOneGroup }) {
+function Messages({
+  setShowDetails,
+  activeGroup,
+  user,
+  fetchOneGroup,
+  setActiveGroup,
+}) {
   const { messages, setMessages, sendMessage } = useChat(activeGroup._id, user);
 
   return (
@@ -13,6 +19,7 @@ function Messages({ setShowDetails, activeGroup, user, fetchOneGroup }) {
       <MessageHeader
         setShowDetails={setShowDetails}
         groupName={activeGroup.name}
+        setActiveGroup={setActiveGroup}
       />
       <MessagesList
         groupId={activeGroup._id}

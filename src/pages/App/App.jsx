@@ -4,7 +4,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import AuthPage from "../AuthPage/AuthPage";
 import MessagePage from "../MessagePageTest/MessagePage";
 import MessagesPage from "../MessagesPage/MessagesPage";
-import GroupsPage from "../GroupsPage/GroupsPage";
 import NewGroupPage from "../NewGroupPage/NewGroupPage";
 import ImageTestPage from "../ImageTestPage/ImageTestPage";
 import LoadingPage from "../LoadingPage/LoadingPage";
@@ -53,12 +52,8 @@ function App() {
               render={(props) => <NewGroupPage {...props} />}
             />
             <Route
-              path="/groups/:id"
+              path="/groups/:id?"
               render={(props) => <MessagesPage {...props} user={user} />}
-            />
-            <Route
-              path="/groups"
-              render={(props) => <GroupsPage {...props} />}
             />
             <Route
               path="/test"
