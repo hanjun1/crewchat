@@ -43,8 +43,9 @@ function MessagesPage(props) {
       console.log(groupId);
       let match = groups.find((group) => group._id === groupId);
       console.log(match);
-      if (!match) {
-        return <Redirect to="/groups" />;
+      if (match === undefined) {
+        console.log("redirecting...");
+        props.history.push("/groups");
       } else {
         setActiveGroup(match);
       }
