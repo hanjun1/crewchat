@@ -44,21 +44,21 @@ const USER_LEAVE_CHAT = "USER_LEAVE_CHAT";
 const NEW_CHAT_MESSAGE = "NEW_CHAT_MESSAGE";
 
 io.on("connection", function (socket) {
-  console.log("Client connected to socket.io!");
+  console.log(`Client connected to ${socket.id}`);
 
-  // const { roomId, user } = socket.handshake.query;
-  // socket.join(roomId);
+  const { roomId, user } = socket.handshake.query;
+  socket.join(roomId);
 
-  // // const user = addUser(socket.id, roomId, name);
-  // io.in(roomId).emit(USER_JOIN_CHAT, user);
+  // const user = addUser(socket.id, roomId, name);
+  io.in(roomId).emit(USER_JOIN_CHAT, user);
 
-  // socket.on(NEW_CHAT_MESSAGE, (message) => {
-  //   io.in(roomId).emit(NEW_CHAT_MESSAGE, message);
-  // })
+  socket.on(NEW_CHAT_MESSAGE, (message) => {
+    io.in(roomId).emit(NEW_CHAT_MESSAGE, message);
+  });
 
-  // socket.on("disconnect", () => {
-  //   socket.leave(roomId);
-  // })
+  socket.on("disconnect", () => {
+    socket.leave(roomId);
+  });
 
   socket.on("chatMessage", (msg) => {
     io.emit("message", msg);

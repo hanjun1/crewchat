@@ -16,6 +16,7 @@ function MessageInput(props) {
       content: content,
     };
     setContent("");
+    props.sendMessage(content);
     let options = {
       method: "POST",
       headers: {
@@ -25,11 +26,8 @@ function MessageInput(props) {
       body: JSON.stringify(body),
     };
     // CHANGE ADDRESS TO DYNAMIC ID
-    const response = await fetch(
-      "/api/messages/6084788ba9ed372d258802bc",
-      options
-    );
-    const data = await response.json();
+    const response = await fetch(`/api/messages/${props.groupId}`, options);
+    await response.json();
   };
 
   return (

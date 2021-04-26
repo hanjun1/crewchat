@@ -2,7 +2,14 @@ import React, { useEffect } from "react";
 import "./MessagesList.css";
 import MessageItem from "../MessageItem/MessageItem";
 
-function MessagesList({ messages, user }) {
+function MessagesList({
+  messages,
+  user,
+  socketMessages,
+  setSocketMessages,
+  fetchOneGroup,
+  groupId,
+}) {
   if (messages === undefined) {
     messages = [];
   }
@@ -20,6 +27,13 @@ function MessagesList({ messages, user }) {
     formatTime();
   }, []);
 
+  useEffect(() => {
+    setSocketMessages([]);
+    if (groupId !== undefined) {
+      fetchOneGroup(groupId);
+    }
+  }, [groupId]);
+
   return (
     <div className="MessagesList">
       {messages.map((msg) => (
@@ -32,15 +46,15 @@ function MessagesList({ messages, user }) {
           senderIcon={<span className="material-icons">account_circle</span>}
         />
       ))}
-
-      {/* DELETE LATER */}
-      {/* <MessageItem
-        content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, eaque."
-        myMessage={false}
-        time="10:20 pm"
-        sender="Cindy Xu"
-        senderIcon={<span className="material-icons">account_circle</span>}
-      /> */}
+      {socketMessages.map((msg) => (
+        <MessageItem
+          content={msg.body}
+          myMessage={msg.ownedByCurrentUser}
+          time={formatTime(msg.time)}
+          sender={msg.senderId}
+          senderIcon={<span className="material-icons">account_circle</span>}
+        />
+      ))}
     </div>
   );
 }
