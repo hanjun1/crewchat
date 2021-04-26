@@ -25,7 +25,7 @@ function MessageInput(props) {
       "/api/messages/6084788ba9ed372d258802bc",
       options
     );
-    const data = await response.json();
+    await response.json();
   };
 
   return (
