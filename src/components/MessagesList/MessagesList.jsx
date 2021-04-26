@@ -32,15 +32,6 @@ function MessagesList({ messages, user }) {
           senderIcon={<span className="material-icons">account_circle</span>}
         />
       ))}
-
-      {/* DELETE LATER */}
-      <MessageItem
-        content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, eaque."
-        myMessage={false}
-        time="10:20 pm"
-        sender="Cindy Xu"
-        senderIcon={<span className="material-icons">account_circle</span>}
-      />
     </div>
   );
 }

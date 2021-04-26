@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import "./MessagesPage.css";
 import Groups from "../../components/Groups/Groups";
@@ -18,6 +19,8 @@ function MessagesPage(props) {
 
   useEffect(() => {
     fetchGroups();
+    matchGroupId();
+    return () => {};
   }, []);
 
   async function fetchGroups() {
@@ -35,10 +38,22 @@ function MessagesPage(props) {
           return cats.includes(cat) ? cats : [...cats, cat];
         }, [])
       );
+      console.log(groups);
+      let groupId = props.match.params.id;
+      console.log(groupId);
+      let match = groups.find((group) => group._id === groupId);
+      console.log(match);
+      if (!match) {
+        return <Redirect to="/groups" />;
+      } else {
+        setActiveGroup(match);
+      }
     } catch (error) {
       console.log(error);
     }
   }
+
+  function matchGroupId() {}
 
   return (
     <div className="MessagesPage">
