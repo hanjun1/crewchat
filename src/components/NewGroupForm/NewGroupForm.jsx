@@ -10,10 +10,12 @@ function NewGroupForm() {
   });
   const [showModal, setShowModal] = useState(false);
 
+  //Generates a random 10 character string
   function randomLink() {
     return Math.random().toString(36).substr(2, 10);
   }
 
+  //Post Request to add new group to database
   async function handleSubmit(e) {
     e.preventDefault();
     try {

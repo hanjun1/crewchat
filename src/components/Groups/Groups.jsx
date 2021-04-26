@@ -3,11 +3,11 @@ import "./Groups.css";
 import GroupsHeader from "../../components/GroupsHeader/GroupsHeader";
 import GroupsList from "../../components/GroupsList/GroupsList";
 
-function Groups() {
+function Groups({ groups, groupCategories }) {
   return (
     <div className="Groups">
       <GroupsHeader />
-      <GroupsList />
+      <GroupsList groups={groups} groupCategories={groupCategories} />
     </div>
   );
 }

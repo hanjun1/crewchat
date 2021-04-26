@@ -1,7 +1,7 @@
 import React from "react";
 import "./GroupItem.css";
 
-function GroupItem() {
+function GroupItem({ info }) {
   return (
     <div className="GroupItem">
       <div className="group-icon">
@@ -15,7 +15,7 @@ function GroupItem() {
           <ellipse cx="22.5" cy="21" rx="22.5" ry="21" fill="#A0A2BA" />
         </svg>
       </div>
-      <div className="group-name">Fam Jam</div>
+      <div className="group-name">{info.name}</div>
       <div className="time">10:20 pm</div>
       <div className="text-preview">
         Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.
