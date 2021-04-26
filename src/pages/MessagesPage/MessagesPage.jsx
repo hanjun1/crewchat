@@ -45,7 +45,7 @@ function MessagesPage(props) {
       {isDesktop && (
         <>
           <Groups groups={groups} groupCategories={groupCategories} />
-          <Messages />
+          <Messages user={props.user} />
           <ChatRoomDetails />
         </>
       )}
@@ -58,7 +58,7 @@ function MessagesPage(props) {
               setShowChatDetails={setShowDetails}
             />
           ) : (
-            <Messages setShowDetails={setShowDetails} />
+            <Messages setShowDetails={setShowDetails} user={props.user} />
           )}
         </>
       )}
@@ -70,7 +70,7 @@ function MessagesPage(props) {
               setShowChatDetails={setShowDetails}
             />
           ) : (
-            <Messages setShowDetails={setShowDetails} />
+            <Messages setShowDetails={setShowDetails} user={props.user} />
           )}
         </>
       )}

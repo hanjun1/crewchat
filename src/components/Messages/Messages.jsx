@@ -4,12 +4,12 @@ import MessageInput from "../../components/MessageInput/MessageInput";
 import MessagesList from "../../components/MessagesList/MessagesList";
 import MessageHeader from "../../components/MessageHeader/MessageHeader";
 
-function Messages({ setShowDetails }) {
+function Messages(props) {
   return (
     <div className="Messages">
-      <MessageHeader setShowDetails={setShowDetails} />
+      <MessageHeader setShowDetails={props.setShowDetails} />
       <MessagesList />
-      <MessageInput />
+      <MessageInput user={props.user} />
     </div>
   );
 }
