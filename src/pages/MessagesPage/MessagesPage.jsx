@@ -14,7 +14,7 @@ function MessagesPage(props) {
   const [showDetails, setShowDetails] = useState(false);
   const [groups, setGroups] = useState(null);
   const [groupCategories, setGroupCategories] = useState([]);
-  // const [activeGroup, setActiveGroup] = useState(null)
+  const [activeGroup, setActiveGroup] = useState({});
 
   useEffect(() => {
     fetchGroups();
@@ -44,21 +44,34 @@ function MessagesPage(props) {
     <div className="MessagesPage">
       {isDesktop && (
         <>
-          <Groups groups={groups} groupCategories={groupCategories} />
-          <Messages />
-          <ChatRoomDetails />
+          <Groups
+            groups={groups}
+            groupCategories={groupCategories}
+            setActiveGroup={setActiveGroup}
+          />
+          <Messages activeGroup={activeGroup} user={props.user} />
+          <ChatRoomDetails activeGroup={activeGroup} />
         </>
       )}
       {isTablet && (
         <>
-          <Groups groups={groups} groupCategories={groupCategories} />
+          <Groups
+            groups={groups}
+            groupCategories={groupCategories}
+            setActiveGroup={setActiveGroup}
+          />
           {showDetails ? (
             <ChatRoomDetails
               showChatDetails={showDetails}
               setShowChatDetails={setShowDetails}
+              activeGroup={activeGroup}
             />
           ) : (
-            <Messages setShowDetails={setShowDetails} />
+            <Messages
+              setShowDetails={setShowDetails}
+              activeGroup={activeGroup}
+              user={props.user}
+            />
           )}
         </>
       )}
@@ -68,9 +81,14 @@ function MessagesPage(props) {
             <ChatRoomDetails
               showChatDetails={showDetails}
               setShowChatDetails={setShowDetails}
+              activeGroup={activeGroup}
             />
           ) : (
-            <Messages setShowDetails={setShowDetails} />
+            <Messages
+              setShowDetails={setShowDetails}
+              activeGroup={activeGroup}
+              user={props.user}
+            />
           )}
         </>
       )}
