@@ -7,12 +7,9 @@ function GroupCategory({ name, groupItems, setActiveGroup }) {
   const [showItems, setShowItems] = useState(true);
   return (
     <div className="GroupCategory">
-      <header>
+      <header onClick={() => setShowItems(!showItems)}>
         <h2>{name}</h2>
-        <span
-          onClick={() => setShowItems(!showItems)}
-          className="material-icons md-48"
-        >
+        <span className="material-icons md-48">
           {showItems ? "expand_more" : "expand_less"}
         </span>
       </header>
