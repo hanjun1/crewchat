@@ -2,6 +2,22 @@ import React from "react";
 import "./GroupItem.css";
 
 function GroupItem({ group }) {
+  // Formatting
+  let msgPreview;
+  let lastMsgTime;
+  if (group.textMsgs.length > 0) {
+    msgPreview = group.textMsgs.slice(-1)[0].content;
+    lastMsgTime = new Date(
+      group.textMsgs.slice(-1)[0].updatedAt
+    ).toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  } else {
+    msgPreview = "";
+    lastMsgTime = "---";
+  }
+
   return (
     <div className="GroupItem">
       <div className="group-icon">
@@ -16,14 +32,12 @@ function GroupItem({ group }) {
         </svg>
       </div>
       <div className="group-name">{group.name}</div>
-      <div className="time">10:20 pm</div>
-      <div className="text-preview">
-        Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.
-      </div>
+      <div className="time">{lastMsgTime}</div>
+      <div className="text-preview">{msgPreview}</div>
       <div className="participants">
-        <span className="material-icons">account_circle</span>
-        <span className="material-icons">account_circle</span>
-        <span className="material-icons">account_circle</span>
+        {group.members.map((member) => (
+          <span className="material-icons">account_circle</span>
+        ))}
       </div>
     </div>
   );
