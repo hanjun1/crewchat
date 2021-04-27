@@ -9,6 +9,7 @@ function MessagesList({
   setSocketMessages,
   fetchMessage,
   groupId,
+  addMessage,
 }) {
   if (messages === undefined) {
     messages = [];
