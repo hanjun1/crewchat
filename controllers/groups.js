@@ -5,7 +5,6 @@ async function create(req, res) {
     let newGroup = await Group.create({
       name: req.body.name,
       category: req.body.category,
-      link: req.body.link,
       members: [req.user._id],
       textMsgs: [],
       fileMsgs: [],
@@ -26,7 +25,7 @@ async function index(req, res) {
       .slice("textMsgs", -40)
       .populate("members");
 
-    console.log(groups);
+    // console.log(groups);
     res.status(200).json(groups);
   } catch (error) {
     console.log(error);
