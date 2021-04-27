@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./NewGroupPage.css";
 import Groups from "../../components/Groups/Groups";
-import NewGroupForm from "../../components/NewGroupForm/NewGroupForm";
 import NewGroup from "../../components/NewGroup/NewGroup";
 
-function NewGroupPage() {
+function NewGroupPage(props) {
   const isDesktop = useMediaQuery({ minWidth: 1224 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -46,7 +45,7 @@ function NewGroupPage() {
             groupCategories={groupCategories}
             setActiveGroup={setActiveGroup}
           />
-          <NewGroup />
+          <NewGroup history={props.history} />
         </>
       )}
       {isTablet && (
@@ -56,12 +55,12 @@ function NewGroupPage() {
             groupCategories={groupCategories}
             setActiveGroup={setActiveGroup}
           />
-          <NewGroup />
+          <NewGroup history={props.history} />
         </>
       )}
       {isMobile && (
         <>
-          <NewGroup />
+          <NewGroup history={props.history} />
         </>
       )}
     </div>
