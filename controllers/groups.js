@@ -34,7 +34,17 @@ async function index(req, res) {
   }
 }
 
+async function getOne(req, res) {
+  try {
+    let group = await Group.findById(req.params.id);
+    res.status(200).json(group);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
 module.exports = {
   create,
   index,
+  getOne,
 };

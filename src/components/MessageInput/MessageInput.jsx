@@ -10,21 +10,23 @@ function MessageInput(props) {
 
   const handleSubmitMessage = async (e) => {
     e.preventDefault();
+    let jwt = localStorage.getItem("token");
     let body = {
       sender: props.user._id,
       content: content,
     };
     setContent("");
+    props.sendMessage(content);
     let options = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + jwt,
+      },
       body: JSON.stringify(body),
     };
     // CHANGE ADDRESS TO DYNAMIC ID
-    const response = await fetch(
-      "/api/messages/6084788ba9ed372d258802bc",
-      options
-    );
+    const response = await fetch(`/api/messages/${props.groupId}`, options);
     await response.json();
   };
 

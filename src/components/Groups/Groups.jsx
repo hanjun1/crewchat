@@ -3,7 +3,7 @@ import "./Groups.css";
 import GroupsHeader from "../../components/GroupsHeader/GroupsHeader";
 import GroupsList from "../../components/GroupsList/GroupsList";
 
-function Groups({ groups, groupCategories, setActiveGroup }) {
+function Groups({ groups, groupCategories, setActiveGroup, useChat }) {
   return (
     <div className="Groups">
       <GroupsHeader />
@@ -11,6 +11,7 @@ function Groups({ groups, groupCategories, setActiveGroup }) {
         groups={groups}
         groupCategories={groupCategories}
         setActiveGroup={setActiveGroup}
+        useChat={useChat}
       />
     </div>
   );

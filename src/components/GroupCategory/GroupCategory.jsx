@@ -5,6 +5,7 @@ import GroupItem from "../GroupItem/GroupItem";
 
 function GroupCategory({ name, groupItems, setActiveGroup }) {
   const [showItems, setShowItems] = useState(true);
+
   return (
     <div className="GroupCategory">
       <header onClick={() => setShowItems(!showItems)}>
