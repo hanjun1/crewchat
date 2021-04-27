@@ -67,7 +67,11 @@ function MessagesPage(props) {
           {activeGroup ? (
             <>
               <Messages activeGroup={activeGroup} user={props.user} />
-              <ChatRoomDetails activeGroup={activeGroup} />
+              <ChatRoomDetails
+                activeGroup={activeGroup}
+                user={props.user}
+                fetchGroups={fetchGroups}
+              />
             </>
           ) : (
             <WelcomeScreen />
@@ -88,6 +92,8 @@ function MessagesPage(props) {
                   showChatDetails={showDetails}
                   setShowChatDetails={setShowDetails}
                   activeGroup={activeGroup}
+                  user={props.user}
+                  fetchGroups={fetchGroups}
                 />
               ) : (
                 <Messages
@@ -111,6 +117,8 @@ function MessagesPage(props) {
                   showChatDetails={showDetails}
                   setShowChatDetails={setShowDetails}
                   activeGroup={activeGroup}
+                  user={props.user}
+                  fetchGroups={fetchGroups}
                 />
               ) : (
                 <Messages

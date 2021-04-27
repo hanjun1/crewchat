@@ -21,6 +21,33 @@ function ChatRoomDetails(props) {
     });
   };
 
+  const handleLeaveGroup = async (e) => {
+    e.preventDefault();
+    try {
+      let jwt = localStorage.getItem("token");
+      let body = {
+        groupId: props.activeGroup._id,
+        userId: props.user._id,
+      };
+      const fetchResponse = await fetch("/api/groups/removeUser", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + jwt,
+        },
+        body: JSON.stringify(body),
+      });
+      if (fetchResponse.ok) {
+        console.log("OKAY");
+      } else if (!fetchResponse.ok) {
+        console.log("BAD FETCH");
+      }
+      fetchResponse = fetchResponse.json();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="ChatRoomDetails">
       {showDetails.all ? (
@@ -37,9 +64,12 @@ function ChatRoomDetails(props) {
             <DetailsOption name="Photos" handleOnClick={handleOnClick} />
             <DetailsOption name="Documents" handleOnClick={handleOnClick} />
           </div>
-          <div className="button-container">
+          <form
+            onSubmit={(e) => handleLeaveGroup(e)}
+            className="button-container"
+          >
             <button>Leave Group</button>
-          </div>
+          </form>
         </div>
       ) : (
         <ShowDetailsTemplate
