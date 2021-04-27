@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import AuthPage from "../AuthPage/AuthPage";
-import MessagePage from "../MessagePageTest/MessagePage";
 import MessagesPage from "../MessagesPage/MessagesPage";
 import NewGroupPage from "../NewGroupPage/NewGroupPage";
 import ImageTestPage from "../ImageTestPage/ImageTestPage";
@@ -39,13 +38,13 @@ function App() {
       <div className="App">
         {user ? (
           <Switch>
-            <Route
+            {/* <Route
               path="/"
               exact
               render={() => (
                 <MessagePage handleLogout={handleLogout} user={user} />
               )}
-            />
+            /> */}
             <Route
               path="/groups/create"
               exact
@@ -60,7 +59,7 @@ function App() {
               exact
               render={(props) => <ImageTestPage {...props} />}
             />
-            <Redirect to="/" />
+            <Redirect to="/groups/:id?" />
           </Switch>
         ) : (
           <AuthPage setUser={setUser} />

@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Messages.css";
 import MessageInput from "../../components/MessageInput/MessageInput";
 import MessagesList from "../../components/MessagesList/MessagesList";
 import MessageHeader from "../../components/MessageHeader/MessageHeader";
 import useChat from "../../utils/useChat";
 
-function Messages({
-  setShowDetails,
-  activeGroup,
-  user,
-  fetchOneGroup,
-  setActiveGroup,
-}) {
+function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
   const { messages, setMessages, sendMessage } = useChat(activeGroup._id, user);
+  const [memoryMessage, setMemoryMessage] = useState([]);
+
+  async function fetchMessage(groupId) {
+    try {
+      let jwt = localStorage.getItem("token");
+      const fetchResponse = await fetch(`/api/groups/${groupId}`, {
+        headers: { Authorization: "Bearer " + jwt },
+      });
+      let group = await fetchResponse.json();
+      setMemoryMessage(group.textMsgs);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div className="Messages">
@@ -23,11 +31,11 @@ function Messages({
       />
       <MessagesList
         groupId={activeGroup._id}
-        messages={activeGroup.textMsgs}
+        messages={memoryMessage}
         user={user}
         socketMessages={messages}
         setSocketMessages={setMessages}
-        fetchOneGroup={fetchOneGroup}
+        fetchMessage={fetchMessage}
       />
       <MessageInput
         user={user}
