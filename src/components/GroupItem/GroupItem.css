@@ -32,6 +32,7 @@
   font-weight: bold;
   margin-top: auto;
   overflow-x: hidden;
+  /* white-space: nowrap; */
 }
 .text-preview {
   grid-area: text-preview;

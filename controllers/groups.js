@@ -27,9 +27,14 @@ async function join(req, res) {
     let groupId = req.body.link.split("/").slice(-1)[0];
     let group = await Group.findById(groupId);
     //check if not already in group
-    // TODO
-    // group.members.push(req.user._id);
-    // await user.save();
+    let match = group.members.includes(req.user._id);
+    if (!match) {
+      group.members.push(req.user._id);
+      await group.save();
+      console.log("added to group");
+    } else {
+      console.log("already in group");
+    }
     res.json(groupId);
   } catch (error) {
     console.log(error);
