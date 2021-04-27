@@ -2,10 +2,10 @@ import React from "react";
 import NewGroupForm from "../NewGroupForm/NewGroupForm";
 import "./NewGroup.css";
 
-function NewGroup() {
+function NewGroup({ history }) {
   return (
     <div className="NewGroup">
-      <NewGroupForm />
+      <NewGroupForm history={history} />
     </div>
   );
 }

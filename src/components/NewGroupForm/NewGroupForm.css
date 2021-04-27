@@ -3,7 +3,7 @@
   border: 4px solid #ebeff8;
   border-radius: 15px;
   margin: 20px;
-  width: 80%;
+  width: 90%;
   max-width: 500px;
   max-height: 500px;
   display: flex;
@@ -12,6 +12,38 @@
   justify-content: space-around;
   font-family: "Ubuntu";
 }
+/* React Tabs Custom Styling  */
+.NewGroupForm .react-tabs {
+  width: 80%;
+  margin: auto;
+  height: 400px;
+  min-height: 400px;
+}
+.NewGroupForm .react-tabs__tab-list {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.NewGroupForm .react-tabs__tab {
+  padding: 12px 12px;
+  border: none;
+  margin: 0px 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.NewGroupForm .react-tabs__tab--selected {
+  border-color: #6083ff;
+  color: #6083ff;
+  border-bottom: 4px solid;
+}
+
+/* .NewGroupForm .react-tabs__tab-panel {
+  padding-top: 0px;
+} */
 
 .NewGroupForm h1 {
   font-size: 24px;
@@ -19,8 +51,12 @@
   margin-top: 20px;
 }
 
+.NewGroupForm h1.join-group-header {
+  margin: 50px 0px 35px 0px;
+}
+
 .NewGroupForm form {
-  width: 90%;
+  width: 100%;
   height: 80%;
   display: flex;
   flex-direction: column;
@@ -37,7 +73,7 @@
   background-color: transparent;
   border-bottom: 1px solid #a0a2ba;
   border-radius: 0px;
-  width: 80%;
+  width: 100%;
   text-align: center;
 }
 
@@ -101,4 +137,19 @@
   cursor: pointer;
   margin: 0 auto 40px auto;
   display: block;
+}
+
+.NewGroupForm .join-error {
+  color: rgb(255, 95, 95);
+  margin: -10px 0px 10px 0px;
+}
+
+@media only screen and (min-width: 768px) {
+  .NewGroupForm {
+    width: 80%;
+  }
+
+  .NewGroupForm .group-name {
+    width: 70%;
+  }
 }
