@@ -13,6 +13,7 @@ function MessageInput(props) {
     let jwt = localStorage.getItem("token");
     let body = {
       sender: props.user._id,
+      senderName: props.user.name,
       content: content,
     };
     setContent("");
