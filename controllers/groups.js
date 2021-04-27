@@ -22,11 +22,14 @@ async function create(req, res) {
 
 async function index(req, res) {
   try {
-    let groups = await Group.find({ members: req.user._id }).populate(
-      "members"
-    );
+    let groups = await Group.find({ members: req.user._id })
+      .slice("textMsgs", -40)
+      .populate("members");
+
+    console.log(groups);
     res.status(200).json(groups);
   } catch (error) {
+    console.log(error);
     res.status(400).json(error);
   }
 }

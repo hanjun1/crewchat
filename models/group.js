@@ -7,6 +7,7 @@ const textMsgSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    senderName: String,
     content: String,
   },
   {
