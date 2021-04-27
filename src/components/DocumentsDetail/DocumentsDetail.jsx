@@ -10,6 +10,9 @@ function DocumentsDetail(props) {
       <DocumentDetail name="ryanwashere.pdf" size="10MB" />
       <DocumentDetail name="cindysucks.pdf" size="10MB" />
       <DocumentDetail name="cindysucks.pdf" size="10MB" />
+      {/* {props.activeGroup.fileMsgs.map((file) => (
+        <DocumentDetail name="cindysucks.pdf" size="10MB" />
+      ))} */}
     </div>
   );
 }

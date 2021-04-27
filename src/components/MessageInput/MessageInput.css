@@ -4,7 +4,6 @@
   border: 2px solid white;
   background-color: white;
   width: 90%;
-  height: 40px;
   border-radius: 15px;
   display: flex;
   flex-direction: row;
@@ -12,13 +11,15 @@
   align-items: center;
 }
 
-.MessageInput form > input {
-  height: 80%;
+.MessageInput .textarea-auto {
   width: 80%;
   border: none;
   outline: none;
   margin: 0px 10px 0px 10px;
+  max-height: 400px;
   font-size: 16px;
+  resize: none;
+  font-family: "Ubuntu";
 }
 
 .MessageInput form > button {
@@ -27,6 +28,6 @@
   border: none;
   border-radius: 15px;
   width: 50px;
-  height: 100%;
+  height: 40px;
   cursor: pointer;
 }

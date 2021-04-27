@@ -8,7 +8,9 @@ function EventsDetail(props) {
       <EventDetail name="Family BBQ WOOT!!" />
       <EventDetail name="Family BBQ" />
       <EventDetail name="Family BBQ" />
-      <EventDetail name="Family BBQ" />
+      {/* {props.activeGroup.events.map((event) => (
+        <EventDetail name="Family BBQ" />
+      ))} */}
     </div>
   );
 }

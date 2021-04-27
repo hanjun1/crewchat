@@ -27,7 +27,7 @@ function ChatRoomDetails(props) {
         <div className="all">
           <div>
             <RoomHeader
-              name="The Fam"
+              name={props.activeGroup.name}
               showChatDetails={props.showChatDetails}
               setShowChatDetails={props.setShowChatDetails}
             />
@@ -45,6 +45,7 @@ function ChatRoomDetails(props) {
         <ShowDetailsTemplate
           name={showDetails.detailCategory}
           setShowDetails={setShowDetails}
+          activeGroup={props.activeGroup}
         />
       )}
     </div>

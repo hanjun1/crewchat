@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./MessageInput.css";
+import TextareaAutosize from "react-textarea-autosize";
 
 function MessageInput(props) {
   const [content, setContent] = useState("");
@@ -45,7 +46,8 @@ function MessageInput(props) {
   return (
     <div className="MessageInput">
       <form onSubmit={(e) => handleSubmitMessage(e)}>
-        <input
+        <TextareaAutosize
+          className="textarea-auto"
           type="text"
           placeholder="type your message.."
           onChange={(e) => handleChangeContent(e)}
