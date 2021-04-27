@@ -21,6 +21,7 @@ const fileMsgSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    senderName: String,
     fileURL: String,
   },
   {
@@ -34,6 +35,7 @@ const imgMsgSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    senderName: String,
     imgURL: String,
   },
   {

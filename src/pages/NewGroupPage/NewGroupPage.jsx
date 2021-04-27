@@ -12,6 +12,7 @@ function NewGroupPage() {
 
   const [groups, setGroups] = useState(null);
   const [groupCategories, setGroupCategories] = useState([]);
+  const [activeGroup, setActiveGroup] = useState(null);
 
   useEffect(() => {
     fetchGroups();
@@ -40,13 +41,21 @@ function NewGroupPage() {
     <div className="NewGroupPage">
       {isDesktop && (
         <>
-          <Groups groups={groups} groupCategories={groupCategories} />
+          <Groups
+            groups={groups}
+            groupCategories={groupCategories}
+            setActiveGroup={setActiveGroup}
+          />
           <NewGroup />
         </>
       )}
       {isTablet && (
         <>
-          <Groups groups={groups} groupCategories={groupCategories} />
+          <Groups
+            groups={groups}
+            groupCategories={groupCategories}
+            setActiveGroup={setActiveGroup}
+          />
           <NewGroup />
         </>
       )}
