@@ -42,19 +42,6 @@ function MessagesPage(props) {
     }
   }
 
-  async function fetchOneGroup(groupId) {
-    try {
-      let jwt = localStorage.getItem("token");
-      const fetchResponse = await fetch(`/api/groups/${groupId}`, {
-        headers: { Authorization: "Bearer " + jwt },
-      });
-      let group = await fetchResponse.json();
-      setActiveGroup(group);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   function matchGroupId(groups) {
     // console.log(groups);
     let groupId = props.match.params.id;
@@ -79,11 +66,7 @@ function MessagesPage(props) {
           />
           {activeGroup ? (
             <>
-              <Messages
-                activeGroup={activeGroup}
-                user={props.user}
-                fetchOneGroup={fetchOneGroup}
-              />
+              <Messages activeGroup={activeGroup} user={props.user} />
               <ChatRoomDetails activeGroup={activeGroup} />
             </>
           ) : (
@@ -98,7 +81,6 @@ function MessagesPage(props) {
             groupCategories={groupCategories}
             setActiveGroup={setActiveGroup}
           />
-          {console.log(activeGroup)}
           {activeGroup ? (
             <>
               {showDetails ? (
@@ -112,7 +94,6 @@ function MessagesPage(props) {
                   setShowDetails={setShowDetails}
                   activeGroup={activeGroup}
                   user={props.user}
-                  fetchOneGroup={fetchOneGroup}
                 />
               )}
             </>
@@ -137,7 +118,6 @@ function MessagesPage(props) {
                   activeGroup={activeGroup}
                   setActiveGroup={setActiveGroup}
                   user={props.user}
-                  fetchOneGroup={fetchOneGroup}
                 />
               )}
             </>

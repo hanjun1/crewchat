@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
 const NEW_CHAT_MESSAGE = "NEW_CHAT_MESSAGE";
-const SOCKET_SERVER_URL = "/";
+const SOCKET_SERVER_URL = "http://localhost:3001";
 
 const useChat = (roomId, user) => {
   const [messages, setMessages] = useState([]);
@@ -26,6 +26,7 @@ const useChat = (roomId, user) => {
     });
 
     return () => {
+      console.log("disconnect");
       socketRef.current.disconnect();
     };
   }, [roomId]);

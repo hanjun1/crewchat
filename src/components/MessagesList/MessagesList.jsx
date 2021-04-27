@@ -7,7 +7,7 @@ function MessagesList({
   user,
   socketMessages,
   setSocketMessages,
-  fetchOneGroup,
+  fetchMessage,
   groupId,
 }) {
   if (messages === undefined) {
@@ -15,12 +15,6 @@ function MessagesList({
   }
 
   const messagesEndRef = useRef(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
 
   function formatTime(timestamp) {
     let date = new Date(timestamp);
@@ -38,11 +32,16 @@ function MessagesList({
   useEffect(() => {
     setSocketMessages([]);
     if (groupId !== undefined) {
-      fetchOneGroup(groupId);
+      fetchMessage(groupId);
     }
   }, [groupId]);
 
   useEffect(() => {
+    const scrollToBottom = () => {
+      messagesEndRef.current?.scrollIntoView({
+        behavior: "smooth",
+      });
+    };
     scrollToBottom();
   }, [messages, socketMessages]);
 

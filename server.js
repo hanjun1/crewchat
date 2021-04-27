@@ -47,6 +47,7 @@ io.on("connection", function (socket) {
   console.log(`Client connected to ${socket.id}`);
 
   const { roomId, user } = socket.handshake.query;
+
   socket.join(roomId);
 
   // const user = addUser(socket.id, roomId, name);
@@ -57,6 +58,7 @@ io.on("connection", function (socket) {
   });
 
   socket.on("disconnect", () => {
+    console.log("disconnected - server");
     socket.leave(roomId);
   });
 
