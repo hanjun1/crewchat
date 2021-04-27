@@ -49,7 +49,6 @@ async function index(req, res) {
       .slice("textMsgs", -40)
       .populate("members");
 
-    // console.log(groups);
     res.status(200).json(groups);
   } catch (error) {
     console.log(error);
