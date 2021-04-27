@@ -4,17 +4,20 @@ import NewGroupSuccessModal from "../NewGroupSuccessModal/NewGroupSuccessModal";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
-function NewGroupForm() {
+function NewGroupForm({ history }) {
   const [inputs, setInputs] = useState({
     name: "",
     category: "Other",
+    pastedLink: "",
   });
   const [showModal, setShowModal] = useState(false);
   const [newGroupLink, setNewGroupLink] = useState("");
+  const [joinError, setJoinError] = useState("");
+
   let link;
   //Post Request to add new group to database
   let BASE_URL = "http://localhost:3000/groups/";
-  async function handleSubmit(e) {
+  async function handleCreateGroup(e) {
     e.preventDefault();
     try {
       let jwt = localStorage.getItem("token");
@@ -30,9 +33,9 @@ function NewGroupForm() {
         }),
       };
       const fetchResponse = await fetch("/api/groups/create", options);
+      //sets fetches group link from newly created group for pop up modal
       let newGroup = await fetchResponse.json();
       link = BASE_URL + newGroup._id;
-      console.log(link);
       await setNewGroupLink(link);
       if (fetchResponse.ok) {
         setShowModal(true);
@@ -40,6 +43,36 @@ function NewGroupForm() {
       if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async function handleJoinGroup(e) {
+    e.preventDefault();
+    try {
+      let jwt = localStorage.getItem("token");
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + jwt,
+        },
+        body: JSON.stringify({
+          link: inputs.pastedLink,
+        }),
+      };
+      const fetchResponse = await fetch("/api/groups/join", options);
+      // if successful, redirect to group
+      if (fetchResponse.ok) {
+        let groupId = await fetchResponse.json();
+        console.log("successful fetch");
+        setJoinError("");
+        history.push("/groups/" + groupId);
+      }
+      if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
+    } catch (error) {
+      console.log(error);
+      console.log("unsuccessful fetch");
+      setJoinError("Oops! This group does not exist");
     }
   }
 
@@ -53,7 +86,7 @@ function NewGroupForm() {
 
         <TabPanel>
           <h1>New Group</h1>
-          <form autoComplete="off" onSubmit={handleSubmit}>
+          <form autoComplete="off" onSubmit={handleCreateGroup}>
             <input
               className="group-name"
               type="text"
@@ -83,11 +116,19 @@ function NewGroupForm() {
         </TabPanel>
         <TabPanel>
           <h1 className="join-group-header">Join Group</h1>
-          <form autoComplete="off" onSubmit={handleSubmit}>
+          <form autoComplete="off" onSubmit={handleJoinGroup}>
             <label>Paste Invite Link Here</label>
             <div className="copy-link">
-              <input type="text" name="link" />
+              <input
+                type="text"
+                name="link"
+                value={inputs.pastedLink}
+                onChange={(e) =>
+                  setInputs({ ...inputs, pastedLink: e.target.value })
+                }
+              />
             </div>
+            <p className="join-error">{joinError}</p>
             <button className="create-btn">Join Group</button>
           </form>
         </TabPanel>

@@ -1,5 +1,6 @@
 const Group = require("../models/group");
 
+//Create New Group
 async function create(req, res) {
   try {
     let newGroup = await Group.create({
@@ -19,6 +20,24 @@ async function create(req, res) {
   }
 }
 
+//Join Existing Group
+async function join(req, res) {
+  try {
+    // extracts group id from pasted link
+    let groupId = req.body.link.split("/").slice(-1)[0];
+    let group = await Group.findById(groupId);
+    //check if not already in group
+    // TODO
+    // group.members.push(req.user._id);
+    // await user.save();
+    res.json(groupId);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json(error);
+  }
+}
+
+//Fetch all Groups for user
 async function index(req, res) {
   try {
     let groups = await Group.find({ members: req.user._id })
@@ -33,6 +52,7 @@ async function index(req, res) {
   }
 }
 
+//Fetch one specific Group
 async function getOne(req, res) {
   try {
     let group = await Group.findById(req.params.id);
@@ -44,6 +64,7 @@ async function getOne(req, res) {
 
 module.exports = {
   create,
+  join,
   index,
   getOne,
 };
