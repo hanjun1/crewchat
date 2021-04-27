@@ -6,7 +6,7 @@
   height: 80px;
   cursor: pointer;
   display: grid;
-  grid-template-columns: 0.5fr 1.5fr 1fr;
+  grid-template-columns: 0.5fr 1.7fr 0.8fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
@@ -31,6 +31,7 @@
   font-size: 18px;
   font-weight: bold;
   margin-top: auto;
+  overflow-x: hidden;
 }
 .text-preview {
   grid-area: text-preview;
