@@ -3,6 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import "./NewGroupPage.css";
 import Groups from "../../components/Groups/Groups";
 import NewGroupForm from "../../components/NewGroupForm/NewGroupForm";
+import NewGroup from "../../components/NewGroup/NewGroup";
 
 function NewGroupPage() {
   const isDesktop = useMediaQuery({ minWidth: 1224 });
@@ -40,18 +41,18 @@ function NewGroupPage() {
       {isDesktop && (
         <>
           <Groups groups={groups} groupCategories={groupCategories} />
-          <NewGroupForm />
+          <NewGroup />
         </>
       )}
       {isTablet && (
         <>
           <Groups groups={groups} groupCategories={groupCategories} />
-          <NewGroupForm />
+          <NewGroup />
         </>
       )}
       {isMobile && (
         <>
-          <NewGroupForm />
+          <NewGroup />
         </>
       )}
     </div>
