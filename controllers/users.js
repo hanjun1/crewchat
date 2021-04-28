@@ -31,6 +31,17 @@ async function login(req, res) {
   }
 }
 
+async function getOne(req, res) {
+  try {
+    const user = await User.findById(req.user._id);
+    console.log(user);
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json(error);
+  }
+}
+
 async function edit(req, res) {
   try {
     console.log(req.body);
@@ -48,5 +59,6 @@ async function edit(req, res) {
 module.exports = {
   create,
   login,
+  getOne,
   edit,
 };

@@ -36,7 +36,9 @@ function GroupItem({ group }) {
       <div className="text-preview">{msgPreview}</div>
       <div className="participants">
         {group.members.map((member) => (
-          <span className="material-icons">account_circle</span>
+          <span key={member._id} className="material-icons">
+            account_circle
+          </span>
         ))}
       </div>
     </div>

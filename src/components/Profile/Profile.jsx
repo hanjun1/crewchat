@@ -37,7 +37,7 @@ function Profile({ user, setUser }) {
       <h1>Edit My Profile</h1>
       <div className="profile-pic">
         <div className="edit-profile-pic">
-          <span class="material-icons md-light">edit</span>
+          <span className="material-icons md-light">edit</span>
         </div>
       </div>
       <form autoComplete="off" onSubmit={handleSubmit}>
