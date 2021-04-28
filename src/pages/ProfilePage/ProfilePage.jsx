@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import SideNav from "../../components/SideNav/SideNav";
 import Profile from "../../components/Profile/Profile";
 
-function ProfilePage({ user, setUser }) {
+function ProfilePage({ user, setUser, handleLogout }) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const [showSideNav, setShowSideNav] = useState(false);
 
@@ -12,7 +12,12 @@ function ProfilePage({ user, setUser }) {
     <div className="ProfilePage">
       {isMobile ? (
         <>
-          {showSideNav && <SideNav setShowSideNav={setShowSideNav} />}
+          {showSideNav && (
+            <SideNav
+              setShowSideNav={setShowSideNav}
+              handleLogout={handleLogout}
+            />
+          )}
           <Profile
             user={user}
             setUser={setUser}
@@ -22,7 +27,7 @@ function ProfilePage({ user, setUser }) {
         </>
       ) : (
         <>
-          <SideNav />
+          <SideNav handleLogout={handleLogout} />
           <Profile user={user} setUser={setUser} />
         </>
       )}

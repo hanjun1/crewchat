@@ -9,7 +9,13 @@ function SideNav({ handleLogout }) {
         <span className="material-icons md-48 ">calendar_today</span>
         <h5>Events</h5>
       </div>
-      <Link to="/profile" className="profile-link">
+      <Link to="/groups" className="item-link">
+        <div className="icon-group">
+          <span className="material-icons md-48 ">chat</span>
+          <h5>Messages</h5>
+        </div>
+      </Link>
+      <Link to="/profile" className="item-link">
         <div className="icon-group">
           <span className="material-icons md-48 ">person</span>
           <h5>Profile</h5>

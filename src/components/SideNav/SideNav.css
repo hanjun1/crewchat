@@ -13,9 +13,10 @@
   display: absolute;
   z-index: 100;
    */
+  overflow-x: hidden;
 }
 
-.SideNav .profile-link {
+.SideNav .item-link {
   color: black;
   text-decoration: none;
 }
@@ -31,8 +32,15 @@
   margin: 15px auto;
   cursor: pointer;
   height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .SideNav .icon-group:hover {
   font-size: 18px;
+}
+
+.SideNav .icon-group span {
+  margin: auto;
 }

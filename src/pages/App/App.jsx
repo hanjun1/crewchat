@@ -55,7 +55,12 @@ function App() {
               path="/profile"
               exact
               render={(props) => (
-                <ProfilePage {...props} user={user} setUser={setUser} />
+                <ProfilePage
+                  {...props}
+                  user={user}
+                  setUser={setUser}
+                  handleLogout={handleLogout}
+                />
               )}
             />
             <Route
