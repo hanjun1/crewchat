@@ -31,11 +31,12 @@ function MessageInput(props) {
     try {
       let jwt = localStorage.getItem("token");
       let body = {
-        ...eventMsg,
-        creator: props.user._id,
-        creatorName: props.user.name,
-        group: props.groupId,
-        attendees: [props.user._id],
+        sender: props.user._id,
+        senderName: props.user.name,
+        event: {
+          ...eventMsg,
+          attendees: [props.user._id],
+        },
       };
       setEventMsg({ name: "", date: "", address: "" });
       props.sendEventMsg(body);

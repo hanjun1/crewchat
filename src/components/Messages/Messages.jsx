@@ -18,8 +18,8 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
       const fetchResponse = await fetch(`/api/groups/${groupId}`, {
         headers: { Authorization: "Bearer " + jwt },
       });
-      let group = await fetchResponse.json();
-      setMemoryMessage(group.textMsgs);
+      let allMsgs = await fetchResponse.json();
+      setMemoryMessage(allMsgs);
     } catch (err) {
       console.log(err);
     }

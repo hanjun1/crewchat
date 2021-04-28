@@ -45,7 +45,9 @@ const useChat = (roomId, user) => {
     if (!socketRef.current) return;
     socketRef.current.emit(NEW_CHAT_MESSAGE, {
       type: "text",
-      body: messageBody,
+      text: {
+        content: messageBody,
+      },
       senderId: socketRef.current.id,
       userId: user._id,
       senderName: user.name,
@@ -57,12 +59,11 @@ const useChat = (roomId, user) => {
     if (!socketRef.current) return;
     console.log("sendEventMsg triggered");
     socketRef.current.emit(NEW_EVENT_CHAT_MESSAGE, {
+      ...messageBody,
       type: "event",
-      body: messageBody,
-      senderId: socketRef.current.id,
       userId: user._id,
-      senderName: user.name,
       time: Date.now(),
+      senderId: socketRef.current.id,
     });
   };
 
