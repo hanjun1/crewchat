@@ -40,8 +40,8 @@ const io = socketIo(server, {
 });
 
 const USER_JOIN_CHAT = "USER_JOIN_CHAT";
-const USER_LEAVE_CHAT = "USER_LEAVE_CHAT";
 const NEW_CHAT_MESSAGE = "NEW_CHAT_MESSAGE";
+const NEW_EVENT_CHAT_MESSAGE = "NEW_EVENT_CHAT_MESSAGE";
 
 io.on("connection", function (socket) {
   console.log(`Client connected to ${socket.id}`);
@@ -55,6 +55,10 @@ io.on("connection", function (socket) {
 
   socket.on(NEW_CHAT_MESSAGE, (message) => {
     io.in(roomId).emit(NEW_CHAT_MESSAGE, message);
+  });
+
+  socket.on(NEW_EVENT_CHAT_MESSAGE, (message) => {
+    io.in(roomId).emit(NEW_EVENT_CHAT_MESSAGE, message);
   });
 
   socket.on("disconnect", () => {

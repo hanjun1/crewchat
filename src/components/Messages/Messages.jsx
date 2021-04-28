@@ -6,7 +6,10 @@ import MessageHeader from "../../components/MessageHeader/MessageHeader";
 import useChat from "../../utils/useChat";
 
 function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
-  const { messages, setMessages, sendMessage } = useChat(activeGroup._id, user);
+  const { messages, setMessages, sendMessage, sendEventMsg } = useChat(
+    activeGroup._id,
+    user
+  );
   const [memoryMessage, setMemoryMessage] = useState([]);
 
   async function fetchMessage(groupId) {
@@ -41,6 +44,7 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
         user={user}
         groupId={activeGroup._id}
         sendMessage={sendMessage}
+        sendEventMsg={sendEventMsg}
       />
     </div>
   );

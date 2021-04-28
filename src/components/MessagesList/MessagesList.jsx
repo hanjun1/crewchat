@@ -60,6 +60,7 @@ function MessagesList({
       ))}
       {socketMessages.map((msg) => (
         <MessageItem
+          type={msg.type}
           content={msg.body}
           myMessage={msg.ownedByCurrentUser}
           time={formatTime(msg.time)}

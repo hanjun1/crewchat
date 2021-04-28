@@ -48,7 +48,6 @@ async function index(req, res) {
     let groups = await Group.find({ members: req.user._id })
       .slice("textMsgs", -40)
       .populate("members");
-
     res.status(200).json(groups);
   } catch (error) {
     console.log(error);

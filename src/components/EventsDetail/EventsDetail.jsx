@@ -5,9 +5,15 @@ import EventDetail from "../EventDetail/EventDetail";
 function EventsDetail(props) {
   return (
     <div className="EventsDetail">
-      <EventDetail name="Family BBQ WOOT!!" />
-      <EventDetail name="Family BBQ" />
-      <EventDetail name="Family BBQ" />
+      <div className="events">
+        <EventDetail name="Family BBQ WOOT!!" />
+      </div>
+      <div className="events">
+        <EventDetail name="Family BBQ" />
+      </div>
+      <div className="events">
+        <EventDetail name="Family BBQ" />
+      </div>
       {/* {props.activeGroup.events.map((event) => (
         <EventDetail name="Family BBQ" />
       ))} */}

@@ -1,10 +1,9 @@
 .EventDetail {
   max-width: 400px;
-  min-width: 250px;
   background: #ebeff8;
   border-radius: 1rem;
   padding: 1rem;
-  margin: 1rem auto;
+  margin: auto;
 }
 
 .EventDetail .event-container {

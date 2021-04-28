@@ -29,7 +29,7 @@ function ChatRoomDetails(props) {
         groupId: props.activeGroup._id,
         userId: props.user._id,
       };
-      const fetchResponse = await fetch("/api/groups/removeUser", {
+      let fetchResponse = await fetch("/api/groups/removeUser", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -39,6 +39,7 @@ function ChatRoomDetails(props) {
       });
       if (fetchResponse.ok) {
         console.log("OKAY");
+        props.fetchGroups();
       } else if (!fetchResponse.ok) {
         console.log("BAD FETCH");
       }
