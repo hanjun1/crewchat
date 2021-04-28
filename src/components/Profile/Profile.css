@@ -6,11 +6,27 @@
 /********************** Profile Picture ***********************/
 
 .Profile .profile-pic {
-  border-radius: 50%;
+  width: 150px;
+  /* height: 140px; */
+  margin: auto;
+  position: relative;
+}
+
+.Profile .img-container {
+  background-color: rgb(204, 204, 204);
   width: 140px;
   height: 140px;
-  background-color: rgb(204, 204, 204);
-  position: relative;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Profile .profile-pic img {
+  max-height: 150%;
+  max-width: 150%;
 }
 
 /********************** Edit Profile Picture ***********************/
@@ -32,6 +48,10 @@
   width: 42px;
   height: 42px;
   background-color: #5175f8;
+}
+
+.Profile #img-input {
+  display: none;
 }
 
 /********************** Edit Name ***********************/

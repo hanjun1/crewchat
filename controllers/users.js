@@ -47,6 +47,7 @@ async function edit(req, res) {
     console.log(req.body);
     const user = await User.findById(req.body.userId);
     user.name = req.body.name;
+    user.picture = req.body.picture;
     await user.save();
     console.log(user);
     res.status(200).json(user);
