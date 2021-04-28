@@ -5,10 +5,9 @@ import ParticipantDetail from "../ParticipantDetail/ParticipantDetail";
 function ParticipantsDetail(props) {
   return (
     <div className="ParticipantsDetail">
-      <ParticipantDetail name="Bob Smith" />
-      <ParticipantDetail name="Sarah Smith" />
-      <ParticipantDetail name="Emily Smith" />
-      <ParticipantDetail name="Bobert Smith" />
+      {props.activeGroup.members.map((member) => (
+        <ParticipantDetail key={member._id} name={member.name} />
+      ))}
     </div>
   );
 }

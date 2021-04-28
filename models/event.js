@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
   name: String,
-  date: Datetime,
+  date: String,
+  address: String,
   attendees: [
     {
       type: Schema.Types.ObjectId,
@@ -14,6 +15,7 @@ const eventSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  creatorName: String,
   group: {
     type: Schema.Types.ObjectId,
     ref: "Group",

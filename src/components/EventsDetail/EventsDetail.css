@@ -2,3 +2,7 @@
   height: 75vh;
   overflow-y: scroll;
 }
+
+.EventsDetail .events {
+  margin: 1rem auto;
+}

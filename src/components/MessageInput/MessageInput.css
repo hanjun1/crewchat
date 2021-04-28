@@ -1,24 +1,80 @@
+.MessageInput-container {
+  width: 100%;
+}
+
+.MessageInput-container .button-container {
+  width: 90%;
+  background: white;
+  border: 2px solid white;
+  border-bottom: 1px solid #dadeff;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.MessageInput-container .text-button,
+.MessageInput-container .event-button {
+  cursor: pointer;
+}
+
 .MessageInput form {
   font-family: "Ubuntu";
   margin: auto;
   border: 2px solid white;
   background-color: white;
   width: 90%;
-  height: 40px;
-  border-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.MessageInput .event-form-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.MessageInput form > input {
-  height: 80%;
+.MessageInput .text-form-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MessageInput .event-inputs-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+}
+
+.MessageInput .event-inputs-container label {
+  font-size: 12px;
+  margin: 0.2rem 0;
+}
+
+.MessageInput .event-inputs-container input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: "Ubuntu";
+}
+
+.MessageInput .textarea-auto {
   width: 80%;
   border: none;
   outline: none;
   margin: 0px 10px 0px 10px;
+  max-height: 200px;
   font-size: 16px;
+  resize: none;
+  font-family: "Ubuntu";
 }
 
 .MessageInput form > button {
@@ -27,6 +83,6 @@
   border: none;
   border-radius: 15px;
   width: 50px;
-  height: 100%;
+  height: 40px;
   cursor: pointer;
 }

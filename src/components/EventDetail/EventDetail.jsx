@@ -27,8 +27,8 @@ function EventDetail(props) {
         </div>
         <div className="event-detail-container">
           <p className="event-title">{props.name}</p>
-          <p className="event-date">Jun 15, 2021 at 5:00 PM</p>
-          <p className="event-location">12 50th St NW, Calgary</p>
+          <p className="event-date">{props.date}</p>
+          <p className="event-location">{props.address}</p>
           {showMore ? (
             <div>
               <div>

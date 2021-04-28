@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
 const NEW_CHAT_MESSAGE = "NEW_CHAT_MESSAGE";
+const NEW_EVENT_CHAT_MESSAGE = "NEW_EVENT_CHAT_MESSAGE";
 const SOCKET_SERVER_URL = "http://localhost:3001";
 
 const useChat = (roomId, user) => {
@@ -25,6 +26,15 @@ const useChat = (roomId, user) => {
       setMessages((messages) => [...messages, incomingMessage]);
     });
 
+    socketRef.current.on(NEW_EVENT_CHAT_MESSAGE, (message) => {
+      console.log("EVENT MSG SENT");
+      const incomingMessage = {
+        ...message,
+        ownedByCurrentUser: message.senderId === socketRef.current.id,
+      };
+      setMessages((messages) => [...messages, incomingMessage]);
+    });
+
     return () => {
       console.log("disconnect");
       socketRef.current.disconnect();
@@ -34,6 +44,20 @@ const useChat = (roomId, user) => {
   const sendMessage = (messageBody) => {
     if (!socketRef.current) return;
     socketRef.current.emit(NEW_CHAT_MESSAGE, {
+      type: "text",
+      body: messageBody,
+      senderId: socketRef.current.id,
+      userId: user._id,
+      senderName: user.name,
+      time: Date.now(),
+    });
+  };
+
+  const sendEventMsg = (messageBody) => {
+    if (!socketRef.current) return;
+    console.log("sendEventMsg triggered");
+    socketRef.current.emit(NEW_EVENT_CHAT_MESSAGE, {
+      type: "event",
       body: messageBody,
       senderId: socketRef.current.id,
       userId: user._id,
@@ -46,6 +70,7 @@ const useChat = (roomId, user) => {
     messages,
     setMessages,
     sendMessage,
+    sendEventMsg,
   };
 };
 

@@ -21,13 +21,41 @@ function ChatRoomDetails(props) {
     });
   };
 
+  const handleLeaveGroup = async (e) => {
+    e.preventDefault();
+    try {
+      let jwt = localStorage.getItem("token");
+      let body = {
+        groupId: props.activeGroup._id,
+        userId: props.user._id,
+      };
+      let fetchResponse = await fetch("/api/groups/removeUser", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + jwt,
+        },
+        body: JSON.stringify(body),
+      });
+      if (fetchResponse.ok) {
+        console.log("OKAY");
+        props.fetchGroups();
+      } else if (!fetchResponse.ok) {
+        console.log("BAD FETCH");
+      }
+      fetchResponse = fetchResponse.json();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="ChatRoomDetails">
       {showDetails.all ? (
         <div className="all">
           <div>
             <RoomHeader
-              name="The Fam"
+              name={props.activeGroup.name}
               showChatDetails={props.showChatDetails}
               setShowChatDetails={props.setShowChatDetails}
             />
@@ -37,14 +65,18 @@ function ChatRoomDetails(props) {
             <DetailsOption name="Photos" handleOnClick={handleOnClick} />
             <DetailsOption name="Documents" handleOnClick={handleOnClick} />
           </div>
-          <div className="button-container">
+          <form
+            onSubmit={(e) => handleLeaveGroup(e)}
+            className="button-container"
+          >
             <button>Leave Group</button>
-          </div>
+          </form>
         </div>
       ) : (
         <ShowDetailsTemplate
           name={showDetails.detailCategory}
           setShowDetails={setShowDetails}
+          activeGroup={props.activeGroup}
         />
       )}
     </div>
