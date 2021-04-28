@@ -54,11 +54,19 @@ function App() {
             <Route
               path="/groups/create"
               exact
-              render={(props) => <NewGroupPage {...props} />}
+              render={(props) => (
+                <NewGroupPage {...props} handleLogout={handleLogout} />
+              )}
             />
             <Route
               path="/groups/:id?"
-              render={(props) => <MessagesPage {...props} user={user} />}
+              render={(props) => (
+                <MessagesPage
+                  {...props}
+                  user={user}
+                  handleLogout={handleLogout}
+                />
+              )}
             />
             <Route
               path="/test"

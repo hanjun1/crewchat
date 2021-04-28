@@ -7,7 +7,7 @@ import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
 import WelcomeScreen from "../../components/WelcomeScreen/WelcomeScreen";
 import SideNav from "../../components/SideNav/SideNav";
 
-function MessagesPage(props) {
+function MessagesPage({ props, handleLogout }) {
   //Media queries for conditional rendering based on screen size
   const isDesktop = useMediaQuery({ minWidth: 1224 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
@@ -17,6 +17,7 @@ function MessagesPage(props) {
   const [groups, setGroups] = useState(null);
   const [groupCategories, setGroupCategories] = useState([]);
   const [activeGroup, setActiveGroup] = useState(null);
+  const [showSideNav, setShowSideNav] = useState(false);
 
   useEffect(() => {
     fetchGroups();
@@ -60,7 +61,7 @@ function MessagesPage(props) {
     <div className="MessagesPage">
       {isDesktop && (
         <>
-          <SideNav />
+          <SideNav handleLogout={handleLogout} />
           <Groups
             groups={groups}
             groupCategories={groupCategories}
@@ -78,7 +79,7 @@ function MessagesPage(props) {
       )}
       {isTablet && (
         <>
-          <SideNav />
+          <SideNav handleLogout={handleLogout} />
           <Groups
             groups={groups}
             groupCategories={groupCategories}
@@ -125,11 +126,14 @@ function MessagesPage(props) {
               )}
             </>
           ) : (
-            <Groups
-              groups={groups}
-              groupCategories={groupCategories}
-              setActiveGroup={setActiveGroup}
-            />
+            <>
+              <SideNav handleLogout={handleLogout} />
+              <Groups
+                groups={groups}
+                groupCategories={groupCategories}
+                setActiveGroup={setActiveGroup}
+              />
+            </>
           )}
         </>
       )}
