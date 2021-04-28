@@ -80,3 +80,19 @@
   display: flex;
   align-items: center;
 }
+
+.EventDetail .button-container form {
+  display: flex;
+  justify-content: center;
+}
+
+.EventDetail .button-container button {
+  margin-top: 10px;
+  width: 90%;
+  height: 25px;
+  background: #6083ff;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+}

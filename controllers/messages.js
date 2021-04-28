@@ -13,7 +13,8 @@ async function create(req, res) {
       },
     });
     await group.save();
-    res.status(200).json("okay!");
+    console.log(group.msgs[group.msgs.length - 1]);
+    res.status(200).json(group.msgs[group.msgs.length - 1]);
   } catch (err) {
     console.log(req.body);
     console.log(err);
@@ -31,7 +32,16 @@ async function createEvent(req, res) {
       event: req.body.event,
     });
     await group.save();
-    res.status(200).json("okay!");
+    await group.populate("msgs.event.attendees").execPopulate();
+    res.status(200).json(group.msgs[group.msgs.length - 1]);
+  } catch (err) {
+    res.status(400).json("error");
+  }
+}
+
+async function updateGoing(req, res) {
+  try {
+    let group = await Group.findById(req.params.groupId);
   } catch (err) {
     res.status(400).json("error");
   }
@@ -40,4 +50,5 @@ async function createEvent(req, res) {
 module.exports = {
   create,
   createEvent,
+  updateGoing,
 };

@@ -1,12 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./EventDetail.css";
 
 function EventDetail(props) {
   const [showMore, setShowMore] = useState(false);
+  const [going, setGoing] = useState(false);
 
   const handleShowMore = () => {
     setShowMore(!showMore);
   };
+
+  const handleGoing = async (e) => {
+    e.preventDefault();
+    setGoing(!going);
+    try {
+      let jwt = localStorage.getItem("token");
+      let body = {
+        groupId: props.groupId,
+        msgId: props.msgId,
+      };
+      let options = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + jwt,
+        },
+        body: JSON.stringify(body),
+      };
+      let response = await fetch(
+        `/api/messages/${props.groupId}/going`,
+        options
+      );
+      if (response.ok) {
+        console.log("OKAY!");
+      } else if (!response.ok) {
+        throw new Error("Fetch failed - Bad request");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const checkStatus = () => {
+    for (let attendee of props.attendees) {
+      if (attendee._id === props.user._id) {
+        setGoing(true);
+        return;
+      }
+    }
+    setGoing(false);
+  };
+
+  useEffect(() => {
+    checkStatus();
+  }, []);
 
   return (
     <div className="EventDetail">
@@ -32,79 +78,37 @@ function EventDetail(props) {
           {showMore ? (
             <div>
               <div>
-                <div className="person">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="10" cy="10" r="10" fill="#6083FF" />
-                  </svg>
-                  <div className="name">
-                    <p>Bob Jenkins</p>
+                {props.attendees.map((person) => (
+                  <div className="person">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle cx="10" cy="10" r="10" fill="#6083FF" />
+                    </svg>
+                    <div className="name">
+                      <p>{person.name}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="person">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="10" cy="10" r="10" fill="#6083FF" />
-                  </svg>
-                  <div className="name">
-                    <p>Bob Jenkins</p>
-                  </div>
-                </div>
-                <div className="person">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="10" cy="10" r="10" fill="#6083FF" />
-                  </svg>
-                  <div className="name">
-                    <p>Bob Jenkins</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           ) : (
             <div className="people-going">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="10" cy="10" r="10" fill="#6083FF" />
-              </svg>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="10" cy="10" r="10" fill="#6083FF" />
-              </svg>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="10" cy="10" r="10" fill="#6083FF" />
-              </svg>
+              {props.attendees.map((person) => (
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="10" cy="10" r="10" fill="#6083FF" />
+                </svg>
+              ))}
               <p>+ going</p>
               <svg
                 onClick={() => handleShowMore()}
@@ -142,6 +146,17 @@ function EventDetail(props) {
       ) : (
         <></>
       )}
+      <div className="button-container">
+        {going ? (
+          <form onSubmit={(e) => handleGoing(e)}>
+            <button>I'm not going</button>
+          </form>
+        ) : (
+          <form onSubmit={(e) => handleGoing(e)}>
+            <button>I'm going</button>
+          </form>
+        )}
+      </div>
     </div>
   );
 }
