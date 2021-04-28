@@ -13,10 +13,10 @@ function NewGroupForm({ history }) {
   const [showModal, setShowModal] = useState(false);
   const [newGroupLink, setNewGroupLink] = useState("");
   const [joinError, setJoinError] = useState("");
-
+  const BASE_URL = "http://localhost:3000/groups/";
   let link;
+
   //Post Request to add new group to database
-  let BASE_URL = "http://localhost:3000/groups/";
   async function handleCreateGroup(e) {
     e.preventDefault();
     try {
@@ -46,6 +46,7 @@ function NewGroupForm({ history }) {
     }
   }
 
+  //Post Request to join an existing Group
   async function handleJoinGroup(e) {
     e.preventDefault();
     try {

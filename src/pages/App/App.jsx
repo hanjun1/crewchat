@@ -39,18 +39,6 @@ function App() {
       <div className="App">
         {user ? (
           <Switch>
-            {/* <Route
-              path="/"
-              exact
-              render={() => (
-                <MessagePage handleLogout={handleLogout} user={user} />
-              )}
-            /> */}
-            <Route
-              path="/groups/sidenav"
-              exact
-              render={(props) => <SideNav {...props} />}
-            />
             <Route
               path="/groups/create"
               exact
@@ -76,7 +64,14 @@ function App() {
             <Redirect to="/groups/:id?" />
           </Switch>
         ) : (
-          <AuthPage setUser={setUser} />
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={(props) => <AuthPage setUser={setUser} />}
+            />
+            <Redirect to="/" />
+          </Switch>
         )}
       </div>
     );
