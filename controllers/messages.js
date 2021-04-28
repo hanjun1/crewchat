@@ -46,6 +46,7 @@ async function updateGoing(req, res) {
     let group = await Group.findById(req.body.groupId);
     await group.populate("msgs").execPopulate();
     await group.populate("msgs.sender").execPopulate();
+    await group.populate("msgs.event.attendees").execPopulate();
     let msg = await group.msgs.id(req.body.msgId);
     await msg.event.attendees.push(user);
     await group.save();
