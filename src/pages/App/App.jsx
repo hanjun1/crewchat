@@ -42,7 +42,9 @@ function App() {
             <Route
               path="/profile"
               exact
-              render={(props) => <Profile {...props} />}
+              render={(props) => (
+                <Profile {...props} user={user} setUser={setUser} />
+              )}
             />
             <Route
               path="/groups/create"

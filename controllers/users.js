@@ -31,7 +31,22 @@ async function login(req, res) {
   }
 }
 
+async function edit(req, res) {
+  try {
+    console.log(req.body);
+    const user = await User.findById(req.body.userId);
+    user.name = req.body.name;
+    await user.save();
+    console.log(user);
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json(error);
+  }
+}
+
 module.exports = {
   create,
   login,
+  edit,
 };
