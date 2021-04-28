@@ -1,0 +1,28 @@
+.SideNav {
+  min-width: 80px;
+  max-width: 80px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border-right: 2px solid #ebeff8; */
+  /* background-color: #56597b; */
+}
+
+.SideNav .icon-group > h5 {
+  margin-top: 5px;
+  margin-bottom: 50px;
+  /* color: white; */
+  text-align: center;
+}
+
+.SideNav .icon-group {
+  margin: 15px auto;
+  cursor: pointer;
+  height: 100px;
+}
+
+.SideNav .icon-group:hover {
+  font-size: 18px;
+}

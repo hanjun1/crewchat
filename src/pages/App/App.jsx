@@ -6,6 +6,7 @@ import MessagesPage from "../MessagesPage/MessagesPage";
 import NewGroupPage from "../NewGroupPage/NewGroupPage";
 import ImageTestPage from "../ImageTestPage/ImageTestPage";
 import LoadingPage from "../LoadingPage/LoadingPage";
+import SideNav from "../../components/SideNav/SideNav";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,21 +39,22 @@ function App() {
       <div className="App">
         {user ? (
           <Switch>
-            {/* <Route
-              path="/"
-              exact
-              render={() => (
-                <MessagePage handleLogout={handleLogout} user={user} />
-              )}
-            /> */}
             <Route
               path="/groups/create"
               exact
-              render={(props) => <NewGroupPage {...props} />}
+              render={(props) => (
+                <NewGroupPage {...props} handleLogout={handleLogout} />
+              )}
             />
             <Route
               path="/groups/:id?"
-              render={(props) => <MessagesPage {...props} user={user} />}
+              render={(props) => (
+                <MessagesPage
+                  {...props}
+                  user={user}
+                  handleLogout={handleLogout}
+                />
+              )}
             />
             <Route
               path="/test"
@@ -62,7 +64,14 @@ function App() {
             <Redirect to="/groups/:id?" />
           </Switch>
         ) : (
-          <AuthPage setUser={setUser} />
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={(props) => <AuthPage setUser={setUser} />}
+            />
+            <Redirect to="/" />
+          </Switch>
         )}
       </div>
     );

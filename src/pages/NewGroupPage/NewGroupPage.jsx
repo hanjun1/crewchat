@@ -3,6 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import "./NewGroupPage.css";
 import Groups from "../../components/Groups/Groups";
 import NewGroup from "../../components/NewGroup/NewGroup";
+import SideNav from "../../components/SideNav/SideNav";
 
 function NewGroupPage(props) {
   const isDesktop = useMediaQuery({ minWidth: 1224 });
@@ -40,6 +41,7 @@ function NewGroupPage(props) {
     <div className="NewGroupPage">
       {isDesktop && (
         <>
+          <SideNav />
           <Groups
             groups={groups}
             groupCategories={groupCategories}
@@ -50,6 +52,7 @@ function NewGroupPage(props) {
       )}
       {isTablet && (
         <>
+          <SideNav />
           <Groups
             groups={groups}
             groupCategories={groupCategories}

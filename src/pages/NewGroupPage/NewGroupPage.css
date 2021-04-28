@@ -6,3 +6,13 @@
 .NewGroupPage > div {
   margin: 10px;
 }
+
+.NewGroupPage div.SideNav {
+  margin: 0px;
+}
+
+@media only screen and (min-width: 768px) {
+  .NewGroupPage div.Groups {
+    margin-right: 0px;
+  }
+}
