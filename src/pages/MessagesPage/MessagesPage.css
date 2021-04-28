@@ -6,3 +6,13 @@
 .MessagesPage > div {
   margin: 10px;
 }
+
+.MessagesPage div.SideNav {
+  margin: 0px;
+}
+
+@media only screen and (min-width: 768px) {
+  .MessagesPage div.Groups {
+    margin-right: 0px;
+  }
+}

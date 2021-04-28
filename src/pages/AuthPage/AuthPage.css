@@ -1,0 +1,45 @@
+.AuthPage {
+  background-color: #56597b;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* React Tabs Custom Styling  */
+.AuthPage .react-tabs {
+  background-color: #ebeff8;
+  max-width: 500px;
+  width: 90vw;
+  min-height: 500px;
+  height: 80vh;
+  border-radius: 15px;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.AuthPage .react-tabs__tab-list {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.AuthPage .react-tabs__tab {
+  padding: 12px 12px;
+  border: none;
+  margin: 0px 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #ebeff8;
+  color: #8e91af;
+}
+
+.AuthPage .react-tabs__tab--selected {
+  border-color: #6083ff;
+  color: #6083ff;
+  border-bottom: 4px solid;
+}
