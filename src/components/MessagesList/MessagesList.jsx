@@ -3,9 +3,8 @@ import "./MessagesList.css";
 import MessageItem from "../MessageItem/MessageItem";
 
 function MessagesList({
-  messages,
   user,
-  socketMessages,
+  messages,
   setSocketMessages,
   fetchMessage,
   groupId,
@@ -44,27 +43,25 @@ function MessagesList({
       });
     };
     scrollToBottom();
-  }, [messages, socketMessages]);
+  }, [messages]);
 
   return (
     <div className="MessagesList">
       {messages.map((msg) => (
         <MessageItem
+          groupId={groupId}
           type={msg.type}
           key={msg._id}
           msg={msg}
-          myMessage={msg.sender._id === user._id ? true : false}
+          user={user}
+          myMessage={
+            msg.ownedByCurrentUser
+              ? msg.ownedByCurrentUser
+              : msg.sender._id === user._id
+              ? true
+              : false
+          }
           time={formatTime(msg.createdAt)}
-          sender={msg.senderName}
-          senderIcon={<span className="material-icons">account_circle</span>}
-        />
-      ))}
-      {socketMessages.map((msg) => (
-        <MessageItem
-          type={msg.type}
-          msg={msg}
-          myMessage={msg.ownedByCurrentUser}
-          time={formatTime(msg.time)}
           sender={msg.senderName}
           senderIcon={<span className="material-icons">account_circle</span>}
         />

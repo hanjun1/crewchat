@@ -19,7 +19,7 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
         headers: { Authorization: "Bearer " + jwt },
       });
       let allMsgs = await fetchResponse.json();
-      setMemoryMessage(allMsgs);
+      setMessages(allMsgs);
     } catch (err) {
       console.log(err);
     }
@@ -34,9 +34,8 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
       />
       <MessagesList
         groupId={activeGroup._id}
-        messages={memoryMessage}
         user={user}
-        socketMessages={messages}
+        messages={messages}
         setSocketMessages={setMessages}
         fetchMessage={fetchMessage}
       />
