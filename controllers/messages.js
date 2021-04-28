@@ -4,10 +4,13 @@ const Event = require("../models/event");
 async function create(req, res) {
   try {
     let group = await Group.findById(req.params.groupId);
-    await group.textMsgs.push({
+    await group.msgs.push({
+      type: "text",
       sender: req.body.sender,
       senderName: req.body.senderName,
-      content: req.body.textContent,
+      text: {
+        content: req.body.textContent,
+      },
     });
     await group.save();
     res.status(200).json("okay!");
@@ -21,8 +24,12 @@ async function create(req, res) {
 async function createEvent(req, res) {
   try {
     let group = await Group.findById(req.params.groupId);
-    let event = await Event.create(req.body);
-    await group.events.push(event);
+    await group.msgs.push({
+      type: "event",
+      sender: req.body.sender,
+      senderName: req.body.senderName,
+      event: req.body.event,
+    });
     await group.save();
     res.status(200).json("okay!");
   } catch (err) {
