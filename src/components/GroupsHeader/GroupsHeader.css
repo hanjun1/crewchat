@@ -6,6 +6,13 @@
   font-family: "Ubuntu";
 }
 
+.GroupsHeader .menu-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 200;
+}
+
 .GroupsHeader .title {
   display: flex;
   flex-direction: row;
