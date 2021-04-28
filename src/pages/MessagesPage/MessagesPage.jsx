@@ -7,7 +7,7 @@ import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
 import WelcomeScreen from "../../components/WelcomeScreen/WelcomeScreen";
 import SideNav from "../../components/SideNav/SideNav";
 
-function MessagesPage({ props, handleLogout }) {
+function MessagesPage({ props, handleLogout, user }) {
   //Media queries for conditional rendering based on screen size
   const isDesktop = useMediaQuery({ minWidth: 1224 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
@@ -69,7 +69,7 @@ function MessagesPage({ props, handleLogout }) {
           />
           {activeGroup ? (
             <>
-              <Messages activeGroup={activeGroup} user={props.user} />
+              <Messages activeGroup={activeGroup} user={user} />
               <ChatRoomDetails activeGroup={activeGroup} />
             </>
           ) : (
@@ -97,7 +97,7 @@ function MessagesPage({ props, handleLogout }) {
                 <Messages
                   setShowDetails={setShowDetails}
                   activeGroup={activeGroup}
-                  user={props.user}
+                  user={user}
                 />
               )}
             </>
@@ -121,7 +121,7 @@ function MessagesPage({ props, handleLogout }) {
                   setShowDetails={setShowDetails}
                   activeGroup={activeGroup}
                   setActiveGroup={setActiveGroup}
-                  user={props.user}
+                  user={user}
                 />
               )}
             </>

@@ -62,7 +62,7 @@ function LoginForm(props) {
         <button className="login-btn">Log In</button>
       </form>
       <p>&nbsp;{error}</p>
-      <p className="signup-link">don't have an account? Sign Up</p>
+      {/* <p className="signup-link">don't have an account? Sign Up</p> */}
     </div>
   );
 }
