@@ -6,7 +6,7 @@ import MessagesPage from "../MessagesPage/MessagesPage";
 import NewGroupPage from "../NewGroupPage/NewGroupPage";
 import ImageTestPage from "../ImageTestPage/ImageTestPage";
 import LoadingPage from "../LoadingPage/LoadingPage";
-import Profile from "../../components/Profile/Profile";
+import ProfilePage from "../ProfilePage/ProfilePage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -55,7 +55,7 @@ function App() {
               path="/profile"
               exact
               render={(props) => (
-                <Profile {...props} user={user} setUser={setUser} />
+                <ProfilePage {...props} user={user} setUser={setUser} />
               )}
             />
             <Route

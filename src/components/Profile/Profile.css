@@ -2,7 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #ebeff8;
 }
+
+.Profile .menu-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 200;
+}
+
 /********************** Profile Picture ***********************/
 
 .Profile .profile-pic {
@@ -27,6 +38,12 @@
 .Profile .profile-pic img {
   max-height: 150%;
   max-width: 150%;
+}
+
+.Profile h5 {
+  text-align: center;
+  color: #8e91af;
+  margin-top: 10px;
 }
 
 /********************** Edit Profile Picture ***********************/
@@ -61,7 +78,7 @@
 }
 
 .Profile input {
-  background-color: rgb(214, 214, 214);
+  background-color: white;
   height: 35px;
   border-radius: 15px;
   outline: none;

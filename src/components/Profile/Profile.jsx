@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import "./Profile.css";
 import axios from "axios";
 
-function Profile({ user, setUser }) {
+function Profile({ user, setUser, showSideNav, setShowSideNav }) {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const [userInfo, setUserInfo] = useState({
     name: user.name,
   });
@@ -57,18 +59,38 @@ function Profile({ user, setUser }) {
       }
       if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
     } catch (err) {
-      console.log("SignUp Form error", err);
+      console.log(err);
     }
   }
 
   return (
     <div className="Profile">
+      {isMobile && (
+        <>
+          {showSideNav ? (
+            <span
+              className="material-icons md-48 menu-icon"
+              onClick={() => setShowSideNav(false)}
+            >
+              arrow_back_ios
+            </span>
+          ) : (
+            <span
+              className="material-icons md-48 menu-icon"
+              onClick={() => setShowSideNav(true)}
+            >
+              menu
+            </span>
+          )}
+        </>
+      )}
       <h1>Edit My Profile</h1>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="profile-pic">
           <div className="img-container">
             <img src={pictureURL}></img>
           </div>
+
           <label htmlFor="img-input" className="edit-profile-pic">
             <span className="material-icons md-light">edit</span>
           </label>
@@ -79,6 +101,7 @@ function Profile({ user, setUser }) {
             onChange={(e) => handleUploadImage(e)}
           />
         </div>
+        <h5>Profile Picture</h5>
 
         <label>Name</label>
         <input
