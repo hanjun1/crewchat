@@ -17,6 +17,7 @@ function EventDetail(props) {
       let body = {
         groupId: props.groupId,
         msgId: props.msgId,
+        userId: props.user._id,
       };
       let options = {
         method: "PUT",
@@ -35,6 +36,42 @@ function EventDetail(props) {
       } else if (!response.ok) {
         throw new Error("Fetch failed - Bad request");
       }
+      response = await response.json();
+      props.goingEvent(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleNotGoing = async (e) => {
+    e.preventDefault();
+    setGoing(!going);
+    try {
+      let jwt = localStorage.getItem("token");
+      let body = {
+        groupId: props.groupId,
+        msgId: props.msgId,
+        userId: props.user._id,
+      };
+      let options = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + jwt,
+        },
+        body: JSON.stringify(body),
+      };
+      let response = await fetch(
+        `/api/messages/${props.groupId}/notgoing`,
+        options
+      );
+      if (response.ok) {
+        console.log("OKAY!");
+      } else if (!response.ok) {
+        throw new Error("Fetch failed - Bad request");
+      }
+      response = await response.json();
+      props.notGoingEvent(response);
     } catch (err) {
       console.log(err);
     }
@@ -148,7 +185,7 @@ function EventDetail(props) {
       )}
       <div className="button-container">
         {going ? (
-          <form onSubmit={(e) => handleGoing(e)}>
+          <form onSubmit={(e) => handleNotGoing(e)}>
             <button>I'm not going</button>
           </form>
         ) : (

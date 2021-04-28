@@ -1,5 +1,6 @@
 const Group = require("../models/group");
 const Event = require("../models/event");
+const User = require("../models/user");
 
 async function create(req, res) {
   try {
@@ -41,8 +42,36 @@ async function createEvent(req, res) {
 
 async function updateGoing(req, res) {
   try {
-    let group = await Group.findById(req.params.groupId);
+    let user = await User.findById(req.body.userId);
+    let group = await Group.findById(req.body.groupId);
+    await group.populate("msgs").execPopulate();
+    await group.populate("msgs.sender").execPopulate();
+    let msg = await group.msgs.id(req.body.msgId);
+    await msg.event.attendees.push(user);
+    await group.save();
+    res.status(200).json(group.msgs);
   } catch (err) {
+    res.status(400).json("error");
+  }
+}
+
+async function updateNotGoing(req, res) {
+  try {
+    let group = await Group.findById(req.body.groupId);
+    await group.populate("msgs").execPopulate();
+    await group.populate("msgs.sender").execPopulate();
+    await group.populate("msgs.event.attendees").execPopulate();
+    let msg = await group.msgs.id(req.body.msgId);
+    for (let i = 0; i < msg.event.attendees.length; i++) {
+      if (req.body.userId == msg.event.attendees[i]._id) {
+        await msg.event.attendees.splice(i, 1);
+        break;
+      }
+    }
+    await group.save();
+    res.status(200).json(group.msgs);
+  } catch (err) {
+    console.log(err);
     res.status(400).json("error");
   }
 }
@@ -51,4 +80,5 @@ module.exports = {
   create,
   createEvent,
   updateGoing,
+  updateNotGoing,
 };

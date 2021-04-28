@@ -9,6 +9,8 @@ function MessagesList({
   fetchMessage,
   groupId,
   addMessage,
+  goingEvent,
+  notGoingEvent,
 }) {
   if (messages === undefined) {
     messages = [];
@@ -64,6 +66,9 @@ function MessagesList({
           time={formatTime(msg.createdAt)}
           sender={msg.senderName}
           senderIcon={<span className="material-icons">account_circle</span>}
+          fetchMessage={fetchMessage}
+          goingEvent={goingEvent}
+          notGoingEvent={notGoingEvent}
         />
       ))}
       <div ref={messagesEndRef}></div>

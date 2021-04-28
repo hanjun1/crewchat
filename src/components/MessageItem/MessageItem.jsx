@@ -2,7 +2,19 @@ import React from "react";
 import EventDetail from "../EventDetail/EventDetail";
 import "./MessageItem.css";
 
-function MessageItem({ myMessage, msg, time, sender, senderIcon, type, user }) {
+function MessageItem({
+  myMessage,
+  msg,
+  time,
+  sender,
+  senderIcon,
+  type,
+  user,
+  groupId,
+  fetchMessage,
+  goingEvent,
+  notGoingEvent,
+}) {
   return (
     <div
       className={`MessageItem ${myMessage ? "my-message" : "not-my-message"}`}
@@ -19,6 +31,10 @@ function MessageItem({ myMessage, msg, time, sender, senderIcon, type, user }) {
               attendees={msg.event.attendees}
               sender={sender}
               user={user}
+              groupId={groupId}
+              fetchMessage={fetchMessage}
+              goingEvent={goingEvent}
+              notGoingEvent={notGoingEvent}
             />
           </div>
           <div className="sender">{sender}</div>
