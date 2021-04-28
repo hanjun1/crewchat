@@ -15,6 +15,11 @@
    */
 }
 
+.SideNav .profile-link {
+  color: black;
+  text-decoration: none;
+}
+
 .SideNav .icon-group > h5 {
   margin-top: 5px;
   margin-bottom: 50px;
