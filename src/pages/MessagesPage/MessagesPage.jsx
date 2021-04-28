@@ -7,7 +7,7 @@ import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
 import WelcomeScreen from "../../components/WelcomeScreen/WelcomeScreen";
 import SideNav from "../../components/SideNav/SideNav";
 
-function MessagesPage({ props, handleLogout, user }) {
+function MessagesPage({ handleLogout, user, history, match }) {
   //Media queries for conditional rendering based on screen size
   const isDesktop = useMediaQuery({ minWidth: 1224 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
@@ -45,15 +45,13 @@ function MessagesPage({ props, handleLogout, user }) {
   }
 
   function matchGroupId(groups) {
-    // console.log(groups);
-    let groupId = props.match.params.id;
-    // console.log(groupId);
-    let match = groups.find((group) => group._id === groupId);
-    if (match === undefined) {
+    let groupId = match.params.id;
+    let isMatch = groups.find((group) => group._id === groupId);
+    if (isMatch === undefined) {
       setActiveGroup(null);
-      props.history.push("/groups");
+      history.push("/groups");
     } else {
-      setActiveGroup(match);
+      setActiveGroup(isMatch);
     }
   }
 
@@ -127,11 +125,18 @@ function MessagesPage({ props, handleLogout, user }) {
             </>
           ) : (
             <>
-              <SideNav handleLogout={handleLogout} />
+              {showSideNav && (
+                <SideNav
+                  handleLogout={handleLogout}
+                  setShowSideNav={setShowSideNav}
+                />
+              )}
               <Groups
                 groups={groups}
                 groupCategories={groupCategories}
                 setActiveGroup={setActiveGroup}
+                setShowSideNav={setShowSideNav}
+                showSideNav={showSideNav}
               />
             </>
           )}

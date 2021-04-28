@@ -6,8 +6,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
   /* border-right: 2px solid #ebeff8; */
   /* background-color: #56597b; */
+  /* position: fixed;
+  display: absolute;
+  z-index: 100;
+   */
 }
 
 .SideNav .icon-group > h5 {
