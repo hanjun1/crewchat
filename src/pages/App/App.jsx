@@ -6,6 +6,7 @@ import MessagesPage from "../MessagesPage/MessagesPage";
 import NewGroupPage from "../NewGroupPage/NewGroupPage";
 import ImageTestPage from "../ImageTestPage/ImageTestPage";
 import LoadingPage from "../LoadingPage/LoadingPage";
+import SideNav from "../../components/SideNav/SideNav";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -45,6 +46,11 @@ function App() {
                 <MessagePage handleLogout={handleLogout} user={user} />
               )}
             /> */}
+            <Route
+              path="/groups/sidenav"
+              exact
+              render={(props) => <SideNav {...props} />}
+            />
             <Route
               path="/groups/create"
               exact

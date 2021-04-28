@@ -5,6 +5,7 @@ import Groups from "../../components/Groups/Groups";
 import Messages from "../../components/Messages/Messages";
 import ChatRoomDetails from "../../components/ChatRoomDetails/ChatRoomDetails";
 import WelcomeScreen from "../../components/WelcomeScreen/WelcomeScreen";
+import SideNav from "../../components/SideNav/SideNav";
 
 function MessagesPage(props) {
   //Media queries for conditional rendering based on screen size
@@ -59,6 +60,7 @@ function MessagesPage(props) {
     <div className="MessagesPage">
       {isDesktop && (
         <>
+          <SideNav />
           <Groups
             groups={groups}
             groupCategories={groupCategories}
@@ -76,6 +78,7 @@ function MessagesPage(props) {
       )}
       {isTablet && (
         <>
+          <SideNav />
           <Groups
             groups={groups}
             groupCategories={groupCategories}
