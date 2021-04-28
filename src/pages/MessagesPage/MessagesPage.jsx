@@ -67,8 +67,12 @@ function MessagesPage({ handleLogout, user, history, match }) {
           />
           {activeGroup ? (
             <>
-              <Messages activeGroup={activeGroup} user={user} />
-              <ChatRoomDetails activeGroup={activeGroup} />
+              <Messages activeGroup={activeGroup} user={props.user} />
+              <ChatRoomDetails
+                activeGroup={activeGroup}
+                user={props.user}
+                fetchGroups={fetchGroups}
+              />
             </>
           ) : (
             <WelcomeScreen />
@@ -90,6 +94,8 @@ function MessagesPage({ handleLogout, user, history, match }) {
                   showChatDetails={showDetails}
                   setShowChatDetails={setShowDetails}
                   activeGroup={activeGroup}
+                  user={props.user}
+                  fetchGroups={fetchGroups}
                 />
               ) : (
                 <Messages
@@ -113,6 +119,8 @@ function MessagesPage({ handleLogout, user, history, match }) {
                   showChatDetails={showDetails}
                   setShowChatDetails={setShowDetails}
                   activeGroup={activeGroup}
+                  user={props.user}
+                  fetchGroups={fetchGroups}
                 />
               ) : (
                 <Messages

@@ -26,6 +26,9 @@ function PhotosDetail(props) {
       {imgs.map((img) => (
         <img src={img} alt="IMG" />
       ))}
+      {/* {props.imgMsgs.map((img) => (
+        <img src={img} alt="IMG" />
+      ))} */}
     </div>
   );
 }
