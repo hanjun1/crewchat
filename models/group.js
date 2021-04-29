@@ -85,6 +85,8 @@ const MsgSchema = new Schema(
     },
     file: {
       fileURL: String,
+      fileSize: String,
+      fileName: String,
     },
     image: {
       imgFileURL: String,

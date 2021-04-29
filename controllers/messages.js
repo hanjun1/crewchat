@@ -105,7 +105,7 @@ async function createImage(req, res) {
       sender: req.body.sender,
       senderName: req.body.senderName,
       image: {
-        imgFileURL: req.body.image,
+        imgFileURL: req.body.link,
       },
     });
     await group.save();
@@ -124,7 +124,9 @@ async function createFile(req, res) {
       sender: req.body.sender,
       senderName: req.body.senderName,
       file: {
-        fileURL: req.body.file,
+        fileURL: req.body.link,
+        fileName: req.body.fileName,
+        fileSize: req.body.fileSize,
       },
     });
     await group.save();
