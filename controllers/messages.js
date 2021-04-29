@@ -104,7 +104,9 @@ async function createImage(req, res) {
       type: "image",
       sender: req.body.sender,
       senderName: req.body.senderName,
-      image: req.body.image,
+      image: {
+        imgFileURL: req.body.image,
+      },
     });
     await group.save();
     await group.populate("msgs.event.attendees").execPopulate();

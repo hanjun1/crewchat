@@ -17,10 +17,9 @@
   border-top-left-radius: 15px;
 }
 
-.MessageInput-container .text-button,
-.MessageInput-container .event-button,
-.MessageInput-container .poll-button {
+.MessageInput-container .button-container > div {
   cursor: pointer;
+  margin: 0px 5px;
 }
 
 .MessageInput form {
@@ -31,22 +30,25 @@
   width: 90%;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+  position: relative;
 }
 
 .MessageInput .text-form-container,
 .MessageInput .event-form-container,
-.MessageInput .poll-form-container {
+.MessageInput .poll-form-container,
+.MessageInput .image-form-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  min-height: 50px;
 }
 
 .MessageInput .event-inputs-container,
 .MessageInput .poll-inputs-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   padding: 1rem;
 }
 
@@ -89,7 +91,11 @@
   width: 50px;
   height: 40px;
   cursor: pointer;
+  position: absolute;
+  right: 5px;
 }
+
+/************************** Polls ****************************/
 
 .MessageInput .add-option {
   margin: 2px 2px 2px 10px;
@@ -104,4 +110,18 @@
 
 .MessageInput .poll-inputs-container .question {
   border-bottom: 1px solid #dadeff;
+}
+
+/************************** Images ****************************/
+label.img-input-label {
+  cursor: pointer !important;
+}
+
+.MessageInput #img-input {
+  display: none;
+}
+
+.MessageInput .img-preview {
+  max-width: 100px;
+  max-height: 100px;
 }

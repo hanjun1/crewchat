@@ -178,6 +178,7 @@ function MessageInput(props) {
     setPicture(e.target.files[0]);
     setPictureURL(URL.createObjectURL(e.target.files[0]));
   };
+
   const handleSubmitImageMessage = async (e) => {
     if (picture) {
       let data = new FormData();
@@ -189,12 +190,15 @@ function MessageInput(props) {
           console.log(result);
           returnedURL = result.data.downloadUrl;
           postToDB(returnedURL);
+          setPicture(null);
+          setPictureURL("");
+          setInputType("text");
         })
         .catch((e) => {
           console.log(e);
         });
     } else {
-      postToDB(pictureURL);
+      console.log("no picture added");
     }
     e.preventDefault();
   };
@@ -262,6 +266,26 @@ function MessageInput(props) {
               onClick={(e) => handleChangeInput(e)}
             >
               poll
+            </span>
+          </div>
+          <div className="img-button">
+            <label htmlFor="img-input" className="img-input-label">
+              <span
+                id="image"
+                className="material-icons md"
+                onClick={(e) => handleChangeInput(e)}
+              >
+                image
+              </span>
+            </label>
+          </div>
+          <div className="doc-button">
+            <span
+              id="document"
+              className="material-icons md"
+              onClick={(e) => handleChangeInput(e)}
+            >
+              upload_file
             </span>
           </div>
         </div>
@@ -378,6 +402,30 @@ function MessageInput(props) {
                 </button>
               )} */}
             </div>
+            <button>
+              <span className="material-icons md-light">send</span>
+            </button>
+          </form>
+        ) : inputType === "image" ? (
+          <form
+            className="image-form-container"
+            onSubmit={handleSubmitImageMessage}
+          >
+            <input
+              type="file"
+              accept="image/*"
+              id="img-input"
+              onChange={(e) => handleUploadImage(e)}
+            />
+
+            <img className="img-preview" src={pictureURL}></img>
+
+            <button>
+              <span className="material-icons md-light">send</span>
+            </button>
+          </form>
+        ) : inputType === "document" ? (
+          <form>
             <button>
               <span className="material-icons md-light">send</span>
             </button>
