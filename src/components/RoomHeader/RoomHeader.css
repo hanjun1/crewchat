@@ -86,11 +86,29 @@
 /***********************************************************/
 
 .RoomHeader .link-container {
-  vertical-align: middle;
-  font-size: 0.9rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
+  cursor: pointer;
+  position: relative;
 }
 
-.RoomHeader .link-container svg {
-  vertical-align: inherit;
-  margin-right: 0.5rem;
+.RoomHeader .copy-icon {
+  background-color: #5175f8;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.RoomHeader .copy-success {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  color: #5175f8;
 }
