@@ -50,7 +50,7 @@ async function createPoll(req, res) {
     await group.msgs.push({
       type: "poll",
       sender: req.body.sender,
-      senderName: req.body.sender,
+      senderName: req.body.senderName,
       poll: temp,
     });
     await group.save();
@@ -97,10 +97,59 @@ async function updateNotGoing(req, res) {
   }
 }
 
+async function updateVote(req, res) {
+  try {
+    let group = await Group.findById(req.body.groupId);
+    let user = await User.findById(req.body.userId);
+    await group.populate("msgs").execPopulate();
+    await group.populate("msgs.sender").execPopulate();
+    await group.populate("msgs.poll.options.voters").execPopulate();
+    let msg = await group.msgs.id(req.body.msgId);
+    for (let i = 0; i < msg.poll.options.length; i++) {
+      if (req.body.optionId == msg.poll.options[i]._id) {
+        await msg.poll.options[i].voters.push(user);
+        break;
+      }
+    }
+    await group.save();
+    res.status(200).json(group.msgs);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json("error");
+  }
+}
+
+async function updateUnvote(req, res) {
+  try {
+    let group = await Group.findById(req.body.groupId);
+    await group.populate("msgs").execPopulate();
+    await group.populate("msgs.sender").execPopulate();
+    await group.populate("msgs.poll.options.voters").execPopulate();
+    let msg = await group.msgs.id(req.body.msgId);
+    for (let i = 0; i < msg.poll.options.length; i++) {
+      if (req.body.optionId == msg.poll.options[i]._id) {
+        for (let y = 0; i < msg.poll.options[i].voters.length; y++) {
+          if (req.body.userId == msg.poll.options[i].voters[y]._id) {
+            await msg.poll.options[i].voters.splice(y, 1);
+            break;
+          }
+        }
+      }
+    }
+    await group.save();
+    res.status(200).json(group.msgs);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json("error");
+  }
+}
+
 module.exports = {
   create,
   createEvent,
   updateGoing,
   updateNotGoing,
   createPoll,
+  updateVote,
+  updateUnvote,
 };

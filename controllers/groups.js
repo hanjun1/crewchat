@@ -56,6 +56,8 @@ async function getOne(req, res) {
     let group = await Group.findById(req.params.id);
     await group.populate("msgs.sender").execPopulate();
     await group.populate("msgs.event.attendees").execPopulate();
+    await group.populate("msgs.sender").execPopulate();
+    await group.populate("msgs.poll.options.voters").execPopulate();
     res.status(200).json(group.msgs);
   } catch (err) {
     console.log(err);

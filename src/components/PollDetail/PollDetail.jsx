@@ -12,6 +12,10 @@ function PollDetail(props) {
           option={option}
           totalPeople={props.totalPeople}
           voters={option.voters}
+          user={props.user}
+          groupId={props.groupId}
+          msgId={props.msgId}
+          optionId={option._id}
         />
       ))}
     </div>
