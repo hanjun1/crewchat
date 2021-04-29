@@ -64,8 +64,8 @@ function MessagesList({
               : false
           }
           time={formatTime(msg.createdAt)}
-          sender={msg.senderName}
-          senderIcon={<span className="material-icons">account_circle</span>}
+          sender={msg.sender.name}
+          senderIcon={msg.sender.picture}
           fetchMessage={fetchMessage}
           goingEvent={goingEvent}
           notGoingEvent={notGoingEvent}
