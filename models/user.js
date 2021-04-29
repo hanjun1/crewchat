@@ -7,6 +7,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    picture: {
+      type: String,
+      default: "",
+    },
     email: {
       type: String,
       unique: true,

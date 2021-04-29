@@ -1,0 +1,18 @@
+.ProfilePage {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.ProfilePage > div {
+  margin: 10px;
+}
+
+.ProfilePage div.SideNav {
+  margin: 0px;
+}
+
+@media only screen and (min-width: 768px) {
+  .ProfilePage div.Groups {
+    margin-right: 0px;
+  }
+}

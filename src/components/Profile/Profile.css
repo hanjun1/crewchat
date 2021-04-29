@@ -1,0 +1,105 @@
+.Profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #ebeff8;
+}
+
+.Profile .menu-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 200;
+}
+
+/********************** Profile Picture ***********************/
+
+.Profile .profile-pic {
+  width: 150px;
+  /* height: 140px; */
+  margin: auto;
+  position: relative;
+}
+
+.Profile .img-container {
+  background-color: rgb(204, 204, 204);
+  width: 140px;
+  height: 140px;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Profile .profile-pic img {
+  max-height: 150%;
+  max-width: 150%;
+}
+
+.Profile h5 {
+  text-align: center;
+  color: #8e91af;
+  margin-top: 10px;
+}
+
+/********************** Edit Profile Picture ***********************/
+.Profile .edit-profile-pic {
+  border-radius: 50%;
+  background-color: #6083ff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.Profile .edit-profile-pic:hover {
+  width: 42px;
+  height: 42px;
+  background-color: #5175f8;
+}
+
+.Profile #img-input {
+  display: none;
+}
+
+/********************** Edit Name ***********************/
+.Profile label {
+  color: #8e91af;
+  display: block;
+}
+
+.Profile input {
+  background-color: white;
+  height: 35px;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+  margin: 5px 0px 20px 0px;
+  max-width: 300px;
+  font-size: 18px;
+  width: calc(100% - 1em);
+  padding: 0 0.5em;
+}
+
+.Profile .save-btn {
+  background-color: #6083ff;
+  border-radius: 15px;
+  border: 1px solid #6083ff;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  height: 35px;
+  width: 100px;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+}

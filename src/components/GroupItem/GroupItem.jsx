@@ -5,18 +5,18 @@ function GroupItem({ group }) {
   // Formatting
   let msgPreview;
   let lastMsgTime;
-  if (group.textMsgs.length > 0) {
-    msgPreview = group.textMsgs.slice(-1)[0].content;
-    lastMsgTime = new Date(
-      group.textMsgs.slice(-1)[0].updatedAt
-    ).toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  } else {
-    msgPreview = "";
-    lastMsgTime = "---";
-  }
+  // if (group.textMsgs.length > 0) {
+  //   msgPreview = group.textMsgs.slice(-1)[0].content;
+  //   lastMsgTime = new Date(
+  //     group.textMsgs.slice(-1)[0].updatedAt
+  //   ).toLocaleTimeString([], {
+  //     hour: "2-digit",
+  //     minute: "2-digit",
+  //   });
+  // } else {
+  //   msgPreview = "";
+  //   lastMsgTime = "---";
+  // }
 
   return (
     <div className="GroupItem">
@@ -36,7 +36,9 @@ function GroupItem({ group }) {
       <div className="text-preview">{msgPreview}</div>
       <div className="participants">
         {group.members.map((member) => (
-          <span className="material-icons">account_circle</span>
+          <span key={member._id} className="material-icons">
+            account_circle
+          </span>
         ))}
       </div>
     </div>
