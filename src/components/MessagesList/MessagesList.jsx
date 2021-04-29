@@ -3,13 +3,14 @@ import "./MessagesList.css";
 import MessageItem from "../MessageItem/MessageItem";
 
 function MessagesList({
-  messages,
   user,
-  socketMessages,
+  messages,
   setSocketMessages,
   fetchMessage,
   groupId,
   addMessage,
+  goingEvent,
+  notGoingEvent,
 }) {
   if (messages === undefined) {
     messages = [];
@@ -44,28 +45,30 @@ function MessagesList({
       });
     };
     scrollToBottom();
-  }, [messages, socketMessages]);
+  }, [messages]);
 
   return (
     <div className="MessagesList">
       {messages.map((msg) => (
         <MessageItem
+          groupId={groupId}
+          type={msg.type}
           key={msg._id}
-          content={msg.content}
-          myMessage={msg.sender === user._id ? true : false}
+          msg={msg}
+          user={user}
+          myMessage={
+            msg.ownedByCurrentUser
+              ? msg.ownedByCurrentUser
+              : msg.sender._id === user._id
+              ? true
+              : false
+          }
           time={formatTime(msg.createdAt)}
           sender={msg.senderName}
           senderIcon={<span className="material-icons">account_circle</span>}
-        />
-      ))}
-      {socketMessages.map((msg) => (
-        <MessageItem
-          type={msg.type}
-          content={msg.body}
-          myMessage={msg.ownedByCurrentUser}
-          time={formatTime(msg.time)}
-          sender={msg.senderName}
-          senderIcon={<span className="material-icons">account_circle</span>}
+          fetchMessage={fetchMessage}
+          goingEvent={goingEvent}
+          notGoingEvent={notGoingEvent}
         />
       ))}
       <div ref={messagesEndRef}></div>

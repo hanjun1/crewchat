@@ -42,6 +42,8 @@ const io = socketIo(server, {
 const USER_JOIN_CHAT = "USER_JOIN_CHAT";
 const NEW_CHAT_MESSAGE = "NEW_CHAT_MESSAGE";
 const NEW_EVENT_CHAT_MESSAGE = "NEW_EVENT_CHAT_MESSAGE";
+const NOT_GOING_EVENT = "NOT_GOING_EVENT";
+const GOING_EVENT = "GOING_EVENT";
 
 io.on("connection", function (socket) {
   console.log(`Client connected to ${socket.id}`);
@@ -59,6 +61,14 @@ io.on("connection", function (socket) {
 
   socket.on(NEW_EVENT_CHAT_MESSAGE, (message) => {
     io.in(roomId).emit(NEW_EVENT_CHAT_MESSAGE, message);
+  });
+
+  socket.on(NOT_GOING_EVENT, (messages) => {
+    io.in(roomId).emit(NOT_GOING_EVENT, messages);
+  });
+
+  socket.on(GOING_EVENT, (messages) => {
+    io.in(roomId).emit(NOT_GOING_EVENT, messages);
   });
 
   socket.on("disconnect", () => {

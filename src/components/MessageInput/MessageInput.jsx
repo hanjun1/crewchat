@@ -31,14 +31,14 @@ function MessageInput(props) {
     try {
       let jwt = localStorage.getItem("token");
       let body = {
-        ...eventMsg,
-        creator: props.user._id,
-        creatorName: props.user.name,
-        group: props.groupId,
-        attendees: [props.user._id],
+        sender: props.user._id,
+        senderName: props.user.name,
+        event: {
+          ...eventMsg,
+          attendees: [props.user._id],
+        },
       };
       setEventMsg({ name: "", date: "", address: "" });
-      props.sendEventMsg(body);
       let options = {
         method: "POST",
         headers: {
@@ -51,13 +51,14 @@ function MessageInput(props) {
         `/api/messages/event/${props.groupId}`,
         options
       );
-      console.log(response.ok);
       if (response.ok) {
         console.log("SENT");
       }
       if (!response.ok) {
         throw new Error("Fetch failed - Bad request");
       }
+      response = await response.json();
+      props.sendMessage(response);
     } catch (err) {
       console.log(err);
     }
@@ -73,7 +74,6 @@ function MessageInput(props) {
         textContent: textContent,
       };
       setTextContent("");
-      props.sendMessage(textContent);
       let options = {
         method: "POST",
         headers: {
@@ -84,14 +84,14 @@ function MessageInput(props) {
       };
       // CHANGE ADDRESS TO DYNAMIC ID
       let response = await fetch(`/api/messages/${props.groupId}`, options);
-      console.log(response.ok);
       if (response.ok) {
         console.log("SENT");
       }
       if (!response.ok) {
         throw new Error("Fetch failed - Bad request");
       }
-      // response = await response.json();
+      response = await response.json();
+      props.sendMessage(response);
     } catch (err) {
       console.log(err);
     }

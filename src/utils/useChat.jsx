@@ -3,6 +3,8 @@ import socketIOClient from "socket.io-client";
 
 const NEW_CHAT_MESSAGE = "NEW_CHAT_MESSAGE";
 const NEW_EVENT_CHAT_MESSAGE = "NEW_EVENT_CHAT_MESSAGE";
+const NOT_GOING_EVENT = "NOT_GOING_EVENT";
+const GOING_EVENT = "GOING_EVENT";
 const SOCKET_SERVER_URL = "http://localhost:3001";
 
 const useChat = (roomId, user) => {
@@ -27,12 +29,19 @@ const useChat = (roomId, user) => {
     });
 
     socketRef.current.on(NEW_EVENT_CHAT_MESSAGE, (message) => {
-      console.log("EVENT MSG SENT");
       const incomingMessage = {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,
       };
       setMessages((messages) => [...messages, incomingMessage]);
+    });
+
+    socketRef.current.on(NOT_GOING_EVENT, (messages) => {
+      setMessages(messages);
+    });
+
+    socketRef.current.on(GOING_EVENT, (messages) => {
+      setMessages(messages);
     });
 
     return () => {
@@ -44,26 +53,29 @@ const useChat = (roomId, user) => {
   const sendMessage = (messageBody) => {
     if (!socketRef.current) return;
     socketRef.current.emit(NEW_CHAT_MESSAGE, {
-      type: "text",
-      body: messageBody,
+      ...messageBody,
       senderId: socketRef.current.id,
       userId: user._id,
-      senderName: user.name,
-      time: Date.now(),
     });
   };
 
   const sendEventMsg = (messageBody) => {
     if (!socketRef.current) return;
-    console.log("sendEventMsg triggered");
     socketRef.current.emit(NEW_EVENT_CHAT_MESSAGE, {
-      type: "event",
-      body: messageBody,
-      senderId: socketRef.current.id,
+      ...messageBody,
       userId: user._id,
-      senderName: user.name,
-      time: Date.now(),
+      senderId: socketRef.current.id,
     });
+  };
+
+  const notGoingEvent = (messages) => {
+    if (!socketRef.current) return;
+    socketRef.current.emit(NOT_GOING_EVENT, messages);
+  };
+
+  const goingEvent = (messages) => {
+    if (!socketRef.current) return;
+    socketRef.current.emit(GOING_EVENT, messages);
   };
 
   return {
@@ -71,6 +83,8 @@ const useChat = (roomId, user) => {
     setMessages,
     sendMessage,
     sendEventMsg,
+    goingEvent,
+    notGoingEvent,
   };
 };
 

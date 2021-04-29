@@ -6,10 +6,14 @@ import MessageHeader from "../../components/MessageHeader/MessageHeader";
 import useChat from "../../utils/useChat";
 
 function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
-  const { messages, setMessages, sendMessage, sendEventMsg } = useChat(
-    activeGroup._id,
-    user
-  );
+  const {
+    messages,
+    setMessages,
+    sendMessage,
+    sendEventMsg,
+    goingEvent,
+    notGoingEvent,
+  } = useChat(activeGroup._id, user);
   const [memoryMessage, setMemoryMessage] = useState([]);
 
   async function fetchMessage(groupId) {
@@ -18,8 +22,8 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
       const fetchResponse = await fetch(`/api/groups/${groupId}`, {
         headers: { Authorization: "Bearer " + jwt },
       });
-      let group = await fetchResponse.json();
-      setMemoryMessage(group.textMsgs);
+      let allMsgs = await fetchResponse.json();
+      setMessages(allMsgs);
     } catch (err) {
       console.log(err);
     }
@@ -34,11 +38,12 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
       />
       <MessagesList
         groupId={activeGroup._id}
-        messages={memoryMessage}
         user={user}
-        socketMessages={messages}
+        messages={messages}
         setSocketMessages={setMessages}
         fetchMessage={fetchMessage}
+        goingEvent={goingEvent}
+        notGoingEvent={notGoingEvent}
       />
       <MessageInput
         user={user}

@@ -7,11 +7,6 @@ async function create(req, res) {
       name: req.body.name,
       category: req.body.category,
       members: [req.user._id],
-      textMsgs: [],
-      fileMsgs: [],
-      imgMsgs: [],
-      polls: [],
-      events: [],
     });
     res.status(200).json(newGroup);
   } catch (error) {
@@ -59,8 +54,11 @@ async function index(req, res) {
 async function getOne(req, res) {
   try {
     let group = await Group.findById(req.params.id);
-    res.status(200).json(group);
+    await group.populate("msgs.sender").execPopulate();
+    await group.populate("msgs.event.attendees").execPopulate();
+    res.status(200).json(group.msgs);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 }
