@@ -11,10 +11,10 @@ function PollDetailOption(props) {
     <div className="PollDetailOption">
       <div className="option-container">
         <div className="option-name-container">
-          <p>{props.option.name}</p>
+          <p>{props.option.option}</p>
         </div>
         <div className="votes-container">
-          <p>{props.option.votes} votes&ensp;</p>
+          <p>{props.option.voters.length} votes&ensp;</p>
           <div className="drop-down-container">
             {showMore ? (
               <svg
@@ -53,7 +53,7 @@ function PollDetailOption(props) {
       </div>
       {showMore && (
         <div className="people-container">
-          {props.people.map((person) => (
+          {props.voters.map((person) => (
             <div className="person-container">
               <svg
                 width="20"

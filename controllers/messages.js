@@ -40,6 +40,26 @@ async function createEvent(req, res) {
   }
 }
 
+async function createPoll(req, res) {
+  try {
+    let group = await Group.findById(req.params.groupId);
+    let temp = {
+      ...req.body.poll,
+      totalPeople: group.members.length,
+    };
+    await group.msgs.push({
+      type: "poll",
+      sender: req.body.sender,
+      senderName: req.body.sender,
+      poll: temp,
+    });
+    await group.save();
+    res.status(200).json(group.msgs[group.msgs.length - 1]);
+  } catch (err) {
+    res.status(400).json("error");
+  }
+}
+
 async function updateGoing(req, res) {
   try {
     let user = await User.findById(req.body.userId);
@@ -82,4 +102,5 @@ module.exports = {
   createEvent,
   updateGoing,
   updateNotGoing,
+  createPoll,
 };

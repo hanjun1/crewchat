@@ -90,8 +90,9 @@ const MsgSchema = new Schema(
       imgFileURL: String,
     },
     poll: {
-      description: String,
+      question: String,
       options: [pollOptionSchema],
+      totalPeople: Number,
     },
     event: {
       name: String,

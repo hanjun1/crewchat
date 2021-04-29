@@ -5,18 +5,18 @@ function GroupItem({ group }) {
   // Formatting
   let msgPreview;
   let lastMsgTime;
-  if (group.textMsgs.length > 0) {
-    msgPreview = group.textMsgs.slice(-1)[0].content;
-    lastMsgTime = new Date(
-      group.textMsgs.slice(-1)[0].updatedAt
-    ).toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  } else {
-    msgPreview = "";
-    lastMsgTime = "---";
-  }
+  // if (group.textMsgs.length > 0) {
+  //   msgPreview = group.textMsgs.slice(-1)[0].content;
+  //   lastMsgTime = new Date(
+  //     group.textMsgs.slice(-1)[0].updatedAt
+  //   ).toLocaleTimeString([], {
+  //     hour: "2-digit",
+  //     minute: "2-digit",
+  //   });
+  // } else {
+  //   msgPreview = "";
+  //   lastMsgTime = "---";
+  // }
 
   return (
     <div className="GroupItem">
