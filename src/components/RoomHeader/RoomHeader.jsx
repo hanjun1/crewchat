@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import axios from "axios";
 
 function RoomHeader({
+  groupId,
   name,
   showChatDetails,
   setShowChatDetails,
@@ -54,7 +55,7 @@ function RoomHeader({
           picture: returnedURL,
         }),
       };
-      const fetchResponse = await fetch("/api/users/edit", options);
+      const fetchResponse = await fetch(`/api/groups/${groupId}`, options);
       if (fetchResponse.ok) {
       }
       if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
