@@ -5,6 +5,7 @@ function PollDetailOption(props) {
   let width = `${(props.option.voters.length / props.totalPeople) * 100}%`;
   const [showMore, setShowMore] = useState(false);
   const [voted, setVoted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleShowMore = () => setShowMore(!showMore);
 
@@ -24,6 +25,7 @@ function PollDetailOption(props) {
 
   const handleVoted = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setVoted(!voted);
     try {
       let jwt = localStorage.getItem("token");
@@ -57,6 +59,7 @@ function PollDetailOption(props) {
       }
       response = await response.json();
       props.updatePoll(response);
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -67,13 +70,26 @@ function PollDetailOption(props) {
       <div className="voting-details">
         <div className="button-container">
           {voted ? (
-            <form onClick={handleVoted}>
-              <button>-</button>
-            </form>
+            loading ? (
+              <form className="loading">
+                <button>-</button>
+              </form>
+            ) : (
+              <form onClick={handleVoted}>
+                <button>-</button>
+              </form>
+            )
           ) : (
-            <form onClick={handleVoted}>
-              <button>+</button>
-            </form>
+            loading ? (
+              <form className="loading">
+                <button>+</button>
+              </form>  
+            ) : (
+              <form onClick={handleVoted}>
+                <button>+</button>
+              </form>
+            )
+            
           )}
         </div>
         <div className="details-container">
