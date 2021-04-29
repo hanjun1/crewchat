@@ -1,62 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// const textMsgSchema = new Schema(
-//   {
-//     sender: {
-//       type: Schema.Types.ObjectId,
-//       ref: "User",
-//     },
-//     senderName: String,
-//     content: String,
-//   },
-//   {
-//     timestamps: true,
-//   }
-// );
-
-// const fileMsgSchema = new Schema(
-//   {
-//     sender: {
-//       type: Schema.Types.ObjectId,
-//       ref: "User",
-//     },
-//     senderName: String,
-//     fileURL: String,
-//   },
-//   {
-//     timestamps: true,
-//   }
-// );
-
-// const imgMsgSchema = new Schema(
-//   {
-//     sender: {
-//       type: Schema.Types.ObjectId,
-//       ref: "User",
-//     },
-//     senderName: String,
-//     fileURL: String,
-//   },
-//   {
-//     timestamps: true,
-//   }
-// );
-
-// const pollSchema = new Schema(
-//   {
-//     creator: {
-//       type: Schema.Types.ObjectId,
-//       ref: "User",
-//     },
-//     description: String,
-//     options: [pollOptionSchema],
-//   },
-//   {
-//     timestamps: true,
-//   }
-// );
-
 const pollOptionSchema = new Schema(
   {
     option: String,

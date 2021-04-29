@@ -16,6 +16,7 @@ function MessageItem({
   goingEvent,
   notGoingEvent,
   updatePoll,
+  totalPeople,
 }) {
   const reduceNameLength = (name) => {
     name = name.split(".");
@@ -85,7 +86,7 @@ function MessageItem({
               date={msg.createdAt}
               sender={sender}
               user={user}
-              totalPeople={msg.poll.totalPeople}
+              totalPeople={totalPeople}
               groupId={groupId}
               updatePoll={updatePoll}
             />
