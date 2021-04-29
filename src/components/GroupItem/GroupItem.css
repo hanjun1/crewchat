@@ -18,7 +18,8 @@
 .GroupItem:hover {
   background-color: #e8eafc;
 }
-.group-icon {
+/******************** Icon pictures ******************/
+.GroupItem .group-icon {
   grid-area: group-icon;
   display: flex;
   justify-content: center;
@@ -26,26 +27,46 @@
   margin-right: 10px;
   margin-bottom: 10px;
 }
-.group-name {
+
+.GroupItem .member-icon {
+  height: 19px;
+  width: 19px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid rgb(214, 214, 214);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.GroupItem .member-icon > img {
+  max-height: 150%;
+  max-width: 150%;
+}
+
+.GroupItem .group-name {
   grid-area: group-name;
   font-size: 18px;
   font-weight: bold;
-  margin-top: auto;
+  margin-bottom: auto;
   overflow-x: hidden;
+
   /* white-space: nowrap; */
 }
-.text-preview {
+.GroupItem .text-preview {
   grid-area: text-preview;
   color: grey;
   white-space: nowrap;
   overflow-x: hidden;
   font-size: 14px;
 }
-.time {
+.GroupItem .time {
   grid-area: time;
   font-size: 14px;
   text-align: right;
 }
-.participants {
+.GroupItem .participants {
+  display: flex;
+  flex-direction: row;
   grid-area: participants;
 }

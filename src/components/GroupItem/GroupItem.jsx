@@ -5,18 +5,23 @@ function GroupItem({ group }) {
   // Formatting
   let msgPreview;
   let lastMsgTime;
-  // if (group.textMsgs.length > 0) {
-  //   msgPreview = group.textMsgs.slice(-1)[0].content;
-  //   lastMsgTime = new Date(
-  //     group.textMsgs.slice(-1)[0].updatedAt
-  //   ).toLocaleTimeString([], {
-  //     hour: "2-digit",
-  //     minute: "2-digit",
-  //   });
-  // } else {
-  //   msgPreview = "";
-  //   lastMsgTime = "---";
-  // }
+  if (group.msgs.length > 0) {
+    let lastMsg = group.msgs.slice(-1)[0];
+    if (lastMsg.type === "text") {
+      msgPreview = lastMsg.text.content;
+    } else {
+      msgPreview = `${lastMsg.senderName} sent a ${lastMsg.type}`;
+    }
+    lastMsgTime = new Date(
+      group.msgs.slice(-1)[0].updatedAt
+    ).toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  } else {
+    msgPreview = "No Messages Yet";
+    lastMsgTime = "---";
+  }
 
   return (
     <div className="GroupItem">
@@ -35,11 +40,21 @@ function GroupItem({ group }) {
       <div className="time">{lastMsgTime}</div>
       <div className="text-preview">{msgPreview}</div>
       <div className="participants">
-        {group.members.map((member) => (
-          <span key={member._id} className="material-icons">
-            account_circle
-          </span>
-        ))}
+        {group.members.map((member) =>
+          member.picture === "" ? (
+            <>
+              <span key={member._id} className="material-icons">
+                account_circle
+              </span>
+            </>
+          ) : (
+            <>
+              <div className="member-icon">
+                <img src={member.picture}></img>
+              </div>
+            </>
+          )
+        )}
       </div>
     </div>
   );

@@ -33,6 +33,8 @@ function Profile({ user, setUser, showSideNav, setShowSideNav }) {
         .catch((e) => {
           console.log(e);
         });
+    } else {
+      postToDB(pictureURL);
     }
   };
 
