@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./PollDetailOption.css";
 
 function PollDetailOption(props) {
-  let width = `${(props.option.votes / props.totalPeople) * 100}%`;
+  let width = `${(props.option.voters.length / props.totalPeople) * 100}%`;
   const [showMore, setShowMore] = useState(false);
   const [voted, setVoted] = useState(false);
 
@@ -56,7 +56,7 @@ function PollDetailOption(props) {
         throw new Error("Fetch failed - Bad request");
       }
       response = await response.json();
-      // props.notGoingEvent(response);
+      props.updatePoll(response);
     } catch (err) {
       console.log(err);
     }

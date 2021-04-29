@@ -45,6 +45,7 @@ const NEW_EVENT_CHAT_MESSAGE = "NEW_EVENT_CHAT_MESSAGE";
 const NEW_POLL_CHAT_MESSAGE = "NEW_POLL_CHAT_MESSAGE";
 const NOT_GOING_EVENT = "NOT_GOING_EVENT";
 const GOING_EVENT = "GOING_EVENT";
+const UPDATE_POLL_VOTING = "UPDATE_POLL_VOTING";
 
 io.on("connection", function (socket) {
   console.log(`Client connected to ${socket.id}`);
@@ -55,6 +56,10 @@ io.on("connection", function (socket) {
 
   // const user = addUser(socket.id, roomId, name);
   io.in(roomId).emit(USER_JOIN_CHAT, user);
+
+  socket.on(UPDATE_POLL_VOTING, (message) => {
+    io.in(roomId).emit(UPDATE_POLL_VOTING, message);
+  });
 
   socket.on(NEW_CHAT_MESSAGE, (message) => {
     io.in(roomId).emit(NEW_CHAT_MESSAGE, message);

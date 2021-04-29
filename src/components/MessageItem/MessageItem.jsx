@@ -15,6 +15,7 @@ function MessageItem({
   fetchMessage,
   goingEvent,
   notGoingEvent,
+  updatePoll,
 }) {
   return (
     <div
@@ -75,7 +76,9 @@ function MessageItem({
               date={msg.createdAt}
               sender={sender}
               user={user}
+              totalPeople={msg.poll.totalPeople}
               groupId={groupId}
+              updatePoll={updatePoll}
             />
           </div>
           <div className="sender">{sender}</div>

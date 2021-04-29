@@ -128,7 +128,7 @@ async function updateUnvote(req, res) {
     let msg = await group.msgs.id(req.body.msgId);
     for (let i = 0; i < msg.poll.options.length; i++) {
       if (req.body.optionId == msg.poll.options[i]._id) {
-        for (let y = 0; i < msg.poll.options[i].voters.length; y++) {
+        for (let y = 0; y < msg.poll.options[i].voters.length; y++) {
           if (req.body.userId == msg.poll.options[i].voters[y]._id) {
             await msg.poll.options[i].voters.splice(y, 1);
             break;

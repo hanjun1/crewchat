@@ -6,6 +6,7 @@ const NEW_EVENT_CHAT_MESSAGE = "NEW_EVENT_CHAT_MESSAGE";
 const NOT_GOING_EVENT = "NOT_GOING_EVENT";
 const GOING_EVENT = "GOING_EVENT";
 const NEW_POLL_CHAT_MESSAGE = "NEW_POLL_CHAT_MESSAGE";
+const UPDATE_POLL_VOTING = "UPDATE_POLL_VOTING";
 const SOCKET_SERVER_URL = "http://localhost:3001";
 
 const useChat = (roomId, user) => {
@@ -53,6 +54,10 @@ const useChat = (roomId, user) => {
       setMessages(messages);
     });
 
+    socketRef.current.on(UPDATE_POLL_VOTING, (messages) => {
+      setMessages(messages);
+    })
+
     return () => {
       console.log("disconnect");
       socketRef.current.disconnect();
@@ -96,6 +101,11 @@ const useChat = (roomId, user) => {
     socketRef.current.emit(GOING_EVENT, messages);
   };
 
+  const updatePoll = (messages) => {
+    if (!socketRef.current) return;
+    socketRef.current.emit(UPDATE_POLL_VOTING, messages);
+  }
+
   return {
     messages,
     setMessages,
@@ -104,6 +114,7 @@ const useChat = (roomId, user) => {
     goingEvent,
     notGoingEvent,
     sendPollMsg,
+    updatePoll,
   };
 };
 

@@ -16,6 +16,7 @@ function PollDetail(props) {
           groupId={props.groupId}
           msgId={props.msgId}
           optionId={option._id}
+          updatePoll={props.updatePoll}
         />
       ))}
     </div>
