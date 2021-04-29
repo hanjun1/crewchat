@@ -192,27 +192,29 @@ function EventDetail(props) {
       ) : (
         <></>
       )}
-      <div className="button-container">
-        {going ? (
-          loading ? (
+      {props.showGoing && (
+        <div className="button-container">
+          {going ? (
+            loading ? (
+              <form onSubmit={handleLoading}>
+                <button style={{ background: "#707070" }}>I'm not going</button>
+              </form>
+            ) : (
+              <form onSubmit={(e) => handleNotGoing(e)}>
+                <button>I'm not going</button>
+              </form>
+            )
+          ) : loading ? (
             <form onSubmit={handleLoading}>
-              <button style={{ background: "#707070" }}>I'm not going</button>
+              <button style={{ background: "#707070" }}>I'm going</button>
             </form>
           ) : (
-            <form onSubmit={(e) => handleNotGoing(e)}>
-              <button>I'm not going</button>
+            <form onSubmit={(e) => handleGoing(e)}>
+              <button>I'm going</button>
             </form>
-          )
-        ) : loading ? (
-          <form onSubmit={handleLoading}>
-            <button style={{ background: "#707070" }}>I'm going</button>
-          </form>
-        ) : (
-          <form onSubmit={(e) => handleGoing(e)}>
-            <button>I'm going</button>
-          </form>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

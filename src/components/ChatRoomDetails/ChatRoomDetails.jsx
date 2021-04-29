@@ -79,6 +79,7 @@ function ChatRoomDetails(props) {
           name={showDetails.detailCategory}
           setShowDetails={setShowDetails}
           activeGroup={props.activeGroup}
+          user={props.user}
         />
       )}
     </div>

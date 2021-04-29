@@ -38,6 +38,7 @@ function MessageItem({
               fetchMessage={fetchMessage}
               goingEvent={goingEvent}
               notGoingEvent={notGoingEvent}
+              showGoing={true}
             />
           </div>
           <div className="sender">{sender}</div>
