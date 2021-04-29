@@ -6,19 +6,19 @@ import MessagesPage from "../MessagesPage/MessagesPage";
 import NewGroupPage from "../NewGroupPage/NewGroupPage";
 import ImageTestPage from "../ImageTestPage/ImageTestPage";
 import LoadingPage from "../LoadingPage/LoadingPage";
-import SideNav from "../../components/SideNav/SideNav";
+import ProfilePage from "../ProfilePage/ProfilePage";
 
 function App() {
   const [user, setUser] = useState(null);
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
+  useEffect(async () => {
     let token = localStorage.getItem("token");
 
     if (token) {
       if (Date.now() < JSON.parse(atob(token.split(".")[1])).exp * 1000) {
-        let userDoc = JSON.parse(atob(token.split(".")[1])).user;
-        setUser(userDoc);
+        // let userDoc = JSON.parse(atob(token.split(".")[1])).user;
+        await fetchUser(token);
       } else {
         setUser(null);
       }
@@ -26,6 +26,18 @@ function App() {
 
     setLoaded(true);
   }, []);
+
+  async function fetchUser(jwt) {
+    try {
+      let fetchResponse = await fetch("/api/users", {
+        headers: { Authorization: "Bearer " + jwt },
+      });
+      let fetchedUser = await fetchResponse.json();
+      setUser(fetchedUser);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const handleLogout = () => {
     setUser(null);
@@ -39,6 +51,18 @@ function App() {
       <div className="App">
         {user ? (
           <Switch>
+            <Route
+              path="/profile"
+              exact
+              render={(props) => (
+                <ProfilePage
+                  {...props}
+                  user={user}
+                  setUser={setUser}
+                  handleLogout={handleLogout}
+                />
+              )}
+            />
             <Route
               path="/groups/create"
               exact

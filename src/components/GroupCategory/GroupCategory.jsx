@@ -24,7 +24,7 @@ function GroupCategory({ name, groupItems, setActiveGroup }) {
                 key={group._id}
                 onClick={() => setActiveGroup(group)}
               >
-                <GroupItem group={group} />
+                <GroupItem key={group._id} group={group} />
               </Link>
             ))}
           </>

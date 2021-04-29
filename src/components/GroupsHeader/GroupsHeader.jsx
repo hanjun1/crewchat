@@ -11,14 +11,14 @@ function GroupsHeader({ setShowSideNav, showSideNav }) {
         <>
           {showSideNav ? (
             <span
-              class="material-icons md-48 menu-icon"
+              className="material-icons md-48 menu-icon"
               onClick={() => setShowSideNav(false)}
             >
               arrow_back_ios
             </span>
           ) : (
             <span
-              class="material-icons md-48 menu-icon"
+              className="material-icons md-48 menu-icon"
               onClick={() => setShowSideNav(true)}
             >
               menu
