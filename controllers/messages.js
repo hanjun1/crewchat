@@ -100,6 +100,23 @@ async function updateNotGoing(req, res) {
   }
 }
 
+async function createImage(req, res) {
+  try {
+    let group = await Group.findById(req.params.groupId);
+    await group.msgs.push({
+      type: "image",
+      sender: req.body.sender,
+      senderName: req.body.senderName,
+      image: {
+        imgFileURL: req.body.image,
+      },
+    });
+    await group.save();
+    await group.populate("msgs.event.attendees").execPopulate();
+    res.status(200).json(group.msgs[group.msgs.length - 1]);
+  } catch (error) {}
+}
+
 async function updateVote(req, res) {
   try {
     let group = await Group.findById(req.body.groupId);
@@ -156,6 +173,7 @@ module.exports = {
   createEvent,
   updateGoing,
   updateNotGoing,
+  createImage,
   createPoll,
   updateVote,
   updateUnvote,

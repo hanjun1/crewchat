@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./MessageInput.css";
 import TextareaAutosize from "react-textarea-autosize";
+import axios from "axios";
 
 function MessageInput(props) {
   const [textContent, setTextContent] = useState("");
@@ -10,6 +11,10 @@ function MessageInput(props) {
     date: "",
     address: "",
   });
+  // Send Images
+  const [picture, setPicture] = useState(null);
+  const [pictureURL, setPictureURL] = useState("");
+  let returnedURL = "";
   const [pollQuestion, setPollQuestion] = useState("");
   const [pollOptions, setPollOptions] = useState({
     option0: "",
@@ -169,6 +174,65 @@ function MessageInput(props) {
     }
   };
 
+  const handleUploadImage = (e) => {
+    setPicture(e.target.files[0]);
+    setPictureURL(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const handleSubmitImageMessage = async (e) => {
+    if (picture) {
+      let data = new FormData();
+      data.append("image", picture, picture.name);
+      axios
+        .post("/api/uploadImage", data)
+        .then((result) => {
+          console.log("server response: ");
+          console.log(result);
+          returnedURL = result.data.downloadUrl;
+          postToDB(returnedURL);
+          setPicture(null);
+          setPictureURL("");
+          setInputType("text");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    } else {
+      console.log("no picture added");
+    }
+    e.preventDefault();
+  };
+
+  async function postToDB(returnedURL) {
+    try {
+      let jwt = localStorage.getItem("token");
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + jwt,
+        },
+        body: JSON.stringify({
+          sender: props.user._id,
+          senderName: props.user.name,
+          image: returnedURL,
+        }),
+      };
+      let fetchResponse = await fetch(
+        `/api/messages/image/${props.groupId}`,
+        options
+      );
+      if (fetchResponse.ok) {
+        console.log("sent image");
+      }
+      if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
+      fetchResponse = await fetchResponse.json();
+      props.sendMessage(fetchResponse);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     setInputType("text");
   }, []);
@@ -202,6 +266,26 @@ function MessageInput(props) {
               onClick={(e) => handleChangeInput(e)}
             >
               poll
+            </span>
+          </div>
+          <div className="img-button">
+            <label htmlFor="img-input" className="img-input-label">
+              <span
+                id="image"
+                className="material-icons md"
+                onClick={(e) => handleChangeInput(e)}
+              >
+                image
+              </span>
+            </label>
+          </div>
+          <div className="doc-button">
+            <span
+              id="document"
+              className="material-icons md"
+              onClick={(e) => handleChangeInput(e)}
+            >
+              upload_file
             </span>
           </div>
         </div>
@@ -318,6 +402,30 @@ function MessageInput(props) {
                 </button>
               )} */}
             </div>
+            <button>
+              <span className="material-icons md-light">send</span>
+            </button>
+          </form>
+        ) : inputType === "image" ? (
+          <form
+            className="image-form-container"
+            onSubmit={handleSubmitImageMessage}
+          >
+            <input
+              type="file"
+              accept="image/*"
+              id="img-input"
+              onChange={(e) => handleUploadImage(e)}
+            />
+
+            <img className="img-preview" src={pictureURL}></img>
+
+            <button>
+              <span className="material-icons md-light">send</span>
+            </button>
+          </form>
+        ) : inputType === "document" ? (
+          <form>
             <button>
               <span className="material-icons md-light">send</span>
             </button>

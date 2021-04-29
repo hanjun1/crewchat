@@ -34,7 +34,7 @@ async function login(req, res) {
 async function getOne(req, res) {
   try {
     const user = await User.findById(req.user._id);
-    console.log(user);
+    // console.log(user);
     res.status(200).json(user);
   } catch (error) {
     console.log(error);
@@ -49,7 +49,7 @@ async function edit(req, res) {
     user.name = req.body.name;
     user.picture = req.body.picture;
     await user.save();
-    console.log(user);
+    // console.log(user);
     res.status(200).json(user);
   } catch (error) {
     console.log(error);
