@@ -10,5 +10,6 @@ router.post("/event/:groupId", messagesCtrl.createEvent);
 router.post("/poll/:groupId", messagesCtrl.createPoll);
 router.post("/:groupId", messagesCtrl.create);
 router.post("/image/:groupId", messagesCtrl.createImage);
+router.post("/file/:groupId", messagesCtrl.createFile);
 
 module.exports = router;
