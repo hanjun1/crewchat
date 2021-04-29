@@ -16,6 +16,7 @@ function MessageItem({
   goingEvent,
   notGoingEvent,
   updatePoll,
+  totalPeople,
 }) {
   return (
     <div
@@ -76,13 +77,21 @@ function MessageItem({
               date={msg.createdAt}
               sender={sender}
               user={user}
-              totalPeople={msg.poll.totalPeople}
+              totalPeople={totalPeople}
               groupId={groupId}
               updatePoll={updatePoll}
             />
           </div>
           <div className="sender">{sender}</div>
-          <div className="sender-icon">{senderIcon}</div>
+          {senderIcon === "" ? (
+            <div className="sender-icon">
+              <span className="material-icons">account_circle</span>
+            </div>
+          ) : (
+            <div className="icon-container">
+              <img src={senderIcon}></img>
+            </div>
+          )}
         </>
       ) : (
         <>
