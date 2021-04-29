@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./MessageInput.css";
 import TextareaAutosize from "react-textarea-autosize";
+import axios from "axios";
 
 function MessageInput(props) {
   const [textContent, setTextContent] = useState("");
@@ -10,6 +11,10 @@ function MessageInput(props) {
     date: "",
     address: "",
   });
+  // Send Images
+  const [picture, setPicture] = useState(null);
+  const [pictureURL, setPictureURL] = useState("");
+  let returnedURL = "";
 
   const handleChangeTextContent = (e) => {
     setTextContent(e.target.value);
@@ -96,6 +101,61 @@ function MessageInput(props) {
       console.log(err);
     }
   };
+
+  const handleUploadImage = (e) => {
+    setPicture(e.target.files[0]);
+    setPictureURL(URL.createObjectURL(e.target.files[0]));
+  };
+  const handleSubmitImageMessage = async (e) => {
+    if (picture) {
+      let data = new FormData();
+      data.append("image", picture, picture.name);
+      axios
+        .post("/api/uploadImage", data)
+        .then((result) => {
+          console.log("server response: ");
+          console.log(result);
+          returnedURL = result.data.downloadUrl;
+          postToDB(returnedURL);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    } else {
+      postToDB(pictureURL);
+    }
+    e.preventDefault();
+  };
+
+  async function postToDB(returnedURL) {
+    try {
+      let jwt = localStorage.getItem("token");
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + jwt,
+        },
+        body: JSON.stringify({
+          sender: props.user._id,
+          senderName: props.user.name,
+          image: returnedURL,
+        }),
+      };
+      let fetchResponse = await fetch(
+        `/api/messages/image/${props.groupId}`,
+        options
+      );
+      if (fetchResponse.ok) {
+        console.log("sent image");
+      }
+      if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
+      fetchResponse = await fetchResponse.json();
+      props.sendMessage(fetchResponse);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   useEffect(() => {
     setInputType("text");

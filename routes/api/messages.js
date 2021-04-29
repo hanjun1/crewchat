@@ -6,5 +6,6 @@ router.put("/:groupId/notgoing", messagesCtrl.updateNotGoing);
 router.put("/:groupId/going", messagesCtrl.updateGoing);
 router.post("/event/:groupId", messagesCtrl.createEvent);
 router.post("/:groupId", messagesCtrl.create);
+router.post("/image/:groupId", messagesCtrl.createImage);
 
 module.exports = router;
