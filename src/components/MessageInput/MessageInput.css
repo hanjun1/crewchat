@@ -36,7 +36,8 @@
 .MessageInput .text-form-container,
 .MessageInput .event-form-container,
 .MessageInput .poll-form-container,
-.MessageInput .image-form-container {
+.MessageInput .image-form-container,
+.MessageInput .file-form-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -124,4 +125,49 @@ label.img-input-label {
 .MessageInput .img-preview {
   max-width: 100px;
   max-height: 100px;
+}
+
+/************************** Files ****************************/
+label.file-input-label {
+  cursor: pointer !important;
+}
+
+.MessageInput #file-input {
+  display: none;
+}
+
+.MessageInput .documents-container {
+  display: flex;
+  padding: 0.1rem;
+  margin: 0 1rem;
+}
+.MessageInput .documents-container svg {
+  min-width: 40px;
+  min-height: 40px;
+  margin-right: 1rem;
+}
+
+.MessageInput .document-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.MessageInput .document-details-container a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.MessageInput .document-details-container p {
+  margin: 0;
+}
+
+.MessageInput .file-name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.MessageInput .file-size {
+  font-size: 0.7rem;
 }
