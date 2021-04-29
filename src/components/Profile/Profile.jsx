@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./Profile.css";
 import axios from "axios";

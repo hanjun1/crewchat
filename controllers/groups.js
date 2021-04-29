@@ -81,10 +81,23 @@ async function removeUser(req, res) {
   }
 }
 
+async function edit(req, res) {
+  try {
+    let group = await Group.findById(req.params.id);
+    group.picture = req.body.picture;
+    group.save();
+    res.status(200).json(group);
+  } catch (error) {
+    res.status(400).json(error);
+    console.log(error);
+  }
+}
+
 module.exports = {
   create,
   join,
   index,
   getOne,
   removeUser,
+  edit,
 };
