@@ -56,7 +56,7 @@ const useChat = (roomId, user) => {
 
     socketRef.current.on(UPDATE_POLL_VOTING, (messages) => {
       setMessages(messages);
-    })
+    });
 
     return () => {
       console.log("disconnect");
@@ -104,7 +104,7 @@ const useChat = (roomId, user) => {
   const updatePoll = (messages) => {
     if (!socketRef.current) return;
     socketRef.current.emit(UPDATE_POLL_VOTING, messages);
-  }
+  };
 
   return {
     messages,

@@ -23,6 +23,10 @@ function PollDetailOption(props) {
     checkStatus();
   }, []);
 
+  const handleLoading = (e) => {
+    e.preventDefault();
+  };
+
   const handleVoted = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -34,6 +38,7 @@ function PollDetailOption(props) {
         msgId: props.msgId,
         userId: props.user._id,
         optionId: props.optionId,
+        setLoading: setLoading,
       };
       let options = {
         method: "PUT",
@@ -59,7 +64,9 @@ function PollDetailOption(props) {
       }
       response = await response.json();
       props.updatePoll(response);
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 50);
     } catch (err) {
       console.log(err);
     }
@@ -71,25 +78,22 @@ function PollDetailOption(props) {
         <div className="button-container">
           {voted ? (
             loading ? (
-              <form className="loading">
-                <button>-</button>
+              <form onClick={handleLoading}>
+                <button style={{ background: "#707070" }}>-</button>
               </form>
             ) : (
               <form onClick={handleVoted}>
                 <button>-</button>
               </form>
             )
+          ) : loading ? (
+            <form onClick={handleLoading}>
+              <button style={{ background: "#707070" }}>+</button>
+            </form>
           ) : (
-            loading ? (
-              <form className="loading">
-                <button>+</button>
-              </form>  
-            ) : (
-              <form onClick={handleVoted}>
-                <button>+</button>
-              </form>
-            )
-            
+            <form onClick={handleVoted}>
+              <button>+</button>
+            </form>
           )}
         </div>
         <div className="details-container">
