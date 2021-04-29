@@ -1,16 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 import "./RoomHeader.css";
 import { useMediaQuery } from "react-responsive";
+import axios from "axios";
 
-function RoomHeader(props) {
+function RoomHeader({
+  name,
+  showChatDetails,
+  setShowChatDetails,
+  groupPicture,
+}) {
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const [picture, setPicture] = useState(null);
+  const [pictureURL, setPictureURL] = useState(groupPicture);
+  let returnedURL = "";
+
+  const handleUploadImage = (e) => {
+    setPicture(e.target.files[0]);
+    setPictureURL(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (picture) {
+      let data = new FormData();
+      data.append("image", picture, picture.name);
+      axios
+        .post("/api/uploadImage", data)
+        .then((result) => {
+          console.log("server response: ");
+          console.log(result);
+          returnedURL = result.data.downloadUrl;
+          postToDB(returnedURL);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    } else {
+      postToDB(pictureURL);
+    }
+  };
+
+  async function postToDB(returnedURL) {
+    try {
+      let jwt = localStorage.getItem("token");
+      const options = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + jwt,
+        },
+        body: JSON.stringify({
+          picture: returnedURL,
+        }),
+      };
+      const fetchResponse = await fetch("/api/users/edit", options);
+      if (fetchResponse.ok) {
+      }
+      if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className="RoomHeader">
       {isTablet && (
         <div className="back-arrow-container">
           <svg
-            onClick={() => props.setShowChatDetails(!props.showChatDetails)}
+            onClick={() => setShowChatDetails(!showChatDetails)}
             width="26"
             height="26"
             viewBox="0 0 26 26"
@@ -27,7 +85,7 @@ function RoomHeader(props) {
       {isMobile && (
         <div className="back-arrow-container">
           <svg
-            onClick={() => props.setShowChatDetails(!props.showChatDetails)}
+            onClick={() => setShowChatDetails(!showChatDetails)}
             width="26"
             height="26"
             viewBox="0 0 26 26"
@@ -42,16 +100,31 @@ function RoomHeader(props) {
         </div>
       )}
       <div className="header-container">
-        <svg
-          width="119"
-          height="114"
-          viewBox="0 0 119 114"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <ellipse cx="59.5" cy="57" rx="59.5" ry="57" fill="#A0A2BA" />
-        </svg>
-        <h1>{props.name}</h1>
+        <form autoComplete="off" onSubmit={handleSubmit}>
+          <div className="profile-pic">
+            <div className="img-container">
+              <img src={pictureURL}></img>
+            </div>
+
+            <label htmlFor="img-input" className="edit-profile-pic">
+              <span className="material-icons md-light">edit</span>
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              id="img-input"
+              onChange={(e) => handleUploadImage(e)}
+            />
+          </div>
+          {picture ? (
+            <button className="save-btn">Save</button>
+          ) : (
+            <button className="save-btn disabled" disabled>
+              Save
+            </button>
+          )}
+        </form>
+        <h1>{name}</h1>
         <div className="link-container">
           <svg
             width="24"
