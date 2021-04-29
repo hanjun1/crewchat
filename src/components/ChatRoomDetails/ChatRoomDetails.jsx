@@ -55,7 +55,9 @@ function ChatRoomDetails(props) {
         <div className="all">
           <div>
             <RoomHeader
+              groupId={props.activeGroup._id}
               name={props.activeGroup.name}
+              groupPicture={props.activeGroup.picture}
               showChatDetails={props.showChatDetails}
               setShowChatDetails={props.setShowChatDetails}
             />

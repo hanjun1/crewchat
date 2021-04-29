@@ -48,11 +48,21 @@ h4 {
   margin: 5px auto 50px auto;
   max-width: 300px;
   background-color: #ebeff8;
+  position: relative;
 }
 
 .NewGroupSuccessModal .copy-link span {
   margin: 5px;
   cursor: pointer;
+}
+
+.NewGroupSuccessModal .copy-success {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #6083ff;
 }
 
 .NewGroupSuccessModal input {

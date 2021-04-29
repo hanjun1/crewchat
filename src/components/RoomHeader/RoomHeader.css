@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 1rem;
+  padding: 1rem 1rem;
 }
 
 .RoomHeader .back-arrow-container {
@@ -19,12 +19,96 @@
   margin: 1rem;
 }
 
-.RoomHeader .link-container {
-  vertical-align: middle;
-  font-size: 0.9rem;
+/********************** Profile Picture ***********************/
+.RoomHeader form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.RoomHeader .profile-pic {
+  width: 150px;
+  /* height: 140px; */
+  margin: auto;
+  position: relative;
 }
 
-.RoomHeader .link-container svg {
-  vertical-align: inherit;
-  margin-right: 0.5rem;
+.RoomHeader .img-container {
+  background-color: #a0a2ba;
+  width: 140px;
+  height: 140px;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.RoomHeader .profile-pic img {
+  max-height: 150%;
+  max-width: 150%;
+}
+
+.RoomHeader .edit-profile-pic {
+  border-radius: 50%;
+  background-color: #6083ff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.RoomHeader .edit-profile-pic:hover {
+  width: 42px;
+  height: 42px;
+  background-color: #5175f8;
+}
+
+.RoomHeader #img-input {
+  display: none;
+}
+
+.RoomHeader .save-btn {
+  width: 80px;
+  height: 30px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.RoomHeader .save-btn.disabled {
+  background-color: rgb(218, 218, 218);
+}
+/***********************************************************/
+
+.RoomHeader .link-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.RoomHeader .copy-icon {
+  background-color: #5175f8;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.RoomHeader .copy-success {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  color: #5175f8;
 }
