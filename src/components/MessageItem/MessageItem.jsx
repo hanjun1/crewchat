@@ -82,7 +82,32 @@ function MessageItem({
             />
           </div>
           <div className="sender">{sender}</div>
-          <div className="sender-icon">{senderIcon}</div>
+          {senderIcon === "" ? (
+            <div className="sender-icon">
+              <span className="material-icons">account_circle</span>
+            </div>
+          ) : (
+            <div className="icon-container">
+              <img src={senderIcon}></img>
+            </div>
+          )}
+        </>
+      ) : type === "image" ? (
+        <>
+          <div className="time">{time}</div>
+          <div className="content">
+            <img src={msg.image.imgFileURL}></img>
+          </div>
+          <div className="sender">{sender}</div>
+          {senderIcon === "" ? (
+            <div className="sender-icon">
+              <span className="material-icons">account_circle</span>
+            </div>
+          ) : (
+            <div className="icon-container">
+              <img src={senderIcon}></img>
+            </div>
+          )}
         </>
       ) : (
         <>

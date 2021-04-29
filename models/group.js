@@ -86,7 +86,7 @@ const MsgSchema = new Schema(
     file: {
       fileURL: String,
     },
-    img: {
+    image: {
       imgFileURL: String,
     },
     poll: {
