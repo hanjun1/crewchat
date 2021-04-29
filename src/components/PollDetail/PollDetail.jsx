@@ -11,7 +11,7 @@ function PollDetail(props) {
         <PollDetailOption
           option={option}
           totalPeople={props.totalPeople}
-          people={option.voters}
+          voters={option.voters}
         />
       ))}
     </div>

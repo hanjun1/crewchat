@@ -92,8 +92,7 @@ function MessageInput(props) {
         throw new Error("Fetch failed - Bad request");
       }
       response = await response.json();
-      console.log(response);
-      // props.sendMessage(response);
+      props.sendPollMsg(response);
     } catch (err) {
       console.log(err);
     }

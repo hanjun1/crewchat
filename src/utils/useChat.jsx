@@ -5,6 +5,7 @@ const NEW_CHAT_MESSAGE = "NEW_CHAT_MESSAGE";
 const NEW_EVENT_CHAT_MESSAGE = "NEW_EVENT_CHAT_MESSAGE";
 const NOT_GOING_EVENT = "NOT_GOING_EVENT";
 const GOING_EVENT = "GOING_EVENT";
+const NEW_POLL_CHAT_MESSAGE = "NEW_POLL_CHAT_MESSAGE";
 const SOCKET_SERVER_URL = "http://localhost:3001";
 
 const useChat = (roomId, user) => {
@@ -29,6 +30,14 @@ const useChat = (roomId, user) => {
     });
 
     socketRef.current.on(NEW_EVENT_CHAT_MESSAGE, (message) => {
+      const incomingMessage = {
+        ...message,
+        ownedByCurrentUser: message.senderId === socketRef.current.id,
+      };
+      setMessages((messages) => [...messages, incomingMessage]);
+    });
+
+    socketRef.current.on(NEW_POLL_CHAT_MESSAGE, (message) => {
       const incomingMessage = {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,
@@ -68,6 +77,15 @@ const useChat = (roomId, user) => {
     });
   };
 
+  const sendPollMsg = (messageBody) => {
+    if (!socketRef.current) return;
+    socketRef.current.emit(NEW_POLL_CHAT_MESSAGE, {
+      ...messageBody,
+      userId: user._id,
+      senderId: socketRef.current.id,
+    });
+  };
+
   const notGoingEvent = (messages) => {
     if (!socketRef.current) return;
     socketRef.current.emit(NOT_GOING_EVENT, messages);
@@ -85,6 +103,7 @@ const useChat = (roomId, user) => {
     sendEventMsg,
     goingEvent,
     notGoingEvent,
+    sendPollMsg,
   };
 };
 
