@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./PollDetailOption.css";
 
 function PollDetailOption(props) {
@@ -7,6 +7,20 @@ function PollDetailOption(props) {
   const [voted, setVoted] = useState(false);
 
   const handleShowMore = () => setShowMore(!showMore);
+
+  const checkStatus = () => {
+    for (let voter of props.voters) {
+      if (voter._id == props.user._id) {
+        setVoted(true);
+        return;
+      }
+    }
+    setVoted(false);
+  };
+
+  useEffect(() => {
+    checkStatus();
+  }, []);
 
   const handleVoted = async (e) => {
     e.preventDefault();
@@ -50,59 +64,61 @@ function PollDetailOption(props) {
 
   return (
     <div className="PollDetailOption">
-      <div className="button-container">
-        {voted ? (
-          <form onClick={handleVoted}>
-            <button>-</button>
-          </form>
-        ) : (
-          <form onClick={handleVoted}>
-            <button>+</button>
-          </form>
-        )}
-      </div>
-      <div className="details-container">
-        <div className="option-container">
-          <div className="option-name-container">
-            <p>{props.option.option}</p>
-          </div>
-          <div className="votes-container">
-            <p>{props.option.voters.length} votes&ensp;</p>
-            <div className="drop-down-container">
-              {showMore ? (
-                <svg
-                  onClick={() => handleShowMore()}
-                  width="16"
-                  height="10"
-                  viewBox="0 0 16 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1.88 10L8 3.81916L14.12 10L16 8.09717L8 0L0 8.09717L1.88 10Z"
-                    fill="black"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  onClick={() => handleShowMore()}
-                  width="16"
-                  height="10"
-                  viewBox="0 0 16 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M14.12 0L8 6.18084L1.88 0L0 1.90283L8 10L16 1.90283L14.12 0Z"
-                    fill="#56597B"
-                  />
-                </svg>
-              )}
+      <div className="voting-details">
+        <div className="button-container">
+          {voted ? (
+            <form onClick={handleVoted}>
+              <button>-</button>
+            </form>
+          ) : (
+            <form onClick={handleVoted}>
+              <button>+</button>
+            </form>
+          )}
+        </div>
+        <div className="details-container">
+          <div className="option-container">
+            <div className="option-name-container">
+              <p>{props.option.option}</p>
+            </div>
+            <div className="votes-container">
+              <p>{props.option.voters.length} votes&ensp;</p>
+              <div className="drop-down-container">
+                {showMore ? (
+                  <svg
+                    onClick={() => handleShowMore()}
+                    width="16"
+                    height="10"
+                    viewBox="0 0 16 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1.88 10L8 3.81916L14.12 10L16 8.09717L8 0L0 8.09717L1.88 10Z"
+                      fill="black"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    onClick={() => handleShowMore()}
+                    width="16"
+                    height="10"
+                    viewBox="0 0 16 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.12 0L8 6.18084L1.88 0L0 1.90283L8 10L16 1.90283L14.12 0Z"
+                      fill="#56597B"
+                    />
+                  </svg>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="vote-bar">
-          <div className="current-vote" style={{ width }}></div>
+          <div className="vote-bar">
+            <div className="current-vote" style={{ width }}></div>
+          </div>
         </div>
       </div>
       {showMore && (
