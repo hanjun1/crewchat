@@ -5,13 +5,18 @@ import PollDetailOption from "../PollDetailOption/PollDetailOption";
 function PollDetail(props) {
   return (
     <div className="PollDetail">
-      <p className="poll-title">{props.poll.name}</p>
-      <p className="poll-date">Created: {props.poll.date}</p>
-      {props.poll.options.map((option) => (
+      <p className="poll-title">{props.question}</p>
+      <p className="poll-date">Created: {props.date}</p>
+      {props.options.map((option) => (
         <PollDetailOption
           option={option}
-          totalPeople={props.poll.totalPeople}
-          people={option.people}
+          totalPeople={props.totalPeople}
+          voters={option.voters}
+          user={props.user}
+          groupId={props.groupId}
+          msgId={props.msgId}
+          optionId={option._id}
+          updatePoll={props.updatePoll}
         />
       ))}
     </div>

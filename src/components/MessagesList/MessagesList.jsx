@@ -11,6 +11,7 @@ function MessagesList({
   addMessage,
   goingEvent,
   notGoingEvent,
+  updatePoll,
 }) {
   if (messages === undefined) {
     messages = [];
@@ -69,6 +70,7 @@ function MessagesList({
           fetchMessage={fetchMessage}
           goingEvent={goingEvent}
           notGoingEvent={notGoingEvent}
+          updatePoll={updatePoll}
         />
       ))}
       <div ref={messagesEndRef}></div>
