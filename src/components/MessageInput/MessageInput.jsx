@@ -15,6 +15,25 @@ function MessageInput(props) {
   const [picture, setPicture] = useState(null);
   const [pictureURL, setPictureURL] = useState("");
   let returnedURL = "";
+  const [pollQuestion, setPollQuestion] = useState("");
+  const [pollOptions, setPollOptions] = useState({
+    option0: "",
+    option1: "",
+    option2: "",
+    option3: "",
+    option4: "",
+  });
+
+  const handleChangePollQuestion = (e) => {
+    setPollQuestion(e.target.value);
+  };
+
+  const handleChangePollOptions = (e) => {
+    setPollOptions({
+      ...pollOptions,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleChangeTextContent = (e) => {
     setTextContent(e.target.value);
@@ -29,6 +48,59 @@ function MessageInput(props) {
 
   const handleChangeInput = (e) => {
     setInputType(e.target.id);
+  };
+
+  const handleSubmitPollMsg = async (e) => {
+    e.preventDefault();
+    try {
+      let jwt = localStorage.getItem("token");
+      let temp = [];
+      for (let option in pollOptions) {
+        if (pollOptions[option] !== "") {
+          temp.push({
+            option: pollOptions[option],
+          });
+        }
+      }
+      let body = {
+        sender: props.user._id,
+        senderName: props.user.name,
+        poll: {
+          question: pollQuestion,
+          options: temp,
+        },
+      };
+      let options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + jwt,
+        },
+        body: JSON.stringify(body),
+      };
+      setPollQuestion("");
+      setPollOptions({
+        option0: "",
+        option1: "",
+        option2: "",
+        option3: "",
+        option4: "",
+      });
+      let response = await fetch(
+        `/api/messages/poll/${props.groupId}`,
+        options
+      );
+      if (response.ok) {
+        console.log("SENT");
+      }
+      if (!response.ok) {
+        throw new Error("Fetch failed - Bad request");
+      }
+      response = await response.json();
+      props.sendPollMsg(response);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleSubmitEventMsg = async (e) => {
@@ -167,7 +239,7 @@ function MessageInput(props) {
         <div className="button-container">
           <div className="text-button">
             <span
-              className="material-icons md-dark"
+              className="material-icons md"
               onClick={(e) => handleChangeInput(e)}
               id="text"
             >
@@ -177,10 +249,19 @@ function MessageInput(props) {
           <div className="event-button">
             <span
               id="event"
-              className="material-icons md-dark"
+              className="material-icons md"
               onClick={(e) => handleChangeInput(e)}
             >
               event
+            </span>
+          </div>
+          <div className="poll-button">
+            <span
+              id="poll"
+              className="material-icons md"
+              onClick={(e) => handleChangeInput(e)}
+            >
+              poll
             </span>
           </div>
         </div>
@@ -202,7 +283,7 @@ function MessageInput(props) {
               <span className="material-icons md-light">send</span>
             </button>
           </form>
-        ) : (
+        ) : inputType === "event" ? (
           <form
             className="event-form-container"
             onSubmit={(e) => handleSubmitEventMsg(e)}
@@ -238,6 +319,71 @@ function MessageInput(props) {
               <span className="material-icons md-light">send</span>
             </button>
           </form>
+        ) : inputType === "poll" ? (
+          <form className="poll-form-container" onSubmit={handleSubmitPollMsg}>
+            <div className="poll-inputs-container">
+              <label>Poll Question</label>
+              <input
+                className="question"
+                type="text"
+                name="question"
+                placeholder="What is your question?"
+                onChange={handleChangePollQuestion}
+                value={pollQuestion}
+              />
+              <div className="options-container">
+                <input
+                  type="text"
+                  name="option0"
+                  placeholder="Option..."
+                  onChange={handleChangePollOptions}
+                  value={pollOptions.option0}
+                />
+                <input
+                  type="text"
+                  name="option1"
+                  placeholder="Option..."
+                  onChange={handleChangePollOptions}
+                  value={pollOptions.option1}
+                />
+                <input
+                  type="text"
+                  name="option2"
+                  placeholder="Option..."
+                  onChange={handleChangePollOptions}
+                  value={pollOptions.option2}
+                />
+                <input
+                  type="text"
+                  name="option3"
+                  placeholder="Option..."
+                  onChange={handleChangePollOptions}
+                  value={pollOptions.option3}
+                />
+                <input
+                  type="text"
+                  name="option4"
+                  placeholder="Option..."
+                  onChange={handleChangePollOptions}
+                  value={pollOptions.option4}
+                />
+              </div>
+              {/* {numOptions < 5 && (
+                <button
+                  type="button"
+                  className="add-option"
+                  onClick={handleAddNewOption}
+                >
+                  Add Option
+                </button>
+              )} */}
+            </div>
+            <button>
+              <span className="material-icons md-light">send</span>
+            </button>
+          </form>
+        ) : (
+          <h1>hello</h1>
         )}
       </div>
     </>

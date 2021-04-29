@@ -13,6 +13,8 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
     sendEventMsg,
     goingEvent,
     notGoingEvent,
+    sendPollMsg,
+    updatePoll,
   } = useChat(activeGroup._id, user);
   const [memoryMessage, setMemoryMessage] = useState([]);
 
@@ -44,12 +46,14 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
         fetchMessage={fetchMessage}
         goingEvent={goingEvent}
         notGoingEvent={notGoingEvent}
+        updatePoll={updatePoll}
       />
       <MessageInput
         user={user}
         groupId={activeGroup._id}
         sendMessage={sendMessage}
         sendEventMsg={sendEventMsg}
+        sendPollMsg={sendPollMsg}
       />
     </div>
   );

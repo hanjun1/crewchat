@@ -1,3 +1,40 @@
+.PollDetailOption .voting-details {
+  display: flex;
+}
+
+.PollDetailOption .button-container {
+  width: 15%;
+}
+
+.PollDetailOption .loading {
+  background: #707070;
+  color: white;
+}
+
+.PollDetailOption .button-container form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PollDetailOption .button-container button {
+  width: 20px;
+  height: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #6083ff;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+}
+
+.PollDetailOption .details-container {
+  width: 85%;
+}
+
 .PollDetailOption .option-container {
   display: flex;
   justify-content: space-between;

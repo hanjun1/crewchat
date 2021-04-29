@@ -4,6 +4,7 @@ import "./EventDetail.css";
 function EventDetail(props) {
   const [showMore, setShowMore] = useState(false);
   const [going, setGoing] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleShowMore = () => {
     setShowMore(!showMore);
@@ -12,6 +13,7 @@ function EventDetail(props) {
   const handleGoing = async (e) => {
     e.preventDefault();
     setGoing(!going);
+    setLoading(true);
     try {
       let jwt = localStorage.getItem("token");
       let body = {
@@ -38,6 +40,7 @@ function EventDetail(props) {
       }
       response = await response.json();
       props.goingEvent(response);
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -46,6 +49,7 @@ function EventDetail(props) {
   const handleNotGoing = async (e) => {
     e.preventDefault();
     setGoing(!going);
+    setLoading(true);
     try {
       let jwt = localStorage.getItem("token");
       let body = {
@@ -72,6 +76,7 @@ function EventDetail(props) {
       }
       response = await response.json();
       props.notGoingEvent(response);
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -85,6 +90,10 @@ function EventDetail(props) {
       }
     }
     setGoing(false);
+  };
+
+  const handleLoading = (e) => {
+    e.preventDefault();
   };
 
   useEffect(() => {
@@ -185,8 +194,18 @@ function EventDetail(props) {
       )}
       <div className="button-container">
         {going ? (
-          <form onSubmit={(e) => handleNotGoing(e)}>
-            <button>I'm not going</button>
+          loading ? (
+            <form onSubmit={handleLoading}>
+              <button style={{ background: "#707070" }}>I'm not going</button>
+            </form>
+          ) : (
+            <form onSubmit={(e) => handleNotGoing(e)}>
+              <button>I'm not going</button>
+            </form>
+          )
+        ) : loading ? (
+          <form onSubmit={handleLoading}>
+            <button style={{ background: "#707070" }}>I'm going</button>
           </form>
         ) : (
           <form onSubmit={(e) => handleGoing(e)}>

@@ -18,7 +18,8 @@
 }
 
 .MessageInput-container .text-button,
-.MessageInput-container .event-button {
+.MessageInput-container .event-button,
+.MessageInput-container .poll-button {
   cursor: pointer;
 }
 
@@ -32,38 +33,41 @@
   border-bottom-right-radius: 15px;
 }
 
-.MessageInput .event-form-container {
+.MessageInput .text-form-container,
+.MessageInput .event-form-container,
+.MessageInput .poll-form-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.MessageInput .text-form-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.MessageInput .event-inputs-container {
+.MessageInput .event-inputs-container,
+.MessageInput .poll-inputs-container {
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 1rem;
 }
 
-.MessageInput .event-inputs-container label {
+.MessageInput .event-inputs-container label,
+.MessageInput .poll-inputs-container label {
   font-size: 12px;
   margin: 0.2rem 0;
 }
 
-.MessageInput .event-inputs-container input {
+.MessageInput .event-inputs-container input,
+.MessageInput .poll-inputs-container input {
   width: 100%;
   border: none;
   outline: none;
   font-size: 16px;
   font-family: "Ubuntu";
+  border-bottom: 1px solid #dadeff;
+  margin-bottom: 0.2rem;
+}
+
+.MessageInput .poll-inputs-container input {
 }
 
 .MessageInput .textarea-auto {
@@ -85,4 +89,19 @@
   width: 50px;
   height: 40px;
   cursor: pointer;
+}
+
+.MessageInput .add-option {
+  margin: 2px 2px 2px 10px;
+  background-color: #6083ff;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  width: 100%;
+  height: 25px;
+  cursor: pointer;
+}
+
+.MessageInput .poll-inputs-container .question {
+  border-bottom: 1px solid #dadeff;
 }
