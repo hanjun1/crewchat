@@ -56,7 +56,6 @@ async function getOne(req, res) {
     let group = await Group.findById(req.params.id);
     await group.populate("msgs.sender").execPopulate();
     await group.populate("msgs.event.attendees").execPopulate();
-    await group.populate("msgs.sender").execPopulate();
     await group.populate("msgs.poll.options.voters").execPopulate();
     res.status(200).json(group.msgs);
   } catch (err) {
@@ -73,6 +72,33 @@ async function removeUser(req, res) {
       if (group.members[i]._id == req.body.userId) {
         group.members.splice(i, 1);
         break;
+      }
+    }
+    await group.populate("msgs.poll.options.voters").execPopulate();
+    await group.populate("msgs.event.attendees").execPopulate();
+    for (let i = 0; i < group.msgs.length; i++) {
+      if (group.msgs[i].type === "event") {
+        for (let y = 0; y < group.msgs[i].event.attendees.length; y++) {
+          if (group.msgs[i].event.attendees[y]._id == req.body.userId) {
+            group.msgs[i].event.attendees.splice(y, 1);
+            break;
+          }
+        }
+      } else if (group.msgs[i].type === "poll") {
+        for (let y = 0; y < group.msgs[i].poll.options.length; y++) {
+          for (
+            let j = 0;
+            y < group.msgs[i].poll.options[y].voters.length;
+            j++
+          ) {
+            if (
+              group.msgs[i].poll.options[y].voters[j]._id == req.body.userId
+            ) {
+              group.msgs[i].poll.options[y].voters.splice(j, 1);
+              break;
+            }
+          }
+        }
       }
     }
     await group.save();

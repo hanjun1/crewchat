@@ -8,7 +8,6 @@ function MessagesList({
   setSocketMessages,
   fetchMessage,
   groupId,
-  addMessage,
   goingEvent,
   notGoingEvent,
   updatePoll,
@@ -52,10 +51,11 @@ function MessagesList({
     <div className="MessagesList">
       {messages.map((msg) => (
         <MessageItem
+          msg={msg}
+          totalPeople={msg.poll.totalPeople}
           groupId={groupId}
           type={msg.type}
           key={msg._id}
-          msg={msg}
           user={user}
           myMessage={
             msg.ownedByCurrentUser

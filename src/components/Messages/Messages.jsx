@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Messages.css";
 import MessageInput from "../../components/MessageInput/MessageInput";
 import MessagesList from "../../components/MessagesList/MessagesList";
@@ -16,7 +16,6 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
     sendPollMsg,
     updatePoll,
   } = useChat(activeGroup._id, user);
-  const [memoryMessage, setMemoryMessage] = useState([]);
 
   async function fetchMessage(groupId) {
     try {
@@ -30,7 +29,6 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
       console.log(err);
     }
   }
-
   return (
     <div className="Messages">
       <MessageHeader
