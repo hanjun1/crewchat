@@ -39,7 +39,9 @@ function DocumentDetail(props) {
         </svg>
         <div className="document-details-container">
           <p className="file-name">{name}</p>
-          <p className="file-size">{props.size}</p>
+          <p className="file-size">{`${
+            (props.size - (props.size % 1000)) / 1000
+          } KB`}</p>
         </div>
       </div>
     </div>
