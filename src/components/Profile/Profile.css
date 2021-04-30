@@ -90,6 +90,17 @@
   padding: 0 0.5em;
 }
 
+.Profile .save-container {
+  position: relative;
+}
+
+.Profile .save-container > span {
+  position: absolute;
+  color: #6083ff;
+  top: 5px;
+  right: 15px;
+}
+
 .Profile .save-btn {
   background-color: #6083ff;
   border-radius: 15px;
@@ -102,4 +113,8 @@
   cursor: pointer;
   margin: 20px auto;
   display: block;
+}
+
+.Profile .save-btn:hover {
+  background-color: #5479fd;
 }

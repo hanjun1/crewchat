@@ -140,15 +140,21 @@ function EventDetail(props) {
               <div>
                 {props.attendees.map((person) => (
                   <div className="person">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle cx="10" cy="10" r="10" fill="#6083FF" />
-                    </svg>
+                    {person.picture === "" ? (
+                      <>
+                        <span className="material-icons">account_circle</span>
+                      </>
+                    ) : (
+                      <>
+                        <div className="member-icon">
+                          <img
+                            className="member-icon-img"
+                            src={person.picture}
+                            alt="IMG"
+                          ></img>
+                        </div>
+                      </>
+                    )}
                     <div className="name">
                       <p>{person.name}</p>
                     </div>
@@ -158,17 +164,23 @@ function EventDetail(props) {
             </div>
           ) : (
             <div className="people-going">
-              {props.attendees.map((person) => (
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="10" cy="10" r="10" fill="#6083FF" />
-                </svg>
-              ))}
+              {props.attendees.map((person) =>
+                person.picture === "" ? (
+                  <>
+                    <span className="material-icons">account_circle</span>
+                  </>
+                ) : (
+                  <>
+                    <div className="member-icon">
+                      <img
+                        className="member-icon-img"
+                        src={person.picture}
+                        alt="IMG"
+                      ></img>
+                    </div>
+                  </>
+                )
+              )}
               <p>+ going</p>
               <svg
                 onClick={() => handleShowMore()}

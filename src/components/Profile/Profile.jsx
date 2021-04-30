@@ -5,6 +5,7 @@ import axios from "axios";
 
 function Profile({ user, setUser, showSideNav, setShowSideNav }) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const [saved, setSaved] = useState(false);
   const [userInfo, setUserInfo] = useState({
     name: user.name,
   });
@@ -58,6 +59,7 @@ function Profile({ user, setUser, showSideNav, setShowSideNav }) {
         let updatedUser = await fetchResponse.json();
         console.log(updatedUser);
         setUser(updatedUser);
+        setSaved(true);
       }
       if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
     } catch (err) {
@@ -90,7 +92,7 @@ function Profile({ user, setUser, showSideNav, setShowSideNav }) {
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="profile-pic">
           <div className="img-container">
-            <img src={pictureURL} alt="IMG"></img>
+            {pictureURL != "" && <img src={pictureURL} alt="IMG"></img>}
           </div>
 
           <label htmlFor="img-input" className="edit-profile-pic">
@@ -113,7 +115,16 @@ function Profile({ user, setUser, showSideNav, setShowSideNav }) {
           value={userInfo.name}
           onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}
         />
-        <button className="save-btn">Save</button>
+        <div className="save-container">
+          {saved ? (
+            <>
+              <button className="save-btn">Saved!</button>
+              <span class="material-icons">done</span>
+            </>
+          ) : (
+            <button className="save-btn">Save</button>
+          )}
+        </div>
       </form>
     </div>
   );
