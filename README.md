@@ -1,6 +1,6 @@
-# APP NAME
+# CrewChat
 
-APP NAME is a messenger app focused on enhancing your group chat experience. APP NAME has functions such as real-time polls for you and your friends or colleagues to vote on 'important' matters, events to mark down important due dates or gatherings, and upload images and documents. To get started, simply create an account, create a group and share the generated link with your friends, family and colleagues!
+CrewChat is a messenger app focused on enhancing your group chat experience. CrewChat has functions such as real-time polls for you and your friends or colleagues to vote on 'important' matters, events to mark down important due dates or gatherings, and upload images and documents. To get started, simply create an account, create a group and share the generated link with your friends, family and colleagues!
 
 ### Made By
 
