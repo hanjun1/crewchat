@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #353535;
   /* border-right: 2px solid #ebeff8; */
   /* background-color: #56597b; */
   /* position: fixed;
@@ -17,14 +17,14 @@
 }
 
 .SideNav .item-link {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
 .SideNav .icon-group > h5 {
   margin-top: 5px;
   margin-bottom: 50px;
-  /* color: white; */
+  color: white;
   text-align: center;
 }
 
@@ -43,4 +43,5 @@
 
 .SideNav .icon-group span {
   margin: auto;
+  color: white;
 }

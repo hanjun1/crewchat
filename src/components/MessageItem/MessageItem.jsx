@@ -68,7 +68,7 @@ function MessageItem({
           <div className="sender">{sender}</div>
           {senderIcon === "" ? (
             <div className="icon-container">
-              <span className="material-icons">account_circle</span>
+              <span className="material-icons md-light">account_circle</span>
             </div>
           ) : (
             <div className="icon-container">

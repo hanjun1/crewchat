@@ -6,4 +6,5 @@
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
+  background-color: #4b4b54;
 }

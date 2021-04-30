@@ -22,6 +22,7 @@
   display: flex;
   padding: 0.1rem;
   margin: 0 1rem;
+  color: #ebeff8;
 }
 .MessageItem .documents-container svg {
   min-width: 40px;
@@ -63,15 +64,16 @@
 }
 
 .MessageItem.my-message .time {
-  width: 80px;
+  width: 60px;
   margin-top: auto;
   margin-right: 6px;
-  color: #56597b;
+  color: #ebeff8;
+  font-size: 14px;
 }
 
 .MessageItem.my-message .content {
-  background-color: white;
-  color: #56597b;
+  background-color: #6f8eff;
+  color: #ebeff8;
   max-width: 70%;
 }
 
@@ -79,7 +81,7 @@
   display: none;
 }
 
-.MessageItem.my-message .sender-icon {
+.MessageItem.my-message .icon-container {
   display: none;
 }
 .MessageItem.my-message .icon-container > img {
@@ -101,13 +103,14 @@
 .MessageItem.not-my-message .time {
   grid-area: time;
   margin: auto auto 0 4px;
-  color: #56597b;
+  color: #ebeff8;
+  font-size: 14px;
 }
 
 .MessageItem.not-my-message .content {
-  background-color: #a0a2ba;
+  background-color: #353535;
   grid-area: content;
-  color: white;
+  color: #ebeff8;
 }
 
 /* .MessageItem.not-my-message .sender-icon {
@@ -138,4 +141,5 @@
   margin-left: 5px;
   font-size: 14px;
   font-weight: bold;
+  color: #ebeff8;
 }

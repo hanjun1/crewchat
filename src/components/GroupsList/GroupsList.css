@@ -1,9 +1,10 @@
 .GroupsList {
-  height: 80vh;
+  height: 100%;
   width: 100%;
-  background-color: #ebeff8;
-  margin: 20px;
-  border-radius: 15px;
+  background-color: #4b4b54;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin-bottom: 10px;
   overflow-y: scroll;
   font-family: "Ubuntu";
 }

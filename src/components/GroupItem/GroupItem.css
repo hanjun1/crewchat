@@ -1,6 +1,6 @@
 .GroupItem {
   font-family: "Ubuntu";
-  border-top: 1px solid #dadeff;
+  border-top: 1px solid #5f5f72;
   padding: 10px 20px 5px 20px;
   padding-top: 10px;
   height: 80px;
@@ -16,7 +16,7 @@
 }
 
 .GroupItem:hover {
-  background-color: #e8eafc;
+  background-color: #5f5f72;
 }
 /******************** Icon pictures ******************/
 .GroupItem .group-icon {
@@ -59,12 +59,13 @@
   font-weight: bold;
   margin-bottom: auto;
   overflow-x: hidden;
+  color: #ebeff8;
 
   /* white-space: nowrap; */
 }
 .GroupItem .text-preview {
   grid-area: text-preview;
-  color: grey;
+  color: #ebeff8;
   white-space: nowrap;
   overflow-x: hidden;
   font-size: 14px;
@@ -73,6 +74,7 @@
   grid-area: time;
   font-size: 14px;
   text-align: right;
+  color: #ebeff8;
 }
 .GroupItem .participants {
   display: flex;
