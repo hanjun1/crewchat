@@ -1,5 +1,6 @@
 .PollDetailOption .voting-details {
   display: flex;
+  justify-content: center;
 }
 
 .PollDetailOption .button-container {
@@ -70,6 +71,7 @@
 .PollDetailOption .person-container {
   display: flex;
   margin-bottom: 5px;
+  justify-content: center;
 }
 
 .PollDetailOption .person-container > div {
