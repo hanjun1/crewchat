@@ -25,7 +25,7 @@ function ShowDetailsTemplate(props) {
         >
           <path
             d="M12.6425 4.19252L10.725 2.27502L0 13L10.725 23.725L12.6425 21.8075L3.835 13L12.6425 4.19252Z"
-            fill="black"
+            fill="white"
           />
         </svg>
       </div>

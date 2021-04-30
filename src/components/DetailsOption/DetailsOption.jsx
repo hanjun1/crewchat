@@ -25,7 +25,7 @@ function DetailsOption(props) {
         >
           <path
             d="M2.66397 0L0 1.88L8.65317 8L0 14.12L2.66397 16L14 8L2.66397 0Z"
-            fill="black"
+            fill="white"
           />
         </svg>
       </div>
