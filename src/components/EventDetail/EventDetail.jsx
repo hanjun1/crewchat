@@ -181,7 +181,7 @@ function EventDetail(props) {
                   </>
                 )
               )}
-              <p>+ going</p>
+              <p> + going</p>
               <svg
                 onClick={() => handleShowMore()}
                 width="20"

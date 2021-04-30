@@ -1,5 +1,6 @@
 .ShowDetailsTemplate {
   height: 100vh;
+  overflow-y: scroll;
 }
 
 .ShowDetailsTemplate .back-button-container {
