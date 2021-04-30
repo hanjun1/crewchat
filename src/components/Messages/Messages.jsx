@@ -15,6 +15,7 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
     notGoingEvent,
     sendPollMsg,
     updatePoll,
+    sendImgMsg,
   } = useChat(activeGroup._id, user);
 
   async function fetchMessage(groupId) {
@@ -53,6 +54,7 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
         sendMessage={sendMessage}
         sendEventMsg={sendEventMsg}
         sendPollMsg={sendPollMsg}
+        sendImgMsg={sendImgMsg}
       />
     </div>
   );

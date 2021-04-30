@@ -121,6 +121,7 @@ function MessageInput(props) {
   };
 
   const handleSubmitImageMessage = async (e) => {
+    e.preventDefault();
     if (picture) {
       let data = new FormData();
       data.append("image", picture, picture.name);
@@ -141,7 +142,6 @@ function MessageInput(props) {
     } else {
       console.log("no picture added");
     }
-    e.preventDefault();
   };
 
   async function postToDB(returnedURL, fileType) {
@@ -161,6 +161,8 @@ function MessageInput(props) {
           fileSize: file ? file.size : "",
         }),
       };
+      console.log(props.user._id);
+      console.log(props.user.name);
       let fetchResponse = await fetch(
         `/api/messages/${fileType}/${props.groupId}`,
         options
@@ -170,7 +172,7 @@ function MessageInput(props) {
       }
       if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
       fetchResponse = await fetchResponse.json();
-      props.sendMessage(fetchResponse);
+      props.sendImgMsg(fetchResponse);
     } catch (err) {
       console.log(err);
     }
@@ -184,6 +186,7 @@ function MessageInput(props) {
   };
 
   const handleSubmitFileMessage = async (e) => {
+    e.preventDefault();
     if (file) {
       let data = new FormData();
       data.append("image", file, file.name);
@@ -203,7 +206,6 @@ function MessageInput(props) {
     } else {
       console.log("no file added");
     }
-    e.preventDefault();
   };
 
   //----------------Send Polls-------------------//
@@ -443,15 +445,6 @@ function MessageInput(props) {
                   value={pollOptions.option4}
                 />
               </div>
-              {/* {numOptions < 5 && (
-                <button
-                  type="button"
-                  className="add-option"
-                  onClick={handleAddNewOption}
-                >
-                  Add Option
-                </button>
-              )} */}
             </div>
             <button>
               <span className="material-icons md-light">send</span>
