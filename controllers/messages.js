@@ -13,7 +13,7 @@ async function create(req, res) {
       },
     });
     await group.save();
-    console.log(group.msgs[group.msgs.length - 1]);
+    await group.populate("msgs.sender").execPopulate();
     res.status(200).json(group.msgs[group.msgs.length - 1]);
   } catch (err) {
     console.log(req.body);
