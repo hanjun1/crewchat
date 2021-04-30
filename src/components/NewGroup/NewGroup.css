@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 100vw;
   height: 100vh;
-  background-color: #ebeff8;
+  background-color: #4b4b54;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   display: flex;
@@ -15,4 +15,5 @@
   top: 10px;
   left: 20px;
   z-index: 200;
+  color: white;
 }
