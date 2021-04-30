@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height: 60vh;
+  height: 100%;
   max-width: 500px;
   min-height: 400px;
 }
@@ -54,6 +54,14 @@
   display: block;
 }
 
+.LoginForm .logo {
+  max-height: 100px;
+  max-width: 100px;
+}
+
+.LoginForm > h2 {
+  color: #a0a2ba;
+}
 .LoginForm .signup-link {
   margin: 10px;
   color: #8e91af;
