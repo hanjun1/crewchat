@@ -55,6 +55,9 @@ async function createPoll(req, res) {
       poll: temp,
     });
     await group.save();
+    await group.populate("msgs.sender").execPopulate();
+    await group.populate("msgs.event.attendees").execPopulate();
+    await group.populate("msgs.poll.options.voters").execPopulate();
     res.status(200).json(group.msgs[group.msgs.length - 1]);
   } catch (err) {
     res.status(400).json("error");
@@ -112,10 +115,12 @@ async function createImage(req, res) {
       },
     });
     await group.save();
+    await group.populate("msgs.sender").execPopulate();
     await group.populate("msgs.event.attendees").execPopulate();
+    await group.populate("msgs.poll.options.voters").execPopulate();
     res.status(200).json(group.msgs[group.msgs.length - 1]);
   } catch (error) {
-    console.log(errro);
+    console.log(error);
   }
 }
 
@@ -133,7 +138,9 @@ async function createFile(req, res) {
       },
     });
     await group.save();
+    await group.populate("msgs.sender").execPopulate();
     await group.populate("msgs.event.attendees").execPopulate();
+    await group.populate("msgs.poll.options.voters").execPopulate();
     res.status(200).json(group.msgs[group.msgs.length - 1]);
   } catch (error) {
     console.log(error);
