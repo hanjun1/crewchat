@@ -4,10 +4,9 @@
 
 .MessageInput-container .button-container {
   width: 90%;
-  background: white;
-  border: 2px solid white;
-  border-bottom: 1px solid #dadeff;
-  background-color: white;
+  background: #353535;
+  border: 2px solid #353535;
+  border-bottom: 1px solid white;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,8 +24,8 @@
 .MessageInput form {
   font-family: "Ubuntu";
   margin: auto;
-  border: 2px solid white;
-  background-color: white;
+  border: 2px solid #353535;
+  background-color: #353535;
   width: 90%;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -43,6 +42,7 @@
   justify-content: space-between;
   align-items: center;
   min-height: 50px;
+  color: white;
 }
 
 .MessageInput .event-inputs-container,
@@ -57,6 +57,11 @@
 .MessageInput .poll-inputs-container label {
   font-size: 12px;
   margin: 0.2rem 0;
+  color: white;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
 
 .MessageInput .event-inputs-container input,
@@ -66,11 +71,10 @@
   outline: none;
   font-size: 16px;
   font-family: "Ubuntu";
-  border-bottom: 1px solid #dadeff;
+  border-bottom: 1px solid white;
+  background: #353535;
+  color: white;
   margin-bottom: 0.2rem;
-}
-
-.MessageInput .poll-inputs-container input {
 }
 
 .MessageInput .textarea-auto {
@@ -82,6 +86,8 @@
   font-size: 16px;
   resize: none;
   font-family: "Ubuntu";
+  background: #353535;
+  color: white;
 }
 
 .MessageInput form > button {
@@ -110,7 +116,7 @@
 }
 
 .MessageInput .poll-inputs-container .question {
-  border-bottom: 1px solid #dadeff;
+  border-bottom: 1px solid white;
 }
 
 /************************** Images ****************************/
@@ -154,7 +160,7 @@ label.file-input-label {
 }
 
 .MessageInput .document-details-container a {
-  color: black;
+  color: white;
   text-decoration: none;
   cursor: pointer;
 }

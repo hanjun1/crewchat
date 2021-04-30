@@ -1,5 +1,7 @@
 .ChatRoomDetails {
   width: 100%;
+  background: #353535;
+  color: white;
 }
 
 .ChatRoomDetails .all {
