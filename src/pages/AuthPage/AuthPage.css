@@ -38,6 +38,10 @@
   color: #8e91af;
 }
 
+.AuthPage .react-tabs__tab-panel {
+  height: 90%;
+}
+
 .AuthPage .react-tabs__tab--selected {
   border-color: #6083ff;
   color: #6083ff;

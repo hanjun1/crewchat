@@ -61,6 +61,9 @@ function LoginForm(props) {
         <br />
         <button className="login-btn">Log In</button>
       </form>
+      <img className="logo" src="/login.png" alt="image" />
+      <h2>Crew Chat</h2>
+
       <p>&nbsp;{error}</p>
       {/* <p className="signup-link">don't have an account? Sign Up</p> */}
     </div>
