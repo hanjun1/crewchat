@@ -6,6 +6,7 @@ import axios from "axios";
 function MessageInput(props) {
   //----------------General----------------//
   const [inputType, setInputType] = useState("text");
+  const [loading, setLoading] = useState(false);
   const handleChangeInput = (e) => {
     setInputType(e.target.id);
   };
@@ -17,6 +18,10 @@ function MessageInput(props) {
       "..." +
       name[0].substring(name[0].length - 3, name[0].length);
     return fileName + "." + name[1];
+  };
+
+  const handleLoading = (e) => {
+    e.preventDefault();
   };
   //----------------Send Texts----------------//
   const [textContent, setTextContent] = useState("");
@@ -121,6 +126,8 @@ function MessageInput(props) {
   };
 
   const handleSubmitImageMessage = async (e) => {
+    e.preventDefault();
+    setLoading(true);
     if (picture) {
       let data = new FormData();
       data.append("image", picture, picture.name);
@@ -134,6 +141,7 @@ function MessageInput(props) {
           setPicture(null);
           setPictureURL("");
           setInputType("text");
+          setLoading(false);
         })
         .catch((e) => {
           console.log(e);
@@ -141,7 +149,6 @@ function MessageInput(props) {
     } else {
       console.log("no picture added");
     }
-    e.preventDefault();
   };
 
   async function postToDB(returnedURL, fileType) {
@@ -161,6 +168,8 @@ function MessageInput(props) {
           fileSize: file ? file.size : "",
         }),
       };
+      console.log(props.user._id);
+      console.log(props.user.name);
       let fetchResponse = await fetch(
         `/api/messages/${fileType}/${props.groupId}`,
         options
@@ -170,7 +179,7 @@ function MessageInput(props) {
       }
       if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
       fetchResponse = await fetchResponse.json();
-      props.sendMessage(fetchResponse);
+      props.sendImgMsg(fetchResponse);
     } catch (err) {
       console.log(err);
     }
@@ -184,6 +193,8 @@ function MessageInput(props) {
   };
 
   const handleSubmitFileMessage = async (e) => {
+    e.preventDefault();
+    setLoading(true);
     if (file) {
       let data = new FormData();
       data.append("image", file, file.name);
@@ -196,6 +207,7 @@ function MessageInput(props) {
           postToDB(returnedURL, "file");
           setFile(null);
           setInputType("text");
+          setLoading(false);
         })
         .catch((e) => {
           console.log(e);
@@ -203,7 +215,6 @@ function MessageInput(props) {
     } else {
       console.log("no file added");
     }
-    e.preventDefault();
   };
 
   //----------------Send Polls-------------------//
@@ -443,15 +454,6 @@ function MessageInput(props) {
                   value={pollOptions.option4}
                 />
               </div>
-              {/* {numOptions < 5 && (
-                <button
-                  type="button"
-                  className="add-option"
-                  onClick={handleAddNewOption}
-                >
-                  Add Option
-                </button>
-              )} */}
             </div>
             <button>
               <span className="material-icons md-light">send</span>
@@ -472,9 +474,18 @@ function MessageInput(props) {
 
             <img className="img-preview" src={pictureURL} alt="IMG"></img>
 
-            <button>
-              <span className="material-icons md-light">send</span>
-            </button>
+            {loading ? (
+              <button
+                onClick={handleLoading}
+                style={{ "background-color": "grey" }}
+              >
+                <span className="material-icons md-dark">send</span>
+              </button>
+            ) : (
+              <button>
+                <span className="material-icons md-light">send</span>
+              </button>
+            )}
           </form>
         ) : inputType === "file" ? (
           <form
@@ -526,9 +537,18 @@ function MessageInput(props) {
               name="file"
               onChange={(e) => handleUploadFile(e)}
             />
-            <button>
-              <span className="material-icons md-light">send</span>
-            </button>
+            {loading ? (
+              <button
+                onClick={handleLoading}
+                style={{ "background-color": "grey" }}
+              >
+                <span className="material-icons md-dark">send</span>
+              </button>
+            ) : (
+              <button>
+                <span className="material-icons md-light">send</span>
+              </button>
+            )}
           </form>
         ) : (
           <h1>hello</h1>

@@ -7,6 +7,7 @@ const NOT_GOING_EVENT = "NOT_GOING_EVENT";
 const GOING_EVENT = "GOING_EVENT";
 const NEW_POLL_CHAT_MESSAGE = "NEW_POLL_CHAT_MESSAGE";
 const UPDATE_POLL_VOTING = "UPDATE_POLL_VOTING";
+const NEW_PICTURE_MESSAGE = "NEW_PICTURE_MESSAGE";
 const SOCKET_SERVER_URL = "http://localhost:3001";
 
 const useChat = (roomId, user) => {
@@ -39,6 +40,14 @@ const useChat = (roomId, user) => {
     });
 
     socketRef.current.on(NEW_POLL_CHAT_MESSAGE, (message) => {
+      const incomingMessage = {
+        ...message,
+        ownedByCurrentUser: message.senderId === socketRef.current.id,
+      };
+      setMessages((messages) => [...messages, incomingMessage]);
+    });
+
+    socketRef.current.on(NEW_PICTURE_MESSAGE, (message) => {
       const incomingMessage = {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,
@@ -91,6 +100,15 @@ const useChat = (roomId, user) => {
     });
   };
 
+  const sendImgMsg = (messageBody) => {
+    if (!socketRef.current) return;
+    socketRef.current.emit(NEW_PICTURE_MESSAGE, {
+      ...messageBody,
+      userId: user._id,
+      senderId: socketRef.current.id,
+    });
+  };
+
   const notGoingEvent = (messages) => {
     if (!socketRef.current) return;
     socketRef.current.emit(NOT_GOING_EVENT, messages);
@@ -115,6 +133,7 @@ const useChat = (roomId, user) => {
     notGoingEvent,
     sendPollMsg,
     updatePoll,
+    sendImgMsg,
   };
 };
 
