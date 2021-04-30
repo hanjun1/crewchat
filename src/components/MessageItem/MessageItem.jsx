@@ -63,6 +63,7 @@ function MessageItem({
         </>
       ) : type === "text" ? (
         <>
+          {console.log(msg)}
           <div className="time">{time}</div>
           <div className="content">{msg.text.content}</div>
           <div className="sender">{sender}</div>
