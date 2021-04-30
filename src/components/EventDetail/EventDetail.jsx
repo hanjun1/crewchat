@@ -96,6 +96,20 @@ function EventDetail(props) {
     e.preventDefault();
   };
 
+  function formatTime(timestamp) {
+    let date = new Date(timestamp);
+    let time = date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    date = date.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    });
+    return date + " - " + time;
+  }
+
   useEffect(() => {
     checkStatus();
   }, []);
@@ -119,7 +133,7 @@ function EventDetail(props) {
         </div>
         <div className="event-detail-container">
           <p className="event-title">{props.name}</p>
-          <p className="event-date">{props.date}</p>
+          <p className="event-date">{formatTime(props.date)}</p>
           <p className="event-location">{props.address}</p>
           {showMore ? (
             <div>
