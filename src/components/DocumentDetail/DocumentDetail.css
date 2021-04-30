@@ -4,6 +4,11 @@
   margin: 0 1rem;
   border-bottom: 1px solid #d4d4d4;
 }
+
+.DocumentDetail a {
+  text-decoration: none;
+  color: black;
+}
 .DocumentDetail .documents-container svg {
   min-width: 40px;
   min-height: 40px;
