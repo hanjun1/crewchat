@@ -470,7 +470,7 @@ function MessageInput(props) {
               onChange={(e) => handleUploadImage(e)}
             />
 
-            <img className="img-preview" src={pictureURL}></img>
+            <img className="img-preview" src={pictureURL} alt="IMG"></img>
 
             <button>
               <span className="material-icons md-light">send</span>

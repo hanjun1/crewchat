@@ -90,7 +90,7 @@ function Profile({ user, setUser, showSideNav, setShowSideNav }) {
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="profile-pic">
           <div className="img-container">
-            <img src={pictureURL}></img>
+            <img src={pictureURL} alt="IMG"></img>
           </div>
 
           <label htmlFor="img-input" className="edit-profile-pic">
