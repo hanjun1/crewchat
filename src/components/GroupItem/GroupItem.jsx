@@ -50,7 +50,7 @@ function GroupItem({ group }) {
           ) : (
             <>
               <div className="member-icon">
-                <img src={member.picture}></img>
+                <img src={member.picture} alt="IMG"></img>
               </div>
             </>
           )
