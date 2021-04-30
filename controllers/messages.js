@@ -108,13 +108,36 @@ async function createImage(req, res) {
       sender: req.body.sender,
       senderName: req.body.senderName,
       image: {
-        imgFileURL: req.body.image,
+        imgFileURL: req.body.link,
       },
     });
     await group.save();
     await group.populate("msgs.event.attendees").execPopulate();
     res.status(200).json(group.msgs[group.msgs.length - 1]);
-  } catch (error) {}
+  } catch (error) {
+    console.log(errro);
+  }
+}
+
+async function createFile(req, res) {
+  try {
+    let group = await Group.findById(req.params.groupId);
+    await group.msgs.push({
+      type: "file",
+      sender: req.body.sender,
+      senderName: req.body.senderName,
+      file: {
+        fileURL: req.body.link,
+        fileName: req.body.fileName,
+        fileSize: req.body.fileSize,
+      },
+    });
+    await group.save();
+    await group.populate("msgs.event.attendees").execPopulate();
+    res.status(200).json(group.msgs[group.msgs.length - 1]);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function updateVote(req, res) {
@@ -174,6 +197,7 @@ module.exports = {
   updateGoing,
   updateNotGoing,
   createImage,
+  createFile,
   createPoll,
   updateVote,
   updateUnvote,
