@@ -1,5 +1,12 @@
+.MessageInput {
+  background-color: #4b4b54;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
 .MessageInput-container {
   width: 100%;
+  background-color: #4b4b54;
 }
 
 .MessageInput-container .button-container {
@@ -43,6 +50,7 @@
   align-items: center;
   min-height: 50px;
   color: white;
+  margin-bottom: 5px;
 }
 
 .MessageInput .event-inputs-container,

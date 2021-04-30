@@ -34,7 +34,7 @@ function GroupItem({ group }) {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <ellipse cx="22.5" cy="21" rx="22.5" ry="21" fill="#A0A2BA" />
+            <ellipse cx="22.5" cy="21" rx="22.5" ry="21" fill="#353535" />
           </svg>
         ) : (
           <img src={group.picture} alt="IMG"></img>
@@ -47,7 +47,7 @@ function GroupItem({ group }) {
         {group.members.map((member) =>
           member.picture === "" ? (
             <>
-              <span key={member._id} className="material-icons">
+              <span key={member._id} className="material-icons md-light">
                 account_circle
               </span>
             </>

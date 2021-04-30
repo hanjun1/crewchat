@@ -36,5 +36,6 @@
 @media (min-width: 1224px) {
   .ChatRoomDetails {
     max-width: 300px;
+    margin-left: 10px;
   }
 }
