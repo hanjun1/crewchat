@@ -5,10 +5,6 @@ import "./SideNav.css";
 function SideNav({ handleLogout }) {
   return (
     <div className="SideNav">
-      <div className="icon-group">
-        <span className="material-icons md-48 ">calendar_today</span>
-        <h5>Events</h5>
-      </div>
       <Link to="/groups" className="item-link">
         <div className="icon-group">
           <span className="material-icons md-48 ">chat</span>
