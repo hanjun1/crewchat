@@ -13,6 +13,7 @@ function RoomHeader({
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const [copySuccess, setCopySuccess] = useState("");
+  const [saved, setSaved] = useState(false);
   const [picture, setPicture] = useState(null);
   const [pictureURL, setPictureURL] = useState(groupPicture);
   let returnedURL = "";
@@ -59,6 +60,7 @@ function RoomHeader({
       };
       const fetchResponse = await fetch(`/api/groups/${groupId}`, options);
       if (fetchResponse.ok) {
+        setSaved(true);
       }
       if (!fetchResponse.ok) throw new Error("Fetch failed - Bad request");
     } catch (err) {
@@ -129,7 +131,14 @@ function RoomHeader({
             />
           </div>
           {picture ? (
-            <button className="save-btn">Save</button>
+            saved ? (
+              <div className="save-container">
+                <button className="save-btn">Saved!</button>
+                <span class="material-icons">done</span>
+              </div>
+            ) : (
+              <button className="save-btn">Save</button>
+            )
           ) : (
             <button className="save-btn disabled" disabled>
               Save
