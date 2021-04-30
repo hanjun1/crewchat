@@ -6,6 +6,7 @@ import axios from "axios";
 function MessageInput(props) {
   //----------------General----------------//
   const [inputType, setInputType] = useState("text");
+  const [loading, setLoading] = useState(false);
   const handleChangeInput = (e) => {
     setInputType(e.target.id);
   };
@@ -17,6 +18,10 @@ function MessageInput(props) {
       "..." +
       name[0].substring(name[0].length - 3, name[0].length);
     return fileName + "." + name[1];
+  };
+
+  const handleLoading = (e) => {
+    e.preventDefault();
   };
   //----------------Send Texts----------------//
   const [textContent, setTextContent] = useState("");
@@ -122,6 +127,7 @@ function MessageInput(props) {
 
   const handleSubmitImageMessage = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (picture) {
       let data = new FormData();
       data.append("image", picture, picture.name);
@@ -135,6 +141,7 @@ function MessageInput(props) {
           setPicture(null);
           setPictureURL("");
           setInputType("text");
+          setLoading(false);
         })
         .catch((e) => {
           console.log(e);
@@ -187,6 +194,7 @@ function MessageInput(props) {
 
   const handleSubmitFileMessage = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (file) {
       let data = new FormData();
       data.append("image", file, file.name);
@@ -199,6 +207,7 @@ function MessageInput(props) {
           postToDB(returnedURL, "file");
           setFile(null);
           setInputType("text");
+          setLoading(false);
         })
         .catch((e) => {
           console.log(e);
@@ -465,9 +474,18 @@ function MessageInput(props) {
 
             <img className="img-preview" src={pictureURL} alt="IMG"></img>
 
-            <button>
-              <span className="material-icons md-light">send</span>
-            </button>
+            {loading ? (
+              <button
+                onClick={handleLoading}
+                style={{ "background-color": "grey" }}
+              >
+                <span className="material-icons md-dark">send</span>
+              </button>
+            ) : (
+              <button>
+                <span className="material-icons md-light">send</span>
+              </button>
+            )}
           </form>
         ) : inputType === "file" ? (
           <form
@@ -519,9 +537,18 @@ function MessageInput(props) {
               name="file"
               onChange={(e) => handleUploadFile(e)}
             />
-            <button>
-              <span className="material-icons md-light">send</span>
-            </button>
+            {loading ? (
+              <button
+                onClick={handleLoading}
+                style={{ "background-color": "grey" }}
+              >
+                <span className="material-icons md-dark">send</span>
+              </button>
+            ) : (
+              <button>
+                <span className="material-icons md-light">send</span>
+              </button>
+            )}
           </form>
         ) : (
           <h1>hello</h1>
