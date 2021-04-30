@@ -34,17 +34,19 @@ function PollsDetail(props) {
   return (
     <div className="PollsDetail">
       {pollMsgs.map((msg) => (
-        <PollDetail
-          question={msg.poll.question}
-          date={msg.createdAt}
-          options={msg.poll.options}
-          totalPeople={msg.poll.totalPeople}
-          voters={msg.poll.options.voters}
-          user={props.user}
-          groupId={props.activeGroup._id}
-          msgId={props.msgId}
-          showButton={false}
-        />
+        <div className="poll-container">
+          <PollDetail
+            question={msg.poll.question}
+            date={msg.createdAt}
+            options={msg.poll.options}
+            totalPeople={msg.poll.totalPeople}
+            voters={msg.poll.options.voters}
+            user={props.user}
+            groupId={props.activeGroup._id}
+            msgId={props.msgId}
+            showButton={false}
+          />
+        </div>
       ))}
     </div>
   );

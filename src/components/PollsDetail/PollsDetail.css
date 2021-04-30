@@ -2,3 +2,7 @@
   height: 75vh;
   overflow-y: scroll;
 }
+
+.PollsDetail .poll-container {
+  margin: 1rem auto;
+}
