@@ -8,7 +8,7 @@ const GOING_EVENT = "GOING_EVENT";
 const NEW_POLL_CHAT_MESSAGE = "NEW_POLL_CHAT_MESSAGE";
 const UPDATE_POLL_VOTING = "UPDATE_POLL_VOTING";
 const NEW_PICTURE_MESSAGE = "NEW_PICTURE_MESSAGE";
-const SOCKET_SERVER_URL = "http://localhost:3001";
+const SOCKET_SERVER_URL = "/";
 
 const useChat = (roomId, user) => {
   const [messages, setMessages] = useState([]);
