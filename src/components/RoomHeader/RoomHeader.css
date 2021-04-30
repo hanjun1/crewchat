@@ -80,8 +80,27 @@
   cursor: pointer;
 }
 
+.RoomHeader .save-btn:hover {
+  background-color: #5175f8;
+}
+
 .RoomHeader .save-btn.disabled {
   background-color: rgb(218, 218, 218);
+}
+
+.RoomHeader .save-container {
+  width: 160px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.RoomHeader .save-container > span {
+  position: absolute;
+  color: #6083ff;
+  top: 6px;
+  right: 15px;
 }
 /***********************************************************/
 

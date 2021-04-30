@@ -26,15 +26,19 @@ function GroupItem({ group }) {
   return (
     <div className="GroupItem">
       <div className="group-icon">
-        <svg
-          width="45"
-          height="42"
-          viewBox="0 0 45 42"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <ellipse cx="22.5" cy="21" rx="22.5" ry="21" fill="#A0A2BA" />
-        </svg>
+        {group.picture === "" ? (
+          <svg
+            width="45"
+            height="42"
+            viewBox="0 0 45 42"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <ellipse cx="22.5" cy="21" rx="22.5" ry="21" fill="#A0A2BA" />
+          </svg>
+        ) : (
+          <img src={group.picture} alt="IMG"></img>
+        )}
       </div>
       <div className="group-name">{group.name}</div>
       <div className="time">{lastMsgTime}</div>

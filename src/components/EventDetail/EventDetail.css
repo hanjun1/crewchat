@@ -81,6 +81,22 @@
   align-items: center;
 }
 
+.EventDetail .member-icon {
+  height: 19px;
+  width: 19px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid rgb(214, 214, 214);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.EventDetail .member-icon-img {
+  max-height: 150% !important;
+  max-width: 150% !important;
+}
+
 .EventDetail .button-container form {
   display: flex;
   justify-content: center;
