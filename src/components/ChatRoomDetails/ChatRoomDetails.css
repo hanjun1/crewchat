@@ -2,6 +2,8 @@
   width: 100%;
   background: #353535;
   color: white;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .ChatRoomDetails .all {
@@ -37,5 +39,7 @@
   .ChatRoomDetails {
     max-width: 300px;
     margin-left: 10px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
