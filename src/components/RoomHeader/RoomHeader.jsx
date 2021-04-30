@@ -17,7 +17,7 @@ function RoomHeader({
   const [picture, setPicture] = useState(null);
   const [pictureURL, setPictureURL] = useState(groupPicture);
   let returnedURL = "";
-  const BASE_URL = "https://project4-test.herokuapp.com/groups";
+  const BASE_URL = "https://gang-chat.herokuapp.com/groups/";
 
   const handleUploadImage = (e) => {
     setPicture(e.target.files[0]);

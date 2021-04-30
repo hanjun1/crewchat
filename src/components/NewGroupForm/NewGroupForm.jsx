@@ -13,7 +13,7 @@ function NewGroupForm({ history }) {
   const [showModal, setShowModal] = useState(false);
   const [newGroupLink, setNewGroupLink] = useState("");
   const [joinError, setJoinError] = useState("");
-  const BASE_URL = "https://project4-test.herokuapp.com/groups";
+  const BASE_URL = "https://gang-chat.herokuapp.com/groups/";
   let link;
 
   //Post Request to add new group to database
