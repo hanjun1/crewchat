@@ -31,15 +31,15 @@ function ShowDetailsTemplate(props) {
       </div>
       <h1>{props.name}</h1>
       {props.name === "Participants" ? (
-        <ParticipantsDetail activeGroup={props.activeGroup}/>
+        <ParticipantsDetail activeGroup={props.activeGroup} />
       ) : props.name === "Photos" ? (
         <PhotosDetail activeGroup={props.activeGroup} />
       ) : props.name === "Documents" ? (
         <DocumentsDetail activeGroup={props.activeGroup} />
       ) : props.name === "Events" ? (
-        <EventsDetail activeGroup={props.activeGroup} />
+        <EventsDetail activeGroup={props.activeGroup} user={props.user} />
       ) : props.name === "Polls" ? (
-        <PollsDetail activeGroup={props.activeGroup} />
+        <PollsDetail activeGroup={props.activeGroup} user={props.user} />
       ) : (
         <></>
       )}

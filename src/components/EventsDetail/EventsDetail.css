@@ -3,6 +3,10 @@
   overflow-y: scroll;
 }
 
+.EventsDetail .event-container {
+  margin: 1rem auto;
+}
+
 .EventsDetail .events {
   margin: 1rem auto;
 }

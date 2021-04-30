@@ -75,27 +75,29 @@ function PollDetailOption(props) {
   return (
     <div className="PollDetailOption">
       <div className="voting-details">
-        <div className="button-container">
-          {voted ? (
-            loading ? (
+        {props.showButton && (
+          <div className="button-container">
+            {voted ? (
+              loading ? (
+                <form onClick={handleLoading}>
+                  <button style={{ background: "#707070" }}>-</button>
+                </form>
+              ) : (
+                <form onClick={handleVoted}>
+                  <button>-</button>
+                </form>
+              )
+            ) : loading ? (
               <form onClick={handleLoading}>
-                <button style={{ background: "#707070" }}>-</button>
+                <button style={{ background: "#707070" }}>+</button>
               </form>
             ) : (
               <form onClick={handleVoted}>
-                <button>-</button>
+                <button>+</button>
               </form>
-            )
-          ) : loading ? (
-            <form onClick={handleLoading}>
-              <button style={{ background: "#707070" }}>+</button>
-            </form>
-          ) : (
-            <form onClick={handleVoted}>
-              <button>+</button>
-            </form>
-          )}
-        </div>
+            )}
+          </div>
+        )}
         <div className="details-container">
           <div className="option-container">
             <div className="option-name-container">

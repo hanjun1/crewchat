@@ -29,6 +29,7 @@ function Messages({ setShowDetails, activeGroup, user, setActiveGroup }) {
       console.log(err);
     }
   }
+
   return (
     <div className="Messages">
       <MessageHeader
