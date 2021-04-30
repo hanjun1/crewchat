@@ -1,18 +1,12 @@
 .NewGroupPage {
   display: flex;
   flex-direction: row;
-  align-items: center;
-}
-.NewGroupPage > div {
-  margin: 10px;
-}
-
-.NewGroupPage div.SideNav {
-  margin: 0px;
+  align-items: flex-start;
+  background-color: #3c3e44;
 }
 
 @media only screen and (min-width: 768px) {
   .NewGroupPage div.Groups {
-    margin-right: 0px;
+    /* margin-right: 0px; */
   }
 }
