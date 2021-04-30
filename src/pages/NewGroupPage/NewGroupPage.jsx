@@ -5,7 +5,7 @@ import Groups from "../../components/Groups/Groups";
 import NewGroup from "../../components/NewGroup/NewGroup";
 import SideNav from "../../components/SideNav/SideNav";
 
-function NewGroupPage(props) {
+function NewGroupPage({ history, handleLogout }) {
   const isDesktop = useMediaQuery({ minWidth: 1224 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -13,6 +13,7 @@ function NewGroupPage(props) {
   const [groups, setGroups] = useState(null);
   const [groupCategories, setGroupCategories] = useState([]);
   const [activeGroup, setActiveGroup] = useState(null);
+  const [showSideNav, setShowSideNav] = useState(false);
 
   useEffect(() => {
     fetchGroups();
@@ -41,29 +42,39 @@ function NewGroupPage(props) {
     <div className="NewGroupPage">
       {isDesktop && (
         <>
-          <SideNav />
+          <SideNav handleLogout={handleLogout} />
           <Groups
             groups={groups}
             groupCategories={groupCategories}
             setActiveGroup={setActiveGroup}
           />
-          <NewGroup history={props.history} />
+          <NewGroup history={history} />
         </>
       )}
       {isTablet && (
         <>
-          <SideNav />
+          <SideNav handleLogout={handleLogout} />
           <Groups
             groups={groups}
             groupCategories={groupCategories}
             setActiveGroup={setActiveGroup}
           />
-          <NewGroup history={props.history} />
+          <NewGroup history={history} />
         </>
       )}
       {isMobile && (
         <>
-          <NewGroup history={props.history} />
+          {showSideNav && (
+            <SideNav
+              handleLogout={handleLogout}
+              setShowSideNav={setShowSideNav}
+            />
+          )}
+          <NewGroup
+            history={history}
+            setShowSideNav={setShowSideNav}
+            showSideNav={showSideNav}
+          />
         </>
       )}
     </div>
