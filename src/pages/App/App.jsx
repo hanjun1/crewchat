@@ -7,6 +7,7 @@ import NewGroupPage from "../NewGroupPage/NewGroupPage";
 import ImageTestPage from "../ImageTestPage/ImageTestPage";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
+import LandingPage from "../LandingPage/LandingPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -90,10 +91,11 @@ function App() {
         ) : (
           <Switch>
             <Route
-              path="/"
+              path="/authentication"
               exact
               render={(props) => <AuthPage setUser={setUser} />}
             />
+            <Route path="/" exact render={(props) => <LandingPage />} />
             <Redirect to="/" />
           </Switch>
         )}
