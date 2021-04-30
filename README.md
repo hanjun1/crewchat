@@ -4,10 +4,22 @@ CrewChat is a messenger app focused on enhancing your group chat experience. Cre
 
 ### Made By
 
+### Made By
+
 - [Cindy Xu](https://github.com/C1ndyy)
 - [Ryan Kim](https://github.com/hanjun1)
 
 ## Screenshots
+
+|                   messages                   |                   details                   |                   groups                   |
+| :------------------------------------------: | :-----------------------------------------: | :----------------------------------------: |
+| ![messages](https://i.imgur.com/GlOEArq.png) | ![details](https://i.imgur.com/TKNnYrY.png) | ![groups](https://i.imgur.com/owsfgPD.png) |
+
+## Features
+
+- create groups and join existing groups
+- live messaging of pictures, files, events, and polls
+- change profile photo and group photo
 
 ## Technologies Used
 
@@ -26,7 +38,7 @@ Other Technologies:
 
 ## Getting Started
 
-[Click Here]() for a live demo!
+[Click Here](https://crew-chat-app.herokuapp.com/) for a live demo!
 
 ### Setup
 
