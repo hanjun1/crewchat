@@ -131,3 +131,9 @@
   top: 30px;
   color: #5175f8;
 }
+
+@media screen and (min-width: 1224px) {
+  .RoomHeader .header-container {
+    padding-top: 6rem;
+  }
+}
