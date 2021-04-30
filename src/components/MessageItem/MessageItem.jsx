@@ -52,7 +52,7 @@ function MessageItem({
           </div>
           <div className="sender">{sender}</div>
           {senderIcon === "" ? (
-            <div className="sender-icon">
+            <div className="icon-container">
               <span className="material-icons">account_circle</span>
             </div>
           ) : (
@@ -67,7 +67,7 @@ function MessageItem({
           <div className="content">{msg.text.content}</div>
           <div className="sender">{sender}</div>
           {senderIcon === "" ? (
-            <div className="sender-icon">
+            <div className="icon-container">
               <span className="material-icons">account_circle</span>
             </div>
           ) : (
@@ -95,7 +95,7 @@ function MessageItem({
           </div>
           <div className="sender">{sender}</div>
           {senderIcon === "" ? (
-            <div className="sender-icon">
+            <div className="icon-container">
               <span className="material-icons">account_circle</span>
             </div>
           ) : (
@@ -112,7 +112,7 @@ function MessageItem({
           </div>
           <div className="sender">{sender}</div>
           {senderIcon === "" ? (
-            <div className="sender-icon">
+            <div className="icon-container">
               <span className="material-icons">account_circle</span>
             </div>
           ) : (
@@ -165,7 +165,7 @@ function MessageItem({
           </div>
           <div className="sender">{sender}</div>
           {senderIcon === "" ? (
-            <div className="sender-icon">
+            <div className="icon-container">
               <span className="material-icons">account_circle</span>
             </div>
           ) : (
