@@ -39,7 +39,7 @@ function ShowDetailsTemplate(props) {
       ) : props.name === "Events" ? (
         <EventsDetail activeGroup={props.activeGroup} user={props.user} />
       ) : props.name === "Polls" ? (
-        <PollsDetail activeGroup={props.activeGroup} />
+        <PollsDetail activeGroup={props.activeGroup} user={props.user} />
       ) : (
         <></>
       )}

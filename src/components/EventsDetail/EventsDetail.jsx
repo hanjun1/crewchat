@@ -29,7 +29,7 @@ function EventsDetail(props) {
 
   useEffect(() => {
     fetchMessage();
-  }, []);
+  }, [eventMsgs]);
 
   return (
     <div className="EventsDetail">

@@ -81,6 +81,7 @@ function MessageItem({
               totalPeople={totalPeople}
               groupId={groupId}
               updatePoll={updatePoll}
+              showButton={true}
             />
           </div>
           <div className="sender">{sender}</div>
