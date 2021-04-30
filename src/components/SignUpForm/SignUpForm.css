@@ -1,6 +1,6 @@
 .SignUpForm {
   font-family: "Ubuntu";
-  background-color: #ebeff8;
+  background-color: #353535;
   border-radius: 15px;
   margin: 20px;
   display: flex;
@@ -15,6 +15,7 @@
 .SignUpForm h1 {
   color: #a0a2ba;
   margin: 20px;
+  text-align: center;
 }
 
 .SignUpForm form {
@@ -35,8 +36,11 @@
   margin: 5px 0px 20px 0px;
   max-width: 300px;
   font-size: 18px;
+  font-weight: bold;
   width: calc(100% - 1em);
   padding: 0 0.5em;
+  background-color: #c1c6e0;
+  color: #353535;
 }
 
 .SignUpForm .signup-btn {

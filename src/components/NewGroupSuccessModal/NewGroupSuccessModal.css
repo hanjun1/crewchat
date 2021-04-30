@@ -12,8 +12,8 @@
 }
 
 .NewGroupSuccessModal .modal {
-  background-color: white;
-  border: 4px solid #ebeff8;
+  background-color: #353535;
+  border: 4px solid #353535;
   border-radius: 15px;
   margin: 20px;
   padding: 20px;
@@ -47,7 +47,7 @@ h4 {
   border: none;
   margin: 5px auto 50px auto;
   max-width: 300px;
-  background-color: #ebeff8;
+  background-color: #4b4b54;
   position: relative;
 }
 
@@ -71,7 +71,7 @@ h4 {
   border-radius: 15px;
   outline: none;
   border: none;
-  background-color: #ebeff8;
+  background-color: #4b4b54;
   margin-left: 10px;
 }
 

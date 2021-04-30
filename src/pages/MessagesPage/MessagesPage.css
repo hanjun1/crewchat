@@ -4,9 +4,3 @@
   justify-content: flex-start;
   background-color: #3c3e44;
 }
-
-@media only screen and (min-width: 768px) {
-  .MessagesPage div.Groups {
-    /* margin-right: 0px; */
-  }
-}
