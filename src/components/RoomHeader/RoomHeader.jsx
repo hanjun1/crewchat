@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./RoomHeader.css";
 import { useMediaQuery } from "react-responsive";
 import axios from "axios";
@@ -117,7 +117,7 @@ function RoomHeader({
         <form autoComplete="off" onSubmit={handleSubmit}>
           <div className="profile-pic">
             <div className="img-container">
-              <img src={pictureURL} alt="IMG"></img>
+              {pictureURL != "" && <img src={pictureURL} alt="IMG"></img>}
             </div>
 
             <label htmlFor="img-input" className="edit-profile-pic">
