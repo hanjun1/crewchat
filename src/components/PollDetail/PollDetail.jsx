@@ -17,6 +17,7 @@ function PollDetail(props) {
           msgId={props.msgId}
           optionId={option._id}
           updatePoll={props.updatePoll}
+          showButton={props.showButton}
         />
       ))}
     </div>
