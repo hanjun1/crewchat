@@ -2,6 +2,8 @@
 
 CrewChat is a messenger app focused on enhancing your group chat experience. CrewChat has functions such as real-time polls for you and your friends or colleagues to vote on 'important' matters, events to mark down important due dates or gatherings, and upload images and documents. To get started, simply create an account, create a group and share the generated link with your friends, family and colleagues!
 
+Check it out [Here!](https://crew-chat-app.herokuapp.com/)
+
 ### Made By
 
 - [Cindy Xu](https://github.com/C1ndyy)
@@ -9,14 +11,20 @@ CrewChat is a messenger app focused on enhancing your group chat experience. Cre
 
 ## Screenshots
 
-|                   messages                   |                   details                   |                   groups                   |
-| :------------------------------------------: | :-----------------------------------------: | :----------------------------------------: |
-| ![messages](https://i.imgur.com/GlOEArq.png) | ![details](https://i.imgur.com/TKNnYrY.png) | ![groups](https://i.imgur.com/owsfgPD.png) |
+|                  messages                   |                group details                |                 groups list                 |
+| :-----------------------------------------: | :-----------------------------------------: | :-----------------------------------------: |
+| <img src="https://i.imgur.com/foIJJeW.png"> | <img src="https://i.imgur.com/refgLeT.png"> | <img src="https://i.imgur.com/XEDVdne.png"> |
+|                  New group                  |                 Join Group                  |                   Profile                   |
+| <img src="https://i.imgur.com/imDBKej.png"> | <img src="https://i.imgur.com/531i8Ty.png"> | <img src="https://i.imgur.com/JYrn09b.png"> |
+
+Desktop View
+<img src="https://i.imgur.com/LSvz8dl.png">
 
 ## Features
 
 - create groups and join existing groups
 - live messaging of pictures, files, events, and polls
+- group details panel to view participants, polls, events, files, and images sent
 - change profile photo and group photo
 
 ## Technologies Used
@@ -33,6 +41,7 @@ Other Technologies:
 - Socket.io
 - JSON Web Token
 - AWS S3
+- react-responsive
 
 ## Getting Started
 
