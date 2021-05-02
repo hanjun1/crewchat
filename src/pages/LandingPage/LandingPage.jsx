@@ -20,9 +20,9 @@ function LandingPage(props) {
           <button>Try it now</button>
         </Link>
         {isDesktop ? (
-          <img src="https://i.imgur.com/SK9wDWO.png" alt="IMG" />
+          <img src="https://i.imgur.com/LSvz8dl.png" alt="IMG" />
         ) : (
-          <img src="https://i.imgur.com/GlOEArq.png" alt="IMG" />
+          <img src="https://i.imgur.com/foIJJeW.png" alt="IMG" />
         )}
       </div>
 
@@ -56,17 +56,17 @@ function LandingPage(props) {
         <div className="images">
           <img
             className="desktop"
-            src="https://i.imgur.com/SK9wDWO.png"
+            src="https://i.imgur.com/LSvz8dl.png"
             alt="IMG"
           />
           <img
             className="tablet"
-            src="https://i.imgur.com/xDCx1uH.png"
+            src="https://i.imgur.com/rPTdYdl.png"
             alt="IMG"
           />
           <img
             className="mobile"
-            src="https://i.imgur.com/GlOEArq.png"
+            src="https://i.imgur.com/foIJJeW.png"
             alt="IMG"
           />
         </div>
