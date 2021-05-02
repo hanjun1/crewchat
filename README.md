@@ -4,8 +4,6 @@ CrewChat is a messenger app focused on enhancing your group chat experience. Cre
 
 ### Made By
 
-### Made By
-
 - [Cindy Xu](https://github.com/C1ndyy)
 - [Ryan Kim](https://github.com/hanjun1)
 
