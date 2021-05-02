@@ -1,0 +1,32 @@
+.FeatureCard {
+  width: 80vw;
+  max-width: 200px;
+  border-radius: 20px;
+  background-color: #353535;
+  box-shadow: 2px 2px 8px #868686;
+  margin: 10px;
+}
+
+.FeatureCard > h4 {
+  color: white;
+}
+
+.FeatureCard > div {
+  height: 190px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.FeatureCard > div > img {
+  max-width: 90%;
+  margin-top: -30px;
+  border-radius: 15px;
+}
+
+/* @media only screen and (min-width: 768px) {
+  .FeatureCard {
+    max-width: 200px;
+  }
+} */
