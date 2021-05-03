@@ -11,6 +11,7 @@ function LandingPage(props) {
       {/* Main Section */}
 
       <div className="main">
+        <div className="circle"></div>
         <h1 className="logo">Crew Chat</h1>
         <Link to="/authentication" className="login">
           <h2>Login</h2>
@@ -51,8 +52,8 @@ function LandingPage(props) {
 
       {/* Responsive Section */}
       <div className="responsive">
-        <h1>Use CrewChat anywhere</h1>
-        <h2>Mobile, Tablet, and Desktop Compatible</h2>
+        <h1 className="words">Use CrewChat anywhere</h1>
+        <h2 className="words">Mobile, Tablet, and Desktop Compatible</h2>
         <div className="images">
           <img
             className="desktop"
