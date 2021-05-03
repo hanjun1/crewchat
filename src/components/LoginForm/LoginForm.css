@@ -2,7 +2,7 @@
   font-family: "Ubuntu";
   background-color: #353535;
   border-radius: 15px;
-  margin: auto;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,8 +12,10 @@
   min-height: 400px;
 }
 
-.LoginForm h1 {
+.LoginForm > h1 {
   color: #a0a2ba;
+  font-size: 22px;
+  margin-top: 30px;
 }
 
 .LoginForm form {
@@ -65,4 +67,11 @@
 .LoginForm .signup-link {
   margin: 10px;
   color: #8e91af;
+}
+
+@media only screen and (min-width: 768px) {
+  .LoginForm > h1 {
+    font-size: 30px;
+    margin-top: 10px;
+  }
 }
